@@ -1,6 +1,7 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.webdriver import WebDriver
+import time
 
 def gpro_login(scrapper):
     user = "NeilLight"
@@ -53,6 +54,9 @@ def scrap_car(scrapper):
 
 def scrap_weather(scrapper):
     weather_dict = dict()
+    print('przed')
+    time.sleep(15)
+    print('po')
     scrapper.find_element_by_link_text('Trening').click()
     with open('page.html', 'w') as file:
         file.write(scrapper.page_source)
