@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+// Customization
+
+// You can easily customize Bulma with your own variables.
+// Just uncomment the following block to see the result.
+
+/*
+// 1. Import the initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+// 2. Set your own initial variables
+// Update the blue shade, used for links
+$blue: #06bcef;
+// Add pink and its invert
+$pink: #ff8080;
+$pink-invert: #fff;
+// Update the sans-serif font family
+$family-sans-serif: "Helvetica", "Arial", sans-serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink;
+$primary-invert: $pink-invert;
+
+// 4. Import the rest of Bulma
+*/
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+$purple: hsl(298, 100%, 35%);
+$success: hsl(298, 100%, 35%);
+$box-background-color: rgb(11, 22, 15);
+$footer-padding: 0.5rem 1.5rem 0.5rem;
+$footer-background-color: hsl(0, 0%, 48%);
+$button-background-color: hsl(300, 100%, 9%);
+$button-disabled-background-color: hsl(0, 0%, 48%);
+$button-border-color: rgb(0, 0, 0);
+$button-text-color: hsl(0, 100%, 10%);
+$button-color: hsl(0, 0%, 0%);
+$control-border-width: 3px;
+
+@import "../node_modules/bulma/bulma";
+
+body {
+  background-color: rgb(0, 0, 0);
+  background-position: center; /* Center the image */
+  height: 100%; /* You must set a specified height */
+   }
+
+.hero-image{
+  background-color: #ccccc1; /* Used if the image is unavailable */
+  height: 100px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+}

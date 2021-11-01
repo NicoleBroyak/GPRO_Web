@@ -4,8 +4,8 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 import time
 
 def gpro_login(scrapper):
-    user = "NeilLight"
-    password = "GPRO2137"
+    user = input('User')
+    password = input("Password")
     scrapper.get("https://gpro.net/pl/Login.asp")
     scrapper.find_element_by_name("textLogin").send_keys(user)
     scrapper.find_element_by_name("textPassword").send_keys(password)
