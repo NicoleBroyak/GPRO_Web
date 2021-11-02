@@ -45,6 +45,7 @@ share/python-wheels/
 MANIFEST
 venv
 package-lock.json
+nb/gpro/static/gpro/package-lock.json
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
