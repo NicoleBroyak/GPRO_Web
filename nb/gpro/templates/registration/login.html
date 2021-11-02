@@ -3,21 +3,24 @@
 
 {% block content %}
 
-<div class="tile is-ancestor is-mobile"></div>
-<div class="tile has-text-white">
+<section class="section is-mobile">
+        
+  <h2>Login</h2>
+
   {% if form.errors %}
     <p>{% trans "Your username and password didn't match. Please try again." %}</p>
   {% endif %}
 
-  <form class="has-text-white" method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form|bulma }}
-    <div class="field has-text-white">
-      <button type="submit" class="button">{% trans 'Log in' %}</button>
+<form action="" method="POST">
+{% csrf_token %}
+  {% for field in form %}
+  {{field.label}}<br>{{field}}<br>
+  {% endfor %}
+  <br>
+  <div class="field has-text-white">
+      <button type="submit" class="button">Register</button>
     </div>
-    <input type="hidden" name="next" value="{{ next }}"/>
-  </form>
-</div>
-</div>
+</form>
+</section>
 
 {% endblock %}

@@ -2,15 +2,20 @@
 
 {% block content %}
 {% if user.username %}
-    <section class="section is-mobile">
+<section class="section is-mobile">
         
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form }}
-        <div class="field has-text-white">
-            <button type="submit" class="button">Submit</button>
-          </div>
-        </form>
+    <h2>GPRO Login</h2>
+
+<form action="" method="POST">
+{% csrf_token %}
+    {% for field in form %}
+    {{field.label}}<br>{{field}}<br>
+    {% endfor %}
+    <br>
+    <div class="field has-text-white">
+        <button type="submit" class="button">Login</button>
+      </div>
+</form>
 </section>
 
 {% else %}

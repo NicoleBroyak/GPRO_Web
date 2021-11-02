@@ -23,5 +23,6 @@ urlpatterns = [
     path('', views.home),
     path('gpro_main', views.gpro_main),
     url('', include("django.contrib.auth.urls")),
-    path('gpro/login/', views.gprocalc1)
+    path('gpro/login/', views.gprocalc1),
+    path('register', views.register),
     ]

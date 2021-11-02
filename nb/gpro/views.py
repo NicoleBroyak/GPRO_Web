@@ -1,11 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, context, RequestContext
 from gpro.gpro_web import calcs as c
 from gpro.gpro_web.module import seleniumscrap as s
+from django.urls import reverse
+from django.contrib.auth import login
 import math
 
-from gpro.forms import GPROForm, ScrapConfirmForm
+from gpro.forms import GPROForm, ScrapConfirmForm, CustomUserCreationForm
 
 def home(request):
     return render(request, 'gpro/index.html')
@@ -117,3 +119,17 @@ def gpro_main(request):
             'setup': calcs.setup_list,
         }
     return render(request, 'gpro/gpro_main.html', context=context)
+
+
+def register(request):
+    if request.method == "GET":
+        return render(
+            request, "gpro/register.html",
+            {"form": CustomUserCreationForm}
+        )
+    elif request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return HttpResponseRedirect('/')

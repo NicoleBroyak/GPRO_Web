@@ -7,5 +7,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
     path('gpro_main', views.gpro_main),
-    path('gpro/login/', views.gprocalc1)
+    path('gpro/login/', views.gprocalc1),
+    path('register', views.register),
     ]
