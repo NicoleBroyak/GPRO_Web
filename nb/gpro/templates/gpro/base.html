@@ -8,22 +8,88 @@
     <link rel="stylesheet" href="{% static "gpro/css/main.css" %}">
   </head>
   <body>
-<section class="hero">
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <p class="title has-text-white-ter">
-        Nikola Broyak
-      </p>
-    </div>
-</section>
+    <header><nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Transgender_Pride_flag.svg/1200px-Transgender_Pride_flag.svg.png" width="50" height="28">
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a href='/' class="navbar-item">
+            Home
+          </a>
+
+          <a href='/gpro/login/' class="navbar-item">
+            GPRO Calculator
+          </a>
+    
+          <a href="https://github.com/NicoleBroyak" class="navbar-item">
+            Github
+          </a>
+    
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a href="about" class="navbar-item">
+                About
+              </a>
+              <a href="https://www.facebook.com/NikolaBroyak/" class="navbar-item">
+                Facebook
+              </a>
+              <a href="https://pl.linkedin.com/in/nikola-broyak-87ba77203" class="navbar-item">
+                Linkedin
+              </a>
+              <a href="https://www.instagram.com/nicolebroyak/" class="navbar-item">
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              {% if not user.username %}
+              <a href="/register" class="button is-rounded">
+                <strong>Sign up</strong>
+              </a>
+              <a href="/login" class="button is-rounded">
+                Log in
+              </a>
+              {% endif %}
+              {% if user.username %}
+              <a class="button is-rounded">
+                Hello {{ user.username }}
+              </a>
+              <a href="/logout" class="button is-rounded">
+                Log out
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 
     {% block content %}{% endblock %}
 
 <div class="block"></div>
 <footer class="footer">
-  <div class="content has-text-centered">
+  <div class="content has-text-centered has-text-grey">
     <p>
-      <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+      Project made by <strong>Nicole Broyak</strong><br>Bulma by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
       <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
       is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
     </p>

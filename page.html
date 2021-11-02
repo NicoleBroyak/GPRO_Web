@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"><head>
 <meta http-equiv="X-UA-Compatible" content="IE=9;IE=10;IE=Edge,chrome=1">
 
-	<title>Modernizacja bolidu - Grand Prix Racing Online</title>
+	<title>Dostawcy opon - Grand Prix Racing Online</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	
 <link href="https://didlsjm328074.cloudfront.net/compressed/styles/global23.min.css" media="screen" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
 <link href="https://didlsjm328074.cloudfront.net/compressed/styles/ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
 
-	<script src="https://www.googletagservices.com/activeview/js/current/osd.js"></script><script src="https://partner.googleadservices.com/gampad/cookie.js?domain=gpro.net&amp;callback=_gfp_s_&amp;client=ca-pub-9802427417219730&amp;cookie=ID%3D04a833574076e6ed-228e9a0366c90077%3AT%3D1633106136%3ART%3D1633106136%3AS%3DALNI_MbcAEl3n_oLFJOA29MaU003cQzfyg"></script><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion_async.js"></script><script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202109270101/show_ads_impl_with_ama.js?client=ca-pub-9802427417219730&amp;plah=gpro.net&amp;bust=31062977" id="google_shimpl"></script><script async="" src="//www.google-analytics.com/analytics.js"></script><script async="" type="text/javascript" src="https://www.googletagservices.com/tag/js/gpt.js"></script><script type="text/javascript">
+	<script async="" src="//www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googleadservices.com/pagead/conversion_async.js"></script><script src="https://partner.googleadservices.com/gampad/cookie.js?domain=gpro.net&amp;callback=_gfp_s_&amp;client=ca-pub-9802427417219730&amp;cookie=ID%3De251bdfa7dee11c4-22714f7109cb0000%3AT%3D1635875388%3ART%3D1635875388%3AS%3DALNI_MYbkNcslyPJNs_K1WP67sjMjnJykg"></script><script src="https://pagead2.googlesyndication.com/pagead/js/r20211029/r20110914/rum.js"></script><script src="https://securepubads.g.doubleclick.net/pagead/js/rum.js"></script><script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202110280101/show_ads_impl_with_ama.js?client=ca-pub-9802427417219730&amp;plah=gpro.net" id="google_shimpl"></script><script async="" type="text/javascript" src="https://www.googletagservices.com/tag/js/gpt.js"></script><script type="text/javascript">
 	var googletag = googletag || {};
 	googletag.cmd = googletag.cmd || [];
 	(function() {
@@ -66,430 +66,16 @@
 
 <script type="text/javascript" src="https://didlsjm328074.cloudfront.net/compressed/jscripts/advertisement2.js"></script><style type="text/css">#blockblockA {visibility:invisible!important;display:none!important;}#blockblockA td {visibility:invisible!important;display:none!important;}#blockblockA td p {visibility:invisible!important;display:none!important;}#blockblockB {visibility:visible!important;display:block!important;}</style>
 
-	<script type="text/javascript" src="https://didlsjm328074.cloudfront.net/compressed/jscripts/NumberFormat154.js"></script>
-	<script type="text/javascript">
-	<!--
-		String.prototype.replaceAll = function(search, replacement) {
-			var target = this;
-			return target.replace(new RegExp(search, 'g'), replacement);
-		};
-		function html_entity_decode(str) {
-			var ta=document.createElement("textarea");
-			ta.innerHTML=str.replace(/</g,"&lt;").replace(/>/g,"&gt;");
-			return ta.value;
-		}
-		function UndoCarUpdate()
-		{
-			
-				$.confirm({
-					title: "Cofnij modernizacj&#281; bolidu",
-					
-					content: html_entity_decode("Potrzebujesz 2 kredyt&#243;w supportera, &#380;eby cofn&#261;&#263; ostatnie uaktualnienie samochodu. Chcesz teraz kupi&#263; kredyty?"),
-					
-					type: 'red',
-					boxWidth: '30%',
-					useBootstrap: false,
-					draggable: true,
-					theme: 'modern',
-					typeAnimated: true,
-					buttons: {
-						confirm:
-						{
-							text: "Potwierd&#378;",
-							btnClass: 'btn-blue',
-							keys: ['enter'],
-							isHidden: false,
-							isDisabled: false,
-							action: function (confirm) {
-								window.location.assign("GPROSupporter.asp");
-							}
-						}
-						,
-						cancel: {
-							text: "Cofnij",
-							btnClass: 'btn-blue',
-							keys: ['c','esc'],
-							isHidden: false,
-							isDisabled: false,
-							action: function(cancel){}
-						}
-					}
-				});
-				return false;
-			
-		}
-		function CalculateSum(showConfirm) 
-		{	var strUpg = '';
-			var sum = 0;
-			var partCost = 0;
-			factor = 1.2385 ;
-			obj = new NumberFormat(0);
-			obj.setCommas(true);
-			obj.setPlaces(0, true)
-			
-			document.getElementById('newLvlCha').innerHTML = document.getElementById('BuyChassis')[document.getElementById('BuyChassis').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearCha').innerHTML = document.getElementById('BuyChassis')[document.getElementById('BuyChassis').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyChassis')[document.getElementById('BuyChassis').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearCha').className = 'orange';
-			else
-				document.getElementById('newWearCha').className = '';
-				
-			if (document.getElementById('BuyChassis').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyChassis').value-1) * 1292539);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Nadwozie: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyChassis').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyChassis').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Nadwozie: Obni&#380; do poziomu [x]').replace('[x]',7+parseInt(document.getElementById('BuyChassis').value))+ ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlEng').innerHTML = document.getElementById('BuyEngine')[document.getElementById('BuyEngine').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearEng').innerHTML = document.getElementById('BuyEngine')[document.getElementById('BuyEngine').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyEngine')[document.getElementById('BuyEngine').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearEng').className = 'orange';
-			else
-				document.getElementById('newWearEng').className = '';
-			
-			if (document.getElementById('BuyEngine').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyEngine').value-1) * 3311737);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Silnik: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyEngine').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyEngine').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Silnik: Obni&#380; do poziomu [x]').replace('[x]',3+parseInt(document.getElementById('BuyEngine').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlFW').innerHTML = document.getElementById('BuyFWing')[document.getElementById('BuyFWing').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearFW').innerHTML = document.getElementById('BuyFWing')[document.getElementById('BuyFWing').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyFWing')[document.getElementById('BuyFWing').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearFW').className = 'orange';
-			else
-				document.getElementById('newWearFW').className = '';
-			
-			if (document.getElementById('BuyFWing').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyFWing').value-1) * 1551354)
-				sum = sum + partCost
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Przednie skrzyd&#322;o: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyFWing').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyFWing').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Przednie skrzyd&#322;o: Obni&#380; do poziomu [x]').replace('[x]',5+parseInt(document.getElementById('BuyFWing').value))+ ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlRW').innerHTML = document.getElementById('BuyRWing')[document.getElementById('BuyRWing').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearRW').innerHTML = document.getElementById('BuyRWing')[document.getElementById('BuyRWing').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyRWing')[document.getElementById('BuyRWing').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearRW').className = 'orange';
-			else
-				document.getElementById('newWearRW').className = '';
-			
-			if (document.getElementById('BuyRWing').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyRWing').value-1) * 1504126);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Tylne skrzyd&#322;o: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyRWing').value)+ ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyRWing').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Tylne skrzyd&#322;o: Obni&#380; do poziomu [x]').replace('[x]',5+parseInt(document.getElementById('BuyRWing').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlUB').innerHTML = document.getElementById('BuyUnderbody')[document.getElementById('BuyUnderbody').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearUB').innerHTML = document.getElementById('BuyUnderbody')[document.getElementById('BuyUnderbody').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyUnderbody')[document.getElementById('BuyUnderbody').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearUB').className = 'orange';
-			else
-				document.getElementById('newWearUB').className = '';
-			
-			if (document.getElementById('BuyUnderbody').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyUnderbody').value-1) * 510128);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Podwozie: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyUnderbody').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyUnderbody').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Podwozie: Obni&#380; do poziomu [x]').replace('[x]',6+parseInt(document.getElementById('BuyUnderbody').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlSid').innerHTML = document.getElementById('BuySidepods')[document.getElementById('BuySidepods').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearSid').innerHTML = document.getElementById('BuySidepods')[document.getElementById('BuySidepods').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuySidepods')[document.getElementById('BuySidepods').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearSid').className = 'orange';
-			else
-				document.getElementById('newWearSid').className = '';
-			
-			if (document.getElementById('BuySidepods').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuySidepods').value-1) * 459831);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Wloty powietrza: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuySidepods').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuySidepods').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Wloty powietrza: Obni&#380; do poziomu [x]').replace('[x]',7+parseInt(document.getElementById('BuySidepods').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlCoo').innerHTML = document.getElementById('BuyCooling')[document.getElementById('BuyCooling').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearCoo').innerHTML = document.getElementById('BuyCooling')[document.getElementById('BuyCooling').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyCooling')[document.getElementById('BuyCooling').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearCoo').className = 'orange';
-			else
-				document.getElementById('newWearCoo').className = '';
-			
-			if (document.getElementById('BuyCooling').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyCooling').value-1) * 454545);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Ch&#322;odzenie: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyCooling').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyCooling').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Ch&#322;odzenie: Obni&#380; do poziomu [x]').replace('[x]',7+parseInt(document.getElementById('BuyCooling').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlGea').innerHTML = document.getElementById('BuyGear')[document.getElementById('BuyGear').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearGea').innerHTML = document.getElementById('BuyGear')[document.getElementById('BuyGear').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyGear')[document.getElementById('BuyGear').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearGea').className = 'orange';
-			else
-				document.getElementById('newWearGea').className = '';
-			
-			if (document.getElementById('BuyGear').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyGear').value-1) * 3098104);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Skrzynia bieg&#243;w: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyGear').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyGear').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Skrzynia bieg&#243;w: Obni&#380; do poziomu [x]').replace('[x]',4+parseInt(document.getElementById('BuyGear').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlBra').innerHTML = document.getElementById('BuyBrakes')[document.getElementById('BuyBrakes').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearBra').innerHTML = document.getElementById('BuyBrakes')[document.getElementById('BuyBrakes').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyBrakes')[document.getElementById('BuyBrakes').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearBra').className = 'orange';
-			else
-				document.getElementById('newWearBra').className = '';
-			
-			if (document.getElementById('BuyBrakes').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyBrakes').value-1) * 697674);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Hamulce: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyBrakes').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyBrakes').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Hamulce: Obni&#380; do poziomu [x]').replace('[x]',7+parseInt(document.getElementById('BuyBrakes').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlSus').innerHTML = document.getElementById('BuySusp')[document.getElementById('BuySusp').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearSus').innerHTML = document.getElementById('BuySusp')[document.getElementById('BuySusp').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuySusp')[document.getElementById('BuySusp').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearSus').className = 'orange';
-			else
-				document.getElementById('newWearSus').className = '';
-			
-			if (document.getElementById('BuySusp').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuySusp').value-1) * 1181545);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Zawieszenie: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuySusp').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuySusp').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Zawieszenie: Obni&#380; do poziomu [x]').replace('[x]',6+parseInt(document.getElementById('BuySusp').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			document.getElementById('newLvlEle').innerHTML = document.getElementById('BuyElectronics')[document.getElementById('BuyElectronics').selectedIndex].getAttribute("newlvl");
-			document.getElementById('newWearEle').innerHTML = document.getElementById('BuyElectronics')[document.getElementById('BuyElectronics').selectedIndex].getAttribute("newwear") + '%';
-			if (document.getElementById('BuyElectronics')[document.getElementById('BuyElectronics').selectedIndex].getAttribute("newwear")>90)
-				document.getElementById('newWearEle').className = 'orange';
-			else
-				document.getElementById('newWearEle').className = '';
-			
-			if (document.getElementById('BuyElectronics').value > 0)
-			{
-				partCost = Math.round(Math.pow(factor,document.getElementById('BuyElectronics').value-1) * 938416);
-				sum = sum + partCost;
-				obj.setNumber(Math.round(partCost));
-				strUpg += html_entity_decode('Elektronika: Wymie&#324; na poziom [x]').replace('[x]',document.getElementById('BuyElectronics').value) + ' ($' + obj.toFormatted() + ')\r\n';
-			}
-			else
-			{
-				if (document.getElementById('BuyElectronics').value < 0)
-				{
-					partCost = 0;
-					obj.setNumber(Math.round(partCost));
-					strUpg += html_entity_decode('Elektronika: Obni&#380; do poziomu [x]').replace('[x]',6+parseInt(document.getElementById('BuyElectronics').value)) + ' ($' + obj.toFormatted() + ')\r\n';
-				}
-			}
-			
-			obj.setNumber(Math.round(sum));
-			
-			document.getElementById('total').value="$" + obj.toFormatted();
-			//alert("sum=" + Math.floor(sum));
-			if (showConfirm)
-			{
-				//return confirm(strUpg + '\r\n' + html_entity_decode("To Ci&#281; b&#281;dzie kosztowa&#322;o $[x]. Czy jeste&#347; pewien, &#380;e chcesz kontynuowa&#263;?").replace('[x]',obj.toFormatted()));
-				$.confirm({
-					title: "Modernizacja bolidu",
-					content: ''+strUpg.replaceAll('\r\n','<br>') + '<br><br>' + html_entity_decode("To Ci&#281; b&#281;dzie kosztowa&#322;o $[x]. Czy jeste&#347; pewien, &#380;e chcesz kontynuowa&#263;?").replace('[x]',obj.toFormatted()+''),
-					type: 'red',
-					boxWidth: '30%',
-					useBootstrap: false,
-					draggable: true,
-					theme: 'modern',
-					typeAnimated: true,
-					buttons: {
-						confirm:
-						{
-							text: "Potwierd&#378;",
-							btnClass: 'btn-blue',
-							keys: ['enter'],
-							isHidden: false,
-							isDisabled: false,
-							action: function (confirm) {
-								var input = document.createElement("input");
-								input.setAttribute("type", "hidden");
-								input.setAttribute("name", "btnUpdateCar");
-								input.setAttribute("value", html_entity_decode("Modernizacja bolidu"));
-								document.getElementById("UpdateCar").appendChild(input);
-								document.getElementById("UpdateCar").submit(); 
-							}
-						}
-						,
-						cancel:{
-							text: "Cofnij",
-							btnClass: 'btn-blue',
-							keys: ['c','esc'],
-							isHidden: false,
-							isDisabled: false,
-							action: function(cancel){}
-						}
-					}
-				});
-				return false;
-			}else
-			{
-				return false;
-			}
-		}
-	//-->
-   </script>
-   <script> 
-	$(document).ready(function(){
-		$('[rel=tooltip]').bind('mouseover', function(){
-			{ var theMessage = $(this).attr('content');
-				$('<div class="tooltip">' + theMessage + '</div>').appendTo('body');
-				}
-					
-				$(this).bind('mousemove', function(e){
-					$('div.tooltip').css({
-						'top': e.pageY - ($('div.tooltip').height() / 2) + ($('div.tooltip').height() / 2) + 15,
-						'left': e.pageX - ($('div.tooltip').width() / 2) + 100,
-						'visibility': 'visible'
-					});
-				});
-			}).bind('mouseout', function(){
-				$('div.tooltip').fadeOut(function(){
-					$(this).remove();
-				});
-			});
-		});
-	</script>
-	<style type="text/css">
-    table.striped tr:nth-of-type(even) { background: #3d5477;}
-    /* Zebra striping */
-    table.striped tr:nth-of-type(odd) {background: #32496c;}
-	#updatecarinfo {background:url(https://didlsjm328074.cloudfront.net/compressed/images/carpartimage3.jpg) no-repeat 40px 15px; width:455px; height:288px; position:relative;}
-		#updatecarinfo ul li {position:absolute; font-size:0.9em;}
-		.chassis {left:140px; top:85px;}
-		.engine {left:270px; top:190px;}
-		.frontwing {left:35px; top:250px; width:80px;}
-		.rearwing {left:375px; top:150px;}
-		.underbody {left:320px; top:220px;}
-		.sidepods {right:215px; top:62px;}
-		.cooling {left:235px; top:235px;}
-		.gearbox {left:385px; top:77px;}
-		.brakes {left:178px; top:228px;}
-		.suspension {left:30px; top:85px;}
-		.electronics {right:205px; top:205px;}
+	
+	<style>
+		.skillvalue {position:absolute; text-indent:-999em; letter-spacing:-999em;}
 	</style>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <script type="text/javascript">
 var notificationsCount = 0;
 var nonotif="Brak nowych powiadomie&#324;";
 var newAchievement="Nowe osi&#261;gni&#281;cie";
 var viewAllNotif="Zobacz wszystkie powiadomienia";
-var loadtime = new Date(2021,9,1,18,36,3)
+var loadtime = new Date(2021,10,2,18,50,14)
 //var monthtext = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
 var monthtext = new Array("Sty","Lut","Mar","Kwi","Maj","Cze","Lip","Sie","Wrz","Pa&#378;","Lis","Gru")
 var livetime = new Date(loadtime)
@@ -589,7 +175,7 @@ $(document).ready(function(){
 		
 	});
 	
-</script><meta http-equiv="origin-trial" content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A88otRz1Fd3Nt567e2IYshC18LL3KGVXpVJW9oTCId4RYaygt23pbb4JqrbdIO/bwZPWEmRjBIRBu/bZbDR7Pg4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="A0gCLbXCcL0R1Oc8tFPDs0G4Elz17w3zHp+Zst66+D17veE2o7fUcPsA114QtSTRqfVJLMeTSdeWOom0CcyCsgYAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A9RQ+LxFazAousxUwSCzaihJjHLO1UyjQp0teZKHl7WdbVjPDfHSKMd6D/ZI5MTjqClFycbl70EFd7cBJWXqKQEAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A6WKeWsdn1Ct+ZPqS9NCxxaiBoQ7wdTkK2/gE69Yu0gfBKJfo1gOvgkGmf5/xaIajT/RUb9AbnF1FsSZ47cCcQcAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2MzQwODMxOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A04ZCu7yjrHgwQJK5ISHhH1DSg0qqowEay3n70KO6wV3D2Mj+OX3Kw20aSMitzgdG1xfrN7sOJV/dZIk+RvCzA4AAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A2YAd4xOntTGygIDjApOTtXOgVI3IWsd5OnOGq3RbRkIQwyqYWNl1JGRAcvtm6VOHDj4n07T/J19VqLuJn3MmQ8AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A2c5Ux+hivdkLh/KbZUGr6f7SCR0mZrBVfPJ+/OuDVHNwiYv+Lo83b9z5qL8sod78bQl0pSLtbvRWURo+xRl7AIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="AzNJ4sd3tVurolpdvWYZ4cmP9Po7RJhEHSqmC3pgxW9fFVZvchhtcMUgHAs97npxMD1jhXHO8s6q6Wy1MMLxKgEAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjMxNjYzOTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_2021092001.js" async=""></script><link rel="preload" href="https://adservice.google.pl/adsid/integrator.js?domain=gpro.net" as="script"><script type="text/javascript" src="https://adservice.google.pl/adsid/integrator.js?domain=gpro.net"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=gpro.net" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=gpro.net"></script><script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1062486564/?random=1633106163986&amp;cv=9&amp;fst=1633106163986&amp;num=1&amp;bg=ffffff&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;u_h=800&amp;u_w=800&amp;u_ah=800&amp;u_aw=800&amp;u_cd=24&amp;u_his=4&amp;u_tz=120&amp;u_java=false&amp;u_nplug=0&amp;u_nmime=0&amp;gtm=2oa9r0&amp;sendb=1&amp;ig=1&amp;data=event%3Dgtag.config&amp;frm=0&amp;url=https%3A%2F%2Fgpro.net%2Fpl%2FUpdateCar.asp&amp;ref=https%3A%2F%2Fgpro.net%2Fpl%2Fgpro.asp&amp;tiba=Modernizacja%20bolidu%20-%20Grand%20Prix%20Racing%20Online&amp;hn=www.googleadservices.com&amp;async=1&amp;rfmt=3&amp;fmt=4"></script></head>
+</script><meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A/OOU4XAFfeAV4kM4+W9WBwNAHqq/bvtrRcJ1wpnNyO/i076BSUy1d14l2kBEgVmEuvxojSpD23172C6hBg2AQYAAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="AwrB+XVH/KV6HfZNVtSEqlUJi3yUbtCp0/TJRj+38NDIw19/9P1h7ECTtdLdhIzG0Bsl4n/0rVmttJtGUCcewgAAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="Ax15QOERqai2A5XWrDY38Eg07xh2T0pkhpDPJuDlxr7D2Ka8wHvklgK7tTPZOnT+8H31lwHto5JpvYV8jRn1WgIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_2021102801.js" async=""></script><meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A/OOU4XAFfeAV4kM4+W9WBwNAHqq/bvtrRcJ1wpnNyO/i076BSUy1d14l2kBEgVmEuvxojSpD23172C6hBg2AQYAAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="AwrB+XVH/KV6HfZNVtSEqlUJi3yUbtCp0/TJRj+38NDIw19/9P1h7ECTtdLdhIzG0Bsl4n/0rVmttJtGUCcewgAAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="Ax15QOERqai2A5XWrDY38Eg07xh2T0pkhpDPJuDlxr7D2Ka8wHvklgK7tTPZOnT+8H31lwHto5JpvYV8jRn1WgIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><link rel="preload" href="https://adservice.google.pl/adsid/integrator.js?domain=gpro.net" as="script"><script type="text/javascript" src="https://adservice.google.pl/adsid/integrator.js?domain=gpro.net"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=gpro.net" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=gpro.net"></script><meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A/OOU4XAFfeAV4kM4+W9WBwNAHqq/bvtrRcJ1wpnNyO/i076BSUy1d14l2kBEgVmEuvxojSpD23172C6hBg2AQYAAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="AwrB+XVH/KV6HfZNVtSEqlUJi3yUbtCp0/TJRj+38NDIw19/9P1h7ECTtdLdhIzG0Bsl4n/0rVmttJtGUCcewgAAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="Ax15QOERqai2A5XWrDY38Eg07xh2T0pkhpDPJuDlxr7D2Ka8wHvklgK7tTPZOnT+8H31lwHto5JpvYV8jRn1WgIAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjM0MDgzMTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1062486564/?random=1635875414912&amp;cv=9&amp;fst=1635875414912&amp;num=1&amp;bg=ffffff&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;u_h=800&amp;u_w=800&amp;u_ah=800&amp;u_aw=800&amp;u_cd=24&amp;u_his=6&amp;u_tz=0&amp;u_java=false&amp;u_nplug=0&amp;u_nmime=0&amp;gtm=2oaar0&amp;sendb=1&amp;ig=1&amp;data=event%3Dgtag.config&amp;frm=0&amp;url=https%3A%2F%2Fgpro.net%2Fpl%2FSuppliers.asp&amp;ref=https%3A%2F%2Fgpro.net%2Fpl%2Fgpro.asp&amp;tiba=Dostawcy%20opon%20-%20Grand%20Prix%20Racing%20Online&amp;hn=www.googleadservices.com&amp;async=1&amp;rfmt=3&amp;fmt=4"></script></head>
 
 
 
@@ -602,7 +188,7 @@ $(document).ready(function(){
 			
 		<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- gpro160x600 -->
-		<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-9802427417219730" data-ad-slot="1628805520" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_0_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 160px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_0_anchor" style="border: none; height: 600px; width: 160px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:160px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="160" height="600" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-9802427417219730&amp;output=html&amp;h=600&amp;slotname=1628805520&amp;adk=1662823227&amp;adf=3585881281&amp;pi=t.ma~as.1628805520&amp;w=160&amp;lmt=1633106163&amp;psa=1&amp;format=160x600&amp;url=https%3A%2F%2Fgpro.net%2Fpl%2FUpdateCar.asp&amp;flash=0&amp;wgl=1&amp;uach=WyIiLCIiLCIiLCIiLCIiLFtdLG51bGwsbnVsbCwiIl0.&amp;dt=1633106163775&amp;bpp=8&amp;bdt=320&amp;idt=132&amp;shv=r20210928&amp;mjsv=m202109270101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D04a833574076e6ed-228e9a0366c90077%3AT%3D1633106136%3ART%3D1633106136%3AS%3DALNI_MbcAEl3n_oLFJOA29MaU003cQzfyg&amp;correlator=4425607442837&amp;frm=20&amp;pv=2&amp;ga_vid=809084104.1633106134&amp;ga_sid=1633106164&amp;ga_hid=1980859094&amp;ga_fc=0&amp;u_tz=120&amp;u_his=4&amp;u_h=800&amp;u_w=800&amp;u_ah=800&amp;u_aw=800&amp;u_cd=24&amp;u_java=0&amp;u_nplug=0&amp;u_nmime=0&amp;dmc=8&amp;adx=993&amp;ady=168&amp;biw=785&amp;bih=785&amp;scr_x=0&amp;scr_y=0&amp;eid=44750344%2C31062945%2C31062977%2C21065725%2C44748553&amp;oid=3&amp;pvsid=2038615726673079&amp;pem=282&amp;ref=https%3A%2F%2Fgpro.net%2Fpl%2Fgpro.asp&amp;eae=0&amp;fc=896&amp;brdim=0%2C0%2C0%2C0%2C800%2C0%2C800%2C800%2C800%2C800&amp;vis=1&amp;rsz=%7C%7CaE%7C&amp;abl=CA&amp;pfx=0&amp;fu=1024&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;xpc=dC4KpjVLPA&amp;p=https%3A//gpro.net&amp;dtd=165" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!1" data-google-query-id="CIego8bSqfMCFS9JHgIdQAEDUg" data-load-complete="true"></iframe></ins></ins></ins>
+		<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="ca-pub-9802427417219730" data-ad-slot="1628805520" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_0_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 600px; width: 160px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_0_anchor" style="border: none; height: 600px; width: 160px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0;width:160px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="160" height="600" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-9802427417219730&amp;output=html&amp;h=600&amp;slotname=1628805520&amp;adk=1662823227&amp;adf=3585881281&amp;pi=t.ma~as.1628805520&amp;w=160&amp;lmt=1635875414&amp;psa=1&amp;format=160x600&amp;url=https%3A%2F%2Fgpro.net%2Fpl%2FSuppliers.asp&amp;flash=0&amp;wgl=1&amp;uach=WyIiLCIiLCIiLCIiLCIiLFtdLG51bGwsbnVsbCwiIl0.&amp;dt=1635875414717&amp;bpp=7&amp;bdt=69&amp;idt=68&amp;shv=r20211029&amp;mjsv=m202110280101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3De251bdfa7dee11c4-22714f7109cb0000%3AT%3D1635875388%3ART%3D1635875388%3AS%3DALNI_MYbkNcslyPJNs_K1WP67sjMjnJykg&amp;correlator=7202710434529&amp;rume=1&amp;frm=20&amp;pv=2&amp;ga_vid=165511455.1635875387&amp;ga_sid=1635875415&amp;ga_hid=1825712205&amp;ga_fc=1&amp;u_tz=0&amp;u_his=6&amp;u_h=800&amp;u_w=800&amp;u_ah=800&amp;u_aw=800&amp;u_cd=24&amp;adx=993&amp;ady=168&amp;biw=785&amp;bih=785&amp;scr_x=0&amp;scr_y=0&amp;eid=31063361%2C31061691%2C21067088%2C31061693&amp;oid=2&amp;pvsid=2576412192235625&amp;pem=293&amp;ref=https%3A%2F%2Fgpro.net%2Fpl%2Fgpro.asp&amp;eae=0&amp;fc=640&amp;brdim=0%2C0%2C0%2C0%2C800%2C0%2C800%2C800%2C800%2C800&amp;vis=1&amp;rsz=%7C%7CaE%7C&amp;abl=CA&amp;pfx=0&amp;fu=1024&amp;bc=31&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;xpc=49GFGXmDKK&amp;p=https%3A//gpro.net&amp;dtd=103" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!1" data-google-query-id="CIPn_-ee-vMCFU6oGAodaX8Krw" data-load-complete="true"></iframe></ins></ins></ins>
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
@@ -639,8 +225,8 @@ $(document).ready(function(){
 			<div id="infobar">
 
 				<ul id="managersonline">
-					<li><a href="/pl/OnlineManagers.asp" class="onlinemanagers">10512&nbsp;Menadżerów online</a></li>
-					<li><a href="/pl/OnlineFriends.asp">11&nbsp;Przyjaciele</a></li><li><a href="/pl/chat/TeamChat.asp">0&nbsp;Chat Teamu</a></li><li><a href="/pl/chat/chat.asp">28&nbsp;Chat</a></li>
+					<li><a href="/pl/OnlineManagers.asp" class="onlinemanagers">11665&nbsp;Menadżerów online</a></li>
+					<li><a href="/pl/OnlineFriends.asp">3&nbsp;Przyjaciele</a></li><li><a href="/pl/chat/TeamChat.asp">0&nbsp;Chat Teamu</a></li><li><a href="/pl/chat/chat.asp">25&nbsp;Chat</a></li>
 				</ul>
 				
 				
@@ -670,171 +256,170 @@ $(document).ready(function(){
 					<ul id="languages" style="display:none">
 	
 		<li class="left half">
-			<a href="/gb/UpdateCar.asp">
+			<a href="/gb/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/gb.gif" alt="English">English
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/de/UpdateCar.asp">
+			<a href="/de/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/de.gif" alt="Deutsch">Deutsch
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/es/UpdateCar.asp">
+			<a href="/es/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/es.gif" alt="Español">Español
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/ro/UpdateCar.asp">
+			<a href="/ro/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/ro.gif" alt="Română">Română
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/it/UpdateCar.asp">
+			<a href="/it/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/it.gif" alt="Italiano">Italiano
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/pt/UpdateCar.asp">
+			<a href="/pt/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/pt.gif" alt="Português">Português
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/br/UpdateCar.asp">
+			<a href="/br/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/br.gif" alt="Português">Português
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/fr/UpdateCar.asp">
+			<a href="/fr/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/fr.gif" alt="Français">Français
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/ru/UpdateCar.asp">
+			<a href="/ru/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/ru.gif" alt="Русский">Русский
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/bg/UpdateCar.asp">
+			<a href="/bg/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/bg.gif" alt="Български">Български
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/mk/UpdateCar.asp">
+			<a href="/mk/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/mk.gif" alt="Македонски">Македонски
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/rs/UpdateCar.asp">
+			<a href="/rs/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/rs.gif" alt="Српски">Српски
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/nl/UpdateCar.asp">
+			<a href="/nl/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/nl.gif" alt="Nederlands">Nederlands
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/be/UpdateCar.asp">
+			<a href="/be/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/be.gif" alt="Vlaams">Vlaams
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/fi/UpdateCar.asp">
+			<a href="/fi/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/fi.gif" alt="Suomi">Suomi
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/lt/UpdateCar.asp">
+			<a href="/lt/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/lt.gif" alt="Lietuvių">Lietuvių
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/cz/UpdateCar.asp">
+			<a href="/cz/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/cz.gif" alt="Čeština">Čeština
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/hu/UpdateCar.asp">
+			<a href="/hu/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/hu.gif" alt="Magyar">Magyar
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/ee/UpdateCar.asp">
+			<a href="/ee/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/ee.gif" alt="Eesti keel">Eesti keel
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/sk/UpdateCar.asp">
+			<a href="/sk/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/sk.gif" alt="Slovenčina">Slovenčina
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/tr/UpdateCar.asp">
+			<a href="/tr/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/tr.gif" alt="Türkçe">Türkçe
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/al/UpdateCar.asp">
+			<a href="/al/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/al.gif" alt="Shqip">Shqip
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/gr/UpdateCar.asp">
+			<a href="/gr/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/gr.gif" alt="Ελληνικά">Ελληνικά
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/hr/UpdateCar.asp">
+			<a href="/hr/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/hr.gif" alt="Hrvatski">Hrvatski
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/my/UpdateCar.asp">
+			<a href="/my/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/my.gif" alt="Bahasa Melayu">Bahasa Melayu
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/dk/UpdateCar.asp">
+			<a href="/dk/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/dk.gif" alt="Dansk">Dansk
 			</a>
 		</li>
 		
 		<li class="left half">
-			<a href="/pi/UpdateCar.asp">
+			<a href="/pi/Suppliers.asp">
 			<img src="https://didlsjm328074.cloudfront.net/compressed/images/country/pi.png" alt="Pirate">Pirate
 			</a>
 		</li>
 		
 </ul>
 
-					<p id="livetime">2021 Paź 1 18:36:03 CET
-				</p>
+					<p id="livetime">2021 Lis 2 18:50:15 CET</p>
 
 				</div>
 				
@@ -843,9 +428,19 @@ $(document).ready(function(){
 			<div id="contentinner"><span class="tl cc"></span> <span class="tr cc"></span><span class="bl cc"></span> <span class="br cc"></span>
 				<div class="inner">
 				
-	<h1 class="block">Modernizacja bolidu <span class="tl bc"></span><span class="tr bc"></span><span class="bl bc"></span><span class="br bc"></span></h1>
-	
-	<div class="boxy" style="height:100px;margin-top:-9px;margin-bottom:10px;">
+<div class="navholder">
+	<ul class="subnavigation">
+		<li class="selected"><a href="Suppliers.asp">Dostawcy opon</a></li>
+		<li><a href="Stats.asp?type=tyresuppliers#scroll">Statystyki dostawców opon</a></li>		
+		<li><a href="SuppliersHistory.asp">Historia dostawców opon</a></li>
+	</ul>
+</div>
+
+<h1 class="block center"><span class="tl bc"></span><span class="tr bc"></span><span class="bl bc"></span><span class="br bc"></span>
+	Dostawcy opon
+</h1>
+
+<div class="boxy" style="height:100px;margin-top:-5px;margin-bottom:9px;">
 			<div id="dvAd72890" align="center" style="margin-bottom:5px;margin-top:5px;clear:both;">
 			
 			<div id="blockblockA" align="center" style="display:inline-block;border:1px solid #243957;border-radius:5px;margin-top:-1px;">
@@ -859,332 +454,571 @@ $(document).ready(function(){
 			
 		<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		<!-- gpro728x90 -->
-		<ins class="adsbygoogle" style="display: inline-block; width: 659px; height: 90px;" data-ad-client="ca-pub-9802427417219730" data-ad-slot="6211972797" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_1_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 90px; width: 659px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_1_anchor" style="border: none; height: 90px; width: 659px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:659px;height:90px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="659" height="90" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-9802427417219730&amp;output=html&amp;h=90&amp;twa=1&amp;slotname=6211972797&amp;adk=3344440509&amp;adf=4146078986&amp;pi=t.ma~as.6211972797&amp;w=659&amp;fwrn=4&amp;fwrnh=100&amp;lmt=1633106163&amp;psa=1&amp;format=659x90&amp;url=https%3A%2F%2Fgpro.net%2Fpl%2FUpdateCar.asp&amp;flash=0&amp;fwr=0&amp;rh=90&amp;rw=659&amp;wgl=1&amp;uach=WyIiLCIiLCIiLCIiLCIiLFtdLG51bGwsbnVsbCwiIl0.&amp;dt=1633106163783&amp;bpp=5&amp;bdt=328&amp;idt=180&amp;shv=r20210928&amp;mjsv=m202109270101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D04a833574076e6ed-228e9a0366c90077%3AT%3D1633106136%3ART%3D1633106136%3AS%3DALNI_MbcAEl3n_oLFJOA29MaU003cQzfyg&amp;prev_fmts=160x600&amp;correlator=4425607442837&amp;frm=20&amp;pv=1&amp;ga_vid=809084104.1633106134&amp;ga_sid=1633106164&amp;ga_hid=1980859094&amp;ga_fc=0&amp;u_tz=120&amp;u_his=4&amp;u_h=800&amp;u_w=800&amp;u_ah=800&amp;u_aw=800&amp;u_cd=24&amp;u_java=0&amp;u_nplug=0&amp;u_nmime=0&amp;dmc=8&amp;adx=161&amp;ady=216&amp;biw=785&amp;bih=785&amp;scr_x=0&amp;scr_y=0&amp;eid=44750344%2C31062945%2C31062977%2C21065725%2C44748553&amp;oid=3&amp;pvsid=2038615726673079&amp;pem=282&amp;ref=https%3A%2F%2Fgpro.net%2Fpl%2Fgpro.asp&amp;eae=0&amp;fc=896&amp;brdim=0%2C0%2C0%2C0%2C800%2C0%2C800%2C800%2C800%2C800&amp;vis=1&amp;rsz=%7C%7CleE%7C&amp;abl=CS&amp;pfx=0&amp;fu=1024&amp;bc=31&amp;ifi=2&amp;uci=a!2&amp;fsb=1&amp;xpc=HPcw0VQ1Te&amp;p=https%3A//gpro.net&amp;dtd=194" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!2" data-google-query-id="CLCBpcbSqfMCFdFQwgodwdEMuw" data-load-complete="true"></iframe></ins></ins></ins>
+		<ins class="adsbygoogle" style="display: inline-block; width: 674px; height: 90px;" data-ad-client="ca-pub-9802427417219730" data-ad-slot="6211972797" data-adsbygoogle-status="done" data-ad-status="filled"><ins id="aswift_1_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 90px; width: 674px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_1_anchor" style="border: none; height: 90px; width: 674px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0;width:674px;height:90px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="674" height="90" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-9802427417219730&amp;output=html&amp;h=90&amp;twa=1&amp;slotname=6211972797&amp;adk=2961299070&amp;adf=1736123080&amp;pi=t.ma~as.6211972797&amp;w=674&amp;fwrn=4&amp;fwrnh=100&amp;lmt=1635875414&amp;psa=1&amp;format=674x90&amp;url=https%3A%2F%2Fgpro.net%2Fpl%2FSuppliers.asp&amp;flash=0&amp;fwr=0&amp;rh=90&amp;rw=674&amp;wgl=1&amp;uach=WyIiLCIiLCIiLCIiLCIiLFtdLG51bGwsbnVsbCwiIl0.&amp;dt=1635875414732&amp;bpp=3&amp;bdt=85&amp;idt=168&amp;shv=r20211029&amp;mjsv=m202110280101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3De251bdfa7dee11c4-22714f7109cb0000%3AT%3D1635875388%3ART%3D1635875388%3AS%3DALNI_MYbkNcslyPJNs_K1WP67sjMjnJykg&amp;prev_fmts=160x600%2C0x0&amp;nras=1&amp;correlator=7202710434529&amp;rume=1&amp;frm=20&amp;pv=1&amp;ga_vid=165511455.1635875387&amp;ga_sid=1635875415&amp;ga_hid=1825712205&amp;ga_fc=1&amp;u_tz=0&amp;u_his=6&amp;u_h=800&amp;u_w=800&amp;u_ah=800&amp;u_aw=800&amp;u_cd=24&amp;adx=153&amp;ady=251&amp;biw=785&amp;bih=785&amp;scr_x=0&amp;scr_y=0&amp;eid=31063361%2C31061691%2C21067088%2C31061693&amp;oid=2&amp;pvsid=2576412192235625&amp;pem=293&amp;ref=https%3A%2F%2Fgpro.net%2Fpl%2Fgpro.asp&amp;eae=0&amp;fc=896&amp;brdim=0%2C0%2C0%2C0%2C800%2C0%2C800%2C800%2C800%2C800&amp;vis=1&amp;rsz=%7C%7CleE%7C&amp;abl=CS&amp;pfx=0&amp;fu=1024&amp;bc=31&amp;ifi=2&amp;uci=a!2&amp;fsb=1&amp;xpc=GZLRPbZCD9&amp;p=https%3A//gpro.net&amp;dtd=176" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!2" data-google-query-id="CNuIheie-vMCFUmQGAod6tEAuQ" data-load-complete="true"></iframe></ins></ins></ins>
 		<script>
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 		
 			</div>
 		</div>
-	
-		
-		<div>
-			<div id="updatecarinfo" class="left halves leftalign">
-				<ul>
-					<li class="chassis">Nadwozie</li>
-					<li class="engine">Silnik</li>
-					<li class="frontwing">Przednie skrzydło</li>
-					<li class="rearwing">Tylne skrzydło</li>
-					<li class="underbody">Podwozie</li>
-					<li class="sidepods">Wloty powietrza</li>
-					<li class="cooling">Chłodzenie</li>
-					<li class="gearbox">Skrzynia biegów</li>
-					<li class="brakes">Hamulce</li>
-					<li class="suspension">Zawieszenie</li>
-					<li class="electronics">Elektronika</li>
-				</ul>
-			</div>
-			<div class="right halves" data-step="3" data-intro="Zanim po raz pierwszy zmodernizujesz bolid, zapoznaj się z pomocnymi wskazówkami, aby uniknąć kosztownych błędów.">
-				
-				<h3>Podpowiedzi:</h3>
-				<ul style="margin-right:15px;"><li style="margin-bottom:6px;">
-				<font color="yellow">•</font> Po wciśnięciu przycisku "Modernizacja bolidu" nie będziesz mógł nic zmieniać w częściach, aż do następnego wyścigu</li><li style="margin-bottom:6px;"><font color="yellow">•</font> Możesz unowocześnić części aż do poziomu 9, każda nowa część kosztuje tyle ile jest podane obok niej</li><li style="margin-bottom:6px;"><font color="yellow">•</font> Poziom poszczególnych części możesz za każdym razem podnieść tylko o jeden</li><li style="margin-bottom:6px;"><font color="yellow">•</font> Jeżeli cześć (wyższa niż poziom 1) jest zużyta, możesz obniżyć jej poziom za darmo. W ten sposób zużycie części się zmniejszy.</li><li style="margin-bottom:6px;"><font color="yellow">•</font> Szansa usterki mechanicznej zwiększa się jeżeli cześć jest bardzo zużyta</li><li style="margin-bottom:6px;"><font color="yellow">•</font> Twój bolid będzie się lepiej sprawował jeżeli jego profil będzie odpowiadać charakterystyce toru
-				</li>
-				<li style="margin-bottom:6px;">
-				<font color="yellow">•</font> Możesz cofnąć ostatnią modernizację bolidu, jeśli nie wykonałeś w międzyczasie żadnego innego działania. Możesz to zrobić za darmo, jeśli przejechałeś mniej niż 34 wyścigów, w przeciwnym razie będzie to kosztować 2 kredytów supportera.
-				</li>
-				</ul>
-			</div>
-		</div>		
-		<div align="center">
-			<br><br>
-			<table cellspacing="0" cellpadding="0" class="styled bordered striped" width="85%" data-step="1" data-intro="Tutaj możesz zobaczyć zużycie części samochodowych, ich poziom oraz ogólną charakterystykę samochodu. Ogólna charakterystyka samochodu decyduje o tym, jak dobry będzie Twój samochód na każdym torze i zależy od poziomu części samochodowych, a także od dodatkowych punktów bolidu zdobytych podczas testów.">
-				<tbody><tr>
-					<th colspan="5">Aktualna dystrybucja punktów</th>
-				</tr>
-				<tr>
-                    <th colspan="2" align="center">Typ punktów</th>         
-					<td class="center normal11" width="25%">Moc (P)</td>
-					<td class="center normal11" width="25%">Prow. (H)</td>
-					<td class="center normal11" width="25%">Przyspieszenie (A)</td>
-				</tr>
-                <tr>
-                    <th style="width:12px;"><img src="https://didlsjm328074.cloudfront.net/compressed/images/hint.gif" class="help" rel="tooltip" content="<div style=width:300px;><p>Przejeżdżając okrążenia testowe zbierasz informacje o samochodzie w trzech kluczowych dziedzinach: <b>Moc (P)</b>, <b>Prowadzenie (H)</b> i <b>Przyspieszenie (A)</b>.<br><br>Po wyścigu, punkty testowe są konwertowane w nowe pomysły (<b>Punkty B&amp;R</b>). Ta konwersja zależy od Twojego dyrektora technicznego, personelu i infrastruktury.</p></div>"></th><th>&nbsp;Punkty testowe</th>
-                    <td class="center">10.2</td>
-				    <td class="center">81.8</td>
-				    <td class="center">10.2</td>
-                </tr>
-                <tr>
-				    <th style="width:12px;"><img src="https://didlsjm328074.cloudfront.net/compressed/images/hint.gif" class="help" rel="tooltip" content="<div style=width:300px;><p>Po każdym wyścigu nowe pomysły (<b>Punkty B&amp;R</b>) są  przekazywane do produkcji (<b>Punkty inżynieryjne</b>). Sukces tej konwersji zależy od Twojego dyrektora technicznego, personelu i infrastruktury.</p></div>"></th><th>&nbsp;<b>Punkty B&amp;R</b></th>
-				    <td class="center">0</td>	
-				    <td class="center">0</td>
-				    <td class="center">0</td>
-			    </tr>			
-			    <tr>
-				    <th style="width:12px;"><img src="https://didlsjm328074.cloudfront.net/compressed/images/hint.gif" class="help" rel="tooltip" content="<div style=width:300px;><p>Po każdym wyścigu punkty inżynieryjne są konwertowane na nowe elementy gotowe do użycia w bolidzie (<b>Punkty charakteru bolidu</b>). Sukces tej konwersji jest zależny od tego ile dodatkowych punktów charakteru bolidu zdobyłeś już do tej pory przez testy. Im więcej punktów już masz, tym trudniej będzie zdobyć nowe.</p></div>"></th><th>&nbsp;Punkty inżynieryjne</th>
-				    <td class="center">10.6</td>
-				    <td class="center">83.3</td>
-				    <td class="center">10.5</td>
-			    </tr>
-                <tr>
-                    <th style="width:12px;"><img src="https://didlsjm328074.cloudfront.net/compressed/images/hint.gif" class="help" rel="tooltip" content="<div style=width:300px;><p>To pokazuje jedynie punkty charakteru samochodu zdobyte dodatkowo dzięki testom i nie uwzględnia punktów, które zdobywasz kupując części.</p></div>"></th><th>&nbsp;<b>Punkty charakteru sam.</b></th>
-                    <td class="center">21</td>
-				    <td class="center">48</td>
-				    <td class="center">22</td>
-                </tr>
-                <tr>
-                    <th align="center" colspan="2" width="25%">Aktualny profil bolidu</th>
-					<td align="center">79</td>
-					<td align="center">124</td>
-					<td align="center">86</td>
-				</tr>
-				<tr><td colspan="5" align="center"><a href="CCPHistory.asp">Historia punktowego profilu bolidu</a></td></tr>
-			</tbody></table>
-			<br>
-			<form action="UpdateCar.asp" method="post" id="UpdateCar" name="UpdateCar">
-				<input type="hidden" name="manPostToken" value="227668">
-				<table cellspacing="0" cellpadding="0" class="styled bordered striped" width="85%" data-step="2" data-intro="Będziesz mógł wymienić, ulepszyć lub obniżyć swoje części samochodowe. Wyścigi i testy spowodują zużycie twoich części. Twoim zadaniem jest wydajne zarządzanie tym zużyciem i zrównoważenie wydatków na modernizację / wymianę części samochodowych z twoimi przychodami. Na przykład modernizacja od 0% zużytego poziomu 1 części do poziomu 2 części jest wyjątkowo nieefektywna.">
-							<tbody><tr>
-								<th nowrap="">Część bolidu</th>
-								<th width="100">Poziom</th>
-								<th width="200">Czynność</th>
-								<th width="100">Zużycie</th>
-								<th>&nbsp;</th>
-								<th width="100">Nowy poziom</th>
-								<th width="100">Nowe zużycie</th>
-							</tr>
-							
-							<tr>
-								<td><b>Nadwozie</b>:</td>
-								<td align="center">7</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyChassis" id="BuyChassis" class="normal">
-<option value="0" newlvl="7" newwear="8">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($1.292.539)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($1.600.810)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($1.982.603)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($2.455.453)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($3.041.079)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($3.766.376)</option>
-<option newlvl="7" newwear="0" value="7">Wymień na poziom 7 ($4.664.657)</option>
-<option newlvl="8" newwear="0" value="8">Wymień na poziom 8 ($5.777.178)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="0" value="-6">Obniż do poziomu 1 (Zużycie: 0%)</option><option newlvl="2" newwear="2" value="-5">Obniż do poziomu 2 (Zużycie: 2%)</option><option newlvl="3" newwear="3" value="-4">Obniż do poziomu 3 (Zużycie: 3%)</option><option newlvl="4" newwear="4" value="-3">Obniż do poziomu 4 (Zużycie: 4%)</option><option newlvl="5" newwear="5" value="-2">Obniż do poziomu 5 (Zużycie: 5%)</option><option newlvl="6" newwear="6" value="-1">Obniż do poziomu 6 (Zużycie: 6%)</option></select>
-</td>
-								<td align="center">8%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlCha">7</td>
-								<td align="center" id="newWearCha">8%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Silnik</b>:</td>
-								<td align="center">3</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyEngine" id="BuyEngine" class="normal">
-<option value="0" newlvl="3" newwear="14">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($3.311.737)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($4.101.586)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($5.079.815)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($6.291.350)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="9" value="-2">Obniż do poziomu 1 (Zużycie: 9%)</option><option newlvl="2" newwear="11" value="-1">Obniż do poziomu 2 (Zużycie: 11%)</option></select>
-</td>
-								<td align="center">14%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlEng">3</td>
-								<td align="center" id="newWearEng">14%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Przednie skrzydło:</b></td>
-								<td align="center">5</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyFWing" id="BuyFWing" class="normal">
-<option value="0" newlvl="5" newwear="8">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($1.551.354)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($1.921.352)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($2.379.594)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($2.947.128)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($3.650.018)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($4.520.547)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="3" value="-4">Obniż do poziomu 1 (Zużycie: 3%)</option><option newlvl="2" newwear="4" value="-3">Obniż do poziomu 2 (Zużycie: 4%)</option><option newlvl="3" newwear="5" value="-2">Obniż do poziomu 3 (Zużycie: 5%)</option><option newlvl="4" newwear="6" value="-1">Obniż do poziomu 4 (Zużycie: 6%)</option></select>
-</td>
-								<td align="center">8%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlFW">5</td>
-								<td align="center" id="newWearFW">8%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Tylne skrzydło</b>:</td>
-								<td align="center">5</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyRWing" id="BuyRWing" class="normal">
-<option value="0" newlvl="5" newwear="8">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($1.504.126)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($1.862.860)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($2.307.152)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($2.857.408)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($3.538.900)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($4.382.927)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="3" value="-4">Obniż do poziomu 1 (Zużycie: 3%)</option><option newlvl="2" newwear="4" value="-3">Obniż do poziomu 2 (Zużycie: 4%)</option><option newlvl="3" newwear="5" value="-2">Obniż do poziomu 3 (Zużycie: 5%)</option><option newlvl="4" newwear="6" value="-1">Obniż do poziomu 4 (Zużycie: 6%)</option></select>
-</td>
-								<td align="center">8%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlRW">5</td>
-								<td align="center" id="newWearRW">8%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Podwozie</b>:</td>
-								<td align="center">6</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyUnderbody" id="BuyUnderbody" class="normal">
-<option value="0" newlvl="6" newwear="8">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($510.128)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($631.794)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($782.476)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($969.097)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($1.200.226)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($1.486.481)</option>
-<option newlvl="7" newwear="0" value="7">Wymień na poziom 7 ($1.841.006)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="2" value="-5">Obniż do poziomu 1 (Zużycie: 2%)</option><option newlvl="2" newwear="3" value="-4">Obniż do poziomu 2 (Zużycie: 3%)</option><option newlvl="3" newwear="4" value="-3">Obniż do poziomu 3 (Zużycie: 4%)</option><option newlvl="4" newwear="5" value="-2">Obniż do poziomu 4 (Zużycie: 5%)</option><option newlvl="5" newwear="6" value="-1">Obniż do poziomu 5 (Zużycie: 6%)</option></select>
-</td>
-								<td align="center">8%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlUB">6</td>
-								<td align="center" id="newWearUB">8%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Wloty powietrza</b>:</td>
-								<td align="center">7</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuySidepods" id="BuySidepods" class="normal">
-<option value="0" newlvl="7" newwear="6">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($459.831)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($569.501)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($705.327)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($873.547)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($1.081.888)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($1.339.918)</option>
-<option newlvl="7" newwear="0" value="7">Wymień na poziom 7 ($1.659.489)</option>
-<option newlvl="8" newwear="0" value="8">Wymień na poziom 8 ($2.055.277)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="0" value="-6">Obniż do poziomu 1 (Zużycie: 0%)</option><option newlvl="2" newwear="1" value="-5">Obniż do poziomu 2 (Zużycie: 1%)</option><option newlvl="3" newwear="2" value="-4">Obniż do poziomu 3 (Zużycie: 2%)</option><option newlvl="4" newwear="3" value="-3">Obniż do poziomu 4 (Zużycie: 3%)</option><option newlvl="5" newwear="4" value="-2">Obniż do poziomu 5 (Zużycie: 4%)</option><option newlvl="6" newwear="5" value="-1">Obniż do poziomu 6 (Zużycie: 5%)</option></select>
-</td>
-								<td align="center">6%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlSid">7</td>
-								<td align="center" id="newWearSid">6%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Chłodzenie</b>:</td>
-								<td align="center">7</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyCooling" id="BuyCooling" class="normal">
-<option value="0" newlvl="7" newwear="4">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($454.545)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($562.954)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($697.219)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($863.505)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($1.069.451)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($1.324.515)</option>
-<option newlvl="7" newwear="0" value="7">Wymień na poziom 7 ($1.640.412)</option>
-<option newlvl="8" newwear="0" value="8">Wymień na poziom 8 ($2.031.650)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="0" value="-6">Obniż do poziomu 1 (Zużycie: 0%)</option><option newlvl="2" newwear="1" value="-5">Obniż do poziomu 2 (Zużycie: 1%)</option><option newlvl="3" newwear="1" value="-4">Obniż do poziomu 3 (Zużycie: 1%)</option><option newlvl="4" newwear="2" value="-3">Obniż do poziomu 4 (Zużycie: 2%)</option><option newlvl="5" newwear="2" value="-2">Obniż do poziomu 5 (Zużycie: 2%)</option><option newlvl="6" newwear="3" value="-1">Obniż do poziomu 6 (Zużycie: 3%)</option></select>
-</td>
-								<td align="center">4%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlCoo">7</td>
-								<td align="center" id="newWearCoo">4%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Skrzynia biegów</b>:</td>
-								<td align="center">4</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyGear" id="BuyGear" class="normal">
-<option value="0" newlvl="4" newwear="6">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($3.098.104)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($3.837.002)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($4.752.127)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($5.885.509)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($7.289.203)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="3" value="-3">Obniż do poziomu 1 (Zużycie: 3%)</option><option newlvl="2" newwear="4" value="-2">Obniż do poziomu 2 (Zużycie: 4%)</option><option newlvl="3" newwear="5" value="-1">Obniż do poziomu 3 (Zużycie: 5%)</option></select>
-</td>
-								<td align="center">6%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlGea">4</td>
-								<td align="center" id="newWearGea">6%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Hamulce</b>:</td>
-								<td align="center">7</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyBrakes" id="BuyBrakes" class="normal">
-<option value="0" newlvl="7" newwear="4">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($697.674)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($864.069)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($1.070.150)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($1.325.380)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($1.641.484)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($2.032.978)</option>
-<option newlvl="7" newwear="0" value="7">Wymień na poziom 7 ($2.517.843)</option>
-<option newlvl="8" newwear="0" value="8">Wymień na poziom 8 ($3.118.348)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="0" value="-6">Obniż do poziomu 1 (Zużycie: 0%)</option><option newlvl="2" newwear="1" value="-5">Obniż do poziomu 2 (Zużycie: 1%)</option><option newlvl="3" newwear="1" value="-4">Obniż do poziomu 3 (Zużycie: 1%)</option><option newlvl="4" newwear="2" value="-3">Obniż do poziomu 4 (Zużycie: 2%)</option><option newlvl="5" newwear="2" value="-2">Obniż do poziomu 5 (Zużycie: 2%)</option><option newlvl="6" newwear="3" value="-1">Obniż do poziomu 6 (Zużycie: 3%)</option></select>
-</td>
-								<td align="center">4%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlBra">7</td>
-								<td align="center" id="newWearBra">4%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Zawieszenie</b>:</td>
-								<td align="center">6</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuySusp" id="BuySusp" class="normal">
-<option value="0" newlvl="6" newwear="12">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($1.181.545)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($1.463.343)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($1.812.351)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($2.244.597)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($2.779.933)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($3.442.947)</option>
-<option newlvl="7" newwear="0" value="7">Wymień na poziom 7 ($4.264.090)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="3" value="-5">Obniż do poziomu 1 (Zużycie: 3%)</option><option newlvl="2" newwear="4" value="-4">Obniż do poziomu 2 (Zużycie: 4%)</option><option newlvl="3" newwear="6" value="-3">Obniż do poziomu 3 (Zużycie: 6%)</option><option newlvl="4" newwear="8" value="-2">Obniż do poziomu 4 (Zużycie: 8%)</option><option newlvl="5" newwear="10" value="-1">Obniż do poziomu 5 (Zużycie: 10%)</option></select>
-</td>
-								<td align="center">12%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlSus">6</td>
-								<td align="center" id="newWearSus">12%</td>
-							</tr>
-							
-							<tr>
-								<td><b>Elektronika</b>:</td>
-								<td align="center">6</td>
-								<td><select style="width:100% !Important;" onchange="CalculateSum(false)" disabled="" name="BuyElectronics" id="BuyElectronics" class="normal">
-<option value="0" newlvl="6" newwear="4">Nie wymieniaj</option>
-<option newlvl="1" newwear="0" value="1">Wymień na poziom 1 ($938.416)</option>
-<option newlvl="2" newwear="0" value="2">Wymień na poziom 2 ($1.162.228)</option>
-<option newlvl="3" newwear="0" value="3">Wymień na poziom 3 ($1.439.420)</option>
-<option newlvl="4" newwear="0" value="4">Wymień na poziom 4 ($1.782.721)</option>
-<option newlvl="5" newwear="0" value="5">Wymień na poziom 5 ($2.207.900)</option>
-<option newlvl="6" newwear="0" value="6">Wymień na poziom 6 ($2.734.484)</option>
-<option newlvl="7" newwear="0" value="7">Wymień na poziom 7 ($3.386.659)</option>
-<option value="" style="background-color:gray" disabled="">------------------------------------</option><option newlvl="1" newwear="1" value="-5">Obniż do poziomu 1 (Zużycie: 1%)</option><option newlvl="2" newwear="1" value="-4">Obniż do poziomu 2 (Zużycie: 1%)</option><option newlvl="3" newwear="2" value="-3">Obniż do poziomu 3 (Zużycie: 2%)</option><option newlvl="4" newwear="2" value="-2">Obniż do poziomu 4 (Zużycie: 2%)</option><option newlvl="5" newwear="3" value="-1">Obniż do poziomu 5 (Zużycie: 3%)</option></select>
-</td>
-								<td align="center">4%</td>
-								<th><img src="https://didlsjm328074.cloudfront.net/compressed/images/right-arrow-icon.png"></th>
-								<td align="center" id="newLvlEle">6</td>
-								<td align="center" id="newWearEle">4%</td>
-							</tr>
-							<tr>
-								<td colspan="7" align="center">
-									Całkowity koszt: <input style="color:orange;background-color:#1B2D47;" name="total" id="total" class="normal" type="text" readonly="" value="$0">
-								</td>
-							</tr>
-						</tbody></table>
-						<br>
-						<p class="center">Aktualny stan konta: $43.906.463</p>
-						<br>
-						<p class="center">
-						<font color="orange">Aktualizacja samochodu możliwa jest najpóźniej 90 minut przed godziną rozpoczęcia wyścigu.</font><br><br><input type="submit" name="btnUpdateCar" disabled="" value="Modernizacja bolidu" class="normal halo" style="width:250px; background-size:560px 32px;background-repeat:no-repeat;float:none;" onclick="return CalculateSum(true)"><input type="submit" name="btnUndoUpdateCar" value="Cofnij modernizację bolidu" class="normal halo" style="width:250px;background-size:560px 32px;background-repeat:no-repeat;float:none;" onclick="return UndoCarUpdate()" disabled="">
-						</p>
-					</form>
-			</div>
 
+<div id="tyresuppliers">
+	<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/tyre_header.jpg" align="absmiddle"><br><br>
+	<div class="inner center">
+		<ul class="center leftalign bullets" style="width:760px;">			
+			<li>Kontrakty są podpisywane do końca trwającego sezonu</li>
+			<li>Nie możesz anulować kontraktu aż dobiegnie końca wraz z zakończeniem sezonu</li>
+			<li>Menadżerowie w Amateur i Rookie mogą podpisać kontrakt tylko z Pipirelli</li>
+			<li>Atrybuty i cena każdego z dostawców mogą się lekko zmieniać między sezonami</li>
+            <li>W przypadku problemów z oponami skutkującymi ich przebiciem, dostawca opon zrezygnuje z należytych mu 50% kosztów za wyścig, jeżeli to przebicie poskutkuje rozbiciem auta, wtedy dostawca opon zrezygnuje z całości należytych mu kosztów na wyścig</li>
+		</ul>   
+	</div>
+	
+		<div data-step="1" data-intro="Ta strona zawiera listę dostawców opon, z którymi możesz podpisać kontrakt. Każdy z nich ma inną specyfikację, jak koszt na wyścig, osiągi na suchym/mokrym torze, wytrzymałość czy dystans rozgrzania opon.<br><br>Bądź ostrożny podczas wyboru dostawcy, jak tylko podpiszesz kontrakt, to nie będziesz mógł go anulować, i będzie on ważny do końca sezonu! Zawodnicy w Rookie i Amateur mają automatycznie podpisywane kontrakt z najtańszym dostawcą opon Pipirelli." data-position="right" style="overflow:auto;height: auto;">
+		
+			<div class="column left" style="border-radius:6px;">
+		
+			
+				<h2>Pipirelli</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/pipirelli.gif" alt="Pipirelli" title="Pipirelli" style="" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="3">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">3</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="2">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">2</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>34°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="1">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">1</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="7">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">7</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$250.000</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+					<input type="submit" disabled="" class="normal" style="width:200px;" name="btnSignContract" value="Podpisz kontrakt z Pipirelli" onclick="return confirm('Czy jesteś pewien, że chcesz podpisać kontrakt z  Pipirelli do końca sezonu?')">
+					
+					<input type="hidden" name="SignContractId" value="1">
+					<br><br>
+				</form>
+			</div>
+			
+			<div class="column left" style="border-radius:6px;">
+		
+			
+				<h2>Avonn</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/avonn.gif" alt="Avonn" title="Avonn" style="" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed" data-step="2" data-intro="Osiągi na suchym i mokrym torze określają jak szybko Twoje auto może jeździć w tych określonych warunkach.<br><br>Optymalna temperatura określa kiedy opony osiągają swoje najlepsze osiągi. Jeśli temperatura toru jest bliska optymalnej temperatury opon, będą one miały lepsze osiągi, czyli Twój kierowca będzie miał więcej przyczepności, i pojedzie szybciej.<br><br>Wytrzymałość określa jak długo opony mogą zostać na torze zanim kompletnie się zużyją. Wyższa wartość oznacza, że Twój kierowca może pozostać dłużej na torze zanim automatycznie zjedzie na pitstop po nowy, świeży zestaw opon.<br><br>Dystans rozgrzania opony określa jak długo zajmie oponie osiągnięcie najlepszych osiągów. Wyjeżdzając z alei serwisowej opony są zimne, i minie kilka okrążeń zanim zaczną generować najwyższą przyczepność dla Twojego auta.">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="2">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">2</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="5">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">5</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>14°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="8">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">8</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl8.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="3">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">3</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$1.000.000</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+					<input type="submit" disabled="" class="normal" style="width:200px;" name="btnSignContract" value="Podpisz kontrakt z Avonn" onclick="return confirm('Czy jesteś pewien, że chcesz podpisać kontrakt z  Avonn do końca sezonu?')">
+					
+					<input type="hidden" name="SignContractId" value="9">
+					<br><br>
+				</form>
+			</div>
+			
+			<div class="column left" style="border-radius:6px;">
+		
+			
+				<h2>Yokomama</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/yokomama.gif" alt="Yokomama" title="Yokomama" style="" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="4">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">4</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="4">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">4</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>27°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="3">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">3</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="4">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">4</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$1.900.000</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+					<input type="submit" disabled="" class="normal" style="width:200px;" name="btnSignContract" value="Podpisz kontrakt z Yokomama" onclick="return confirm('Czy jesteś pewien, że chcesz podpisać kontrakt z  Yokomama do końca sezonu?')">
+					
+					<input type="hidden" name="SignContractId" value="2">
+					<br><br>
+				</form>
+			</div>
+			
+			</div>			
+			
+			<div class="column left" style="border-radius:6px;">
+		
+			
+				<h2>Dunnolop</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/dunnolop.gif" alt="Dunnolop" title="Dunnolop" style="" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="5">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">5</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="3">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">3</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>21°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="4">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">4</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="5">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">5</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$2.500.000</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+					<input type="submit" disabled="" class="normal" style="width:200px;" name="btnSignContract" value="Podpisz kontrakt z Dunnolop" onclick="return confirm('Czy jesteś pewien, że chcesz podpisać kontrakt z  Dunnolop do końca sezonu?')">
+					
+					<input type="hidden" name="SignContractId" value="3">
+					<br><br>
+				</form>
+			</div>
+			
+			<div class="column left" style="border-radius:6px;">
+		
+			
+				<h2>Contimental</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/contimental.gif" alt="Contimental" title="Contimental" style="" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="7">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">7</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="1">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">1</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>38°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="8">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">8</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl8.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="8">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">8</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl0.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$3.000.000</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+					<input type="submit" disabled="" class="normal" style="width:200px;" name="btnSignContract" value="Podpisz kontrakt z Contimental" onclick="return confirm('Czy jesteś pewien, że chcesz podpisać kontrakt z  Contimental do końca sezonu?')">
+					
+					<input type="hidden" name="SignContractId" value="8">
+					<br><br>
+				</form>
+			</div>
+			
+			<div class="column left chosen" style="border-radius:4px;">
+		
+			
+				<h2>Badyear</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/badyear.gif" alt="Badyear" title="Badyear" style="" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="5">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">5</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="8">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">8</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl8.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>18°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="7">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">7</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="6">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">6</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$3.599.999</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+						<font color="lime"><b>Kontrakt aktywny</b></font>
+					
+					<input type="hidden" name="SignContractId" value="4">
+					<br><br>
+				</form>
+			</div>
+			
+			<div class="column left" style="border-radius:6px;">
+		
+			
+				<h2>Hancock</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/hancock.gif" alt="Hancock" title="Hancock" style="" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="8">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">8</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl8.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="2">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">2</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>13°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="1">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">1</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="1">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">1</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$5.000.000</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+					<input type="submit" disabled="" class="normal" style="width:200px;" name="btnSignContract" value="Podpisz kontrakt z Hancock" onclick="return confirm('Czy jesteś pewien, że chcesz podpisać kontrakt z  Hancock do końca sezonu?')">
+					
+					<input type="hidden" name="SignContractId" value="7">
+					<br><br>
+				</form>
+			</div>
+			
+			<div class="column left" style="border-radius:6px;">
+		
+			
+				<h2>Michelini</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/michelini.gif" alt="Michelini" title="Michelini" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="7">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">7</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="3">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">3</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>24°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="6">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">6</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="2">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">2</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$6.700.000</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+					<input type="submit" disabled="" class="normal" style="width:200px;" name="btnSignContract" value="Podpisz kontrakt z Michelini" onclick="return confirm('Czy jesteś pewien, że chcesz podpisać kontrakt z  Michelini do końca sezonu?')">
+					
+					<input type="hidden" name="SignContractId" value="5">
+					<br><br>
+				</form>
+			</div>
+			
+			<div class="column left" style="border-radius:6px;">
+		
+			
+				<h2>Bridgerock</h2>
+				<img src="https://didlsjm328074.cloudfront.net/compressed/images/suppliers/bridgerock.gif" alt="Bridgerock" title="Bridgerock" style="" align="absmiddle">
+				<hr>
+				<div class="inner" style="margin:10px 40px !Important;">
+					<table class="normal squashed">
+						<tbody><tr>
+							<td>Osiągi na suchym torze:</td>
+							<td width="40" title="8">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">8</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl8.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Osiągi na mokrym torze:</td>
+							<td title="5">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">5</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Optymalna temperatura:</td>
+							<td>32°</td>
+						</tr>
+						<tr>
+							<td>Wytrzymałość:</td>
+							<td title="8">
+	<table cellspacing="0" style="width:40px;"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">8</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl1.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl8.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						<tr>
+							<td nowrap="">Dystans rozgrzania opony:</td>
+							<td title="6">
+	<table cellspacing="0" style="width:40px;" id="Table1"><tbody><tr><td width="100%" class="bordercell skillbars" nowrap="">
+	<span class="skillvalue">6</span><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl7.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl6.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl5.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl4.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl3.gif"><img border="0" align="absmiddle" src="https://didlsjm328074.cloudfront.net/compressed/images/lvl2.gif">
+	</td></tr></tbody></table>
+</td>
+						</tr>
+						
+					</tbody></table>
+				</div>
+				<hr>
+				<br>
+				<p>Koszt za wyścig: <strong>$8.500.000</strong></p>
+				<form action="Suppliers.asp" method="post" style="margin:0px;">
+					<input type="hidden" name="manPostToken" value="227668">
+					
+					<input type="submit" disabled="" class="normal" style="width:200px;" name="btnSignContract" value="Podpisz kontrakt z Bridgerock" onclick="return confirm('Czy jesteś pewien, że chcesz podpisać kontrakt z  Bridgerock do końca sezonu?')">
+					
+					<input type="hidden" name="SignContractId" value="6">
+					<br><br>
+				</form>
+			</div>
+			
+</div>
 		<div class="clear"></div>
       </div>
     </div>
@@ -1224,4 +1058,4 @@ $(document).ready(function(){
 <script type="text/javascript" src="https://didlsjm328074.cloudfront.net/compressed/jscripts/intro.min.js"></script>
 <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=525919794259850&amp;ev=PageView&amp;noscript=1">
 
-<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;"><ins id="aswift_2_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_2_anchor" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-9802427417219730&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1633106164&amp;plat=3%3A32%2C4%3A32%2C9%3A32768%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1048576%2C32%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fgpro.net%2Fpl%2FUpdateCar.asp&amp;ea=0&amp;flash=0&amp;pra=7&amp;wgl=1&amp;uach=WyIiLCIiLCIiLCIiLCIiLFtdLG51bGwsbnVsbCwiIl0.&amp;dt=1633106163790&amp;bpp=3&amp;bdt=335&amp;idt=205&amp;shv=r20210928&amp;mjsv=m202109270101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3D04a833574076e6ed-228e9a0366c90077%3AT%3D1633106136%3ART%3D1633106136%3AS%3DALNI_MbcAEl3n_oLFJOA29MaU003cQzfyg&amp;prev_fmts=160x600%2C659x90&amp;nras=1&amp;correlator=4425607442837&amp;frm=20&amp;pv=1&amp;ga_vid=809084104.1633106134&amp;ga_sid=1633106164&amp;ga_hid=1980859094&amp;ga_fc=0&amp;u_tz=120&amp;u_his=4&amp;u_h=800&amp;u_w=800&amp;u_ah=800&amp;u_aw=800&amp;u_cd=24&amp;u_java=0&amp;u_nplug=0&amp;u_nmime=0&amp;dmc=8&amp;adx=-12245933&amp;ady=-12245933&amp;biw=785&amp;bih=785&amp;scr_x=0&amp;scr_y=0&amp;eid=44750344%2C31062945%2C31062977%2C21065725%2C44748553&amp;oid=3&amp;pvsid=2038615726673079&amp;pem=282&amp;ref=https%3A%2F%2Fgpro.net%2Fpl%2Fgpro.asp&amp;eae=2&amp;fc=896&amp;brdim=0%2C0%2C0%2C0%2C800%2C0%2C800%2C800%2C800%2C800&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=33792&amp;bc=31&amp;ifi=3&amp;uci=a!3&amp;fsb=1&amp;dtd=226" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!3" data-load-complete="true"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_989692741125" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe><script type="text/javascript" src="https://tpc.googlesyndication.com/sodar/sodar2.js"></script></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20210928/r20190131/zrt_lookup.html" style="display: none;"></iframe></html>
+<ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><ins id="aswift_2_expand" tabindex="0" title="Advertisement" aria-label="Advertisement" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-table;"><ins id="aswift_2_anchor" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: block;"><iframe id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-9802427417219730&amp;output=html&amp;adk=1812271804&amp;adf=3025194257&amp;lmt=1635875414&amp;plat=3%3A32%2C4%3A32%2C9%3A32768%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1048576%2C32%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fgpro.net%2Fpl%2FSuppliers.asp&amp;ea=0&amp;flash=0&amp;pra=7&amp;wgl=1&amp;uach=WyIiLCIiLCIiLCIiLCIiLFtdLG51bGwsbnVsbCwiIl0.&amp;dt=1635875414882&amp;bpp=2&amp;bdt=234&amp;idt=2&amp;shv=r20211029&amp;mjsv=m202110280101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie=ID%3De251bdfa7dee11c4-22714f7109cb0000%3AT%3D1635875388%3ART%3D1635875388%3AS%3DALNI_MYbkNcslyPJNs_K1WP67sjMjnJykg&amp;prev_fmts=160x600&amp;nras=1&amp;correlator=7202710434529&amp;rume=1&amp;frm=20&amp;pv=1&amp;ga_vid=165511455.1635875387&amp;ga_sid=1635875415&amp;ga_hid=1825712205&amp;ga_fc=1&amp;u_tz=0&amp;u_his=6&amp;u_h=800&amp;u_w=800&amp;u_ah=800&amp;u_aw=800&amp;u_cd=24&amp;adx=-12245933&amp;ady=-12245933&amp;biw=785&amp;bih=785&amp;scr_x=0&amp;scr_y=0&amp;eid=31063361%2C31061691%2C21067088%2C31061693&amp;oid=2&amp;pvsid=2576412192235625&amp;pem=293&amp;ref=https%3A%2F%2Fgpro.net%2Fpl%2Fgpro.asp&amp;eae=2&amp;fc=896&amp;brdim=0%2C0%2C0%2C0%2C800%2C0%2C800%2C800%2C800%2C800&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=33792&amp;bc=31&amp;ifi=3&amp;uci=a!3&amp;fsb=1&amp;dtd=14" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" data-google-container-id="a!3" data-load-complete="true"></iframe></ins></ins></ins><iframe src="https://www.google.com/recaptcha/api2/aframe" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="https://googleads.g.doubleclick.net/pagead/html/r20211029/r20190131/zrt_lookup.html" style="display: none;"></iframe></html>

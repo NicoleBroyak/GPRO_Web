@@ -1,8 +1,11 @@
-from django.contrib import admin
+from django.contrib import admin, auth
 from django.urls import path
+from django.conf.urls import include, url
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.current_datetime),
+    path('', views.home),
+    path('gpro_main', views.gpro_main),
+    path('gpro/login/', views.gprocalc1)
     ]

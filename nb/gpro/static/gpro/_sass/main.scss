@@ -8,7 +8,6 @@
 /*
 // 1. Import the initial variables
 @import "../node_modules/bulma/sass/utilities/initial-variables";
-
 // 2. Set your own initial variables
 // Update the blue shade, used for links
 $blue: #06bcef;
@@ -17,39 +16,75 @@ $pink: #ff8080;
 $pink-invert: #fff;
 // Update the sans-serif font family
 $family-sans-serif: "Helvetica", "Arial", sans-serif;
-
 // 3. Set the derived variables
 // Use the new pink as the primary color
 $primary: $pink;
 $primary-invert: $pink-invert;
-
 // 4. Import the rest of Bulma
 */
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 $purple: hsl(298, 100%, 35%);
 $success: hsl(298, 100%, 35%);
-$box-background-color: rgb(11, 22, 15);
+$box-background-color: rgb(38, 80, 53);
 $footer-padding: 0.5rem 1.5rem 0.5rem;
-$footer-background-color: hsl(0, 0%, 48%);
-$button-background-color: hsl(300, 100%, 9%);
-$button-disabled-background-color: hsl(0, 0%, 48%);
+$footer-background-color: rgb(75, 75, 75);
+$button-background-color: hsl(300, 100%, 20%);
+$button-disabled-background-color: hsl(0, 0%, 100%);
 $button-border-color: rgb(0, 0, 0);
-$button-text-color: hsl(0, 100%, 10%);
-$button-color: hsl(0, 0%, 0%);
+$button-text-color: hsl(0, 0%, 100%);
+$button-color: hsl(0, 0%, 100%);
 $control-border-width: 3px;
+$button-text-hover-color: hsl(0, 0%, 100%);
+$button-hover-color: hsl(0, 0%, 100%);
+$table-striped-row-even-background-color: hsl(300, 100%, 20%);
+$table-striped-row-even-hover-background-color:  rgb(72, 151, 99);
+$table-background-color: hsl(300, 100%, 29%);
+$table-head-background-color: rgb(255, 255, 255);
+$table-color: #FFF;
 
 @import "../node_modules/bulma/bulma";
 
 body {
-  background-color: rgb(0, 0, 0);
+  color:#FFF;
+  background-color: rgb(75, 75, 75);
   background-position: center; /* Center the image */
   height: 100%; /* You must set a specified height */
    }
 
 .hero-image{
   background-color: #ccccc1; /* Used if the image is unavailable */
-  height: 100px; /* You must set a specified height */
+  height: 20px; /* You must set a specified height */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.hero{
+  height: 100px;
+}
+
+.hero-body{
+  height: 50px;
+}
+
+table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar-item, .navbar, .navbar-link, .navbar-dropdown {
+  background-color: rgb(38, 80, 53);
+  color:#FFF;
+}
+
+.label{
+  color:#FFF;
+}
+
+a{
+  color:rgb(56, 56, 56);
+}
+
+form{
+  width: 300px ;
 }

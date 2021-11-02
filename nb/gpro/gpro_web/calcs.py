@@ -1,7 +1,9 @@
 import math
-from seleniumscrap import *
-from track import trackdata
-from partwear import partwear_lvl_factor
+from gpro.gpro_web.module.seleniumscrap import *
+from gpro.gpro_web.module.track import trackdata
+from gpro.gpro_web.module.partwear import partwear_lvl_factor
+
+
 class Driver:
     def __init__(self):
         driver_stats = scrap_driver(scrapper)
@@ -38,7 +40,12 @@ class Weather:
         self.weather_data = scrap_weather(scrapper)
         self.q1 = self.weather_data['q1']
         self.q2 = self.weather_data['q2']
-        self.race = {'weather': 'dry', 'temp': 31, 'hum': 55}
+        self.weather_data['race'] = {
+            'weather': calcs.gpro_race_weather,
+            'temp': int(calcs.gpro_race_temp),
+            'hum': int(calcs.gpro_race_hum),
+        }
+        self.race = self.weather_data['race']
 
 class Track:
     def __init__(self, weather):
@@ -85,11 +92,20 @@ class Track:
 
 class Tyre:
     def __init__(self):
-        self.durability = 8
+        self.durability = scrap_tyre(scrapper)
 
 class Calcs:
     def __init__(self):
-        self.risk = int(input('Risk:'))
+        self.risk = 59
+        self.data_confirm = False
+
+    def weather_mode(self, weather, mode):
+        if mode == "q2":
+            weather.mode = weather.q2
+        elif mode == 'race':
+            weather.mode = weather.race
+        else:
+            weather.mode = weather.q1
 
     def wings_calc(self, track, weather, driver, car, mode=''):
         if mode == "q2":
@@ -120,12 +136,7 @@ class Calcs:
         return wings
 
     def ws_calc(self, track, weather, driver, car, mode=''):
-        if mode == "q2":
-            weather.mode = weather.q2
-        elif mode == 'race':
-            weather.mode = weather.race
-        else:
-            weather.mode = weather.q1
+        self.weather_mode(weather, mode)
         ws_wing_factor = ((car.fw['lvl'] + car.rw['lvl'])/2 
         * 3.69107049712848)
         ws_tal_factor = driver.tal * -0.246534498671854
@@ -139,12 +150,7 @@ class Calcs:
         return ws_dry + 58.8818967363256
 
     def eng_calc(self, track, weather, driver, car, mode=''):
-        if mode == "q2":
-            weather.mode = weather.q2
-        elif mode == 'race':
-            weather.mode = weather.race
-        else:
-            weather.mode = weather.q1
+        self.weather_mode(weather, mode)
         base = track.eng
         aggr_factor = driver.agg * 0.29521804804429
         car_lvl_factor = car.eng['lvl'] * 16.04 + (car.coo['lvl'] * 4.9
@@ -165,12 +171,7 @@ class Calcs:
         return eng
 
     def bra_calc(self, track, weather, driver, car, mode=''):
-        if mode == "q2":
-            weather.mode = weather.q2
-        elif mode == 'race':
-            weather.mode = weather.race
-        else:
-            weather.mode = weather.q1
+        self.weather_mode(weather, mode)
         base = track.bra
         tal_factor = driver.tal * -0.498
         car_lvl_factor = car.cha['lvl'] * 6.04 + (car.bra['lvl']
@@ -187,12 +188,7 @@ class Calcs:
         return bra
 
     def gea_calc(self, track, weather, driver, car, mode=''):
-        if mode == "q2":
-            weather.mode = weather.q2
-        elif mode == 'race':
-            weather.mode = weather.race
-        else:
-            weather.mode = weather.q1
+        self.weather_mode(weather, mode)
         base = track.gea
         con_factor = driver.con / 2
         car_lvl_factor = car.gea['lvl'] * -41 + car.ele['lvl'] * 9
@@ -207,12 +203,7 @@ class Calcs:
         return gea
 
     def sus_calc(self, track, weather, driver, car, mode=''):
-        if mode == "q2":
-            weather.mode = weather.q2
-        elif mode == 'race':
-            weather.mode = weather.race
-        else:
-            weather.mode = weather.q1
+        self.weather_mode(weather, mode)
         base = track.sus
         dri_factor = driver.wei * 2 + driver.exp * 0.75
         car_lvl_factor = ((car.cha['lvl'] * -15.27) + (car.und['lvl'] * -10.72)
@@ -363,92 +354,48 @@ class Calcs:
     def part_wear(self, track, driver, car):
         driv_factor = self.part_wear_driv_factor(driver)
         part_wear = dict()
-        part_wear['cha'] = self.cha_wear_calc(track, car, driv_factor)
-        part_wear['eng'] = self.eng_wear_calc(track, car, driv_factor)
-        part_wear['fw'] = self.fw_wear_calc(track, car, driv_factor)
-        part_wear['rw'] = self.rw_wear_calc(track, car, driv_factor)
-        part_wear['und'] = self.und_wear_calc(track, car, driv_factor)
-        part_wear['sid'] = self.sid_wear_calc(track, car, driv_factor)
-        part_wear['coo'] = self.coo_wear_calc(track, car, driv_factor)
-        part_wear['gea'] = self.gea_wear_calc(track, car, driv_factor)
-        part_wear['bra'] = self.bra_wear_calc(track, car, driv_factor)
-        part_wear['sus'] = self.sus_wear_calc(track, car, driv_factor)
-        part_wear['ele'] = self.ele_wear_calc(track, car, driv_factor)
+        part_wear['cha'] = [
+            round(self.cha_wear_calc(track, car, driv_factor)),
+            round(self.cha_wear_calc(track, car, driv_factor) + car.cha['wear'])
+            ] 
+        part_wear['eng'] = [
+            round(self.eng_wear_calc(track, car, driv_factor)),
+            round(self.eng_wear_calc(track, car, driv_factor) + car.eng['wear'])
+            ] 
+        part_wear['fw'] = [
+            round(self.fw_wear_calc(track, car, driv_factor)),
+            round(self.fw_wear_calc(track, car, driv_factor) + car.fw['wear'])
+            ] 
+        part_wear['rw'] = [
+            round(self.rw_wear_calc(track, car, driv_factor)),
+            round(self.rw_wear_calc(track, car, driv_factor) + car.rw['wear'])
+            ]                                     
+        part_wear['und'] = [
+            round(self.und_wear_calc(track, car, driv_factor)),
+            round(self.und_wear_calc(track, car, driv_factor) + car.und['wear'])
+            ] 
+        part_wear['sid'] = [
+            round(self.sid_wear_calc(track, car, driv_factor)),
+            round(self.sid_wear_calc(track, car, driv_factor) + car.sid['wear'])
+            ] 
+        part_wear['coo'] = [
+            round(self.coo_wear_calc(track, car, driv_factor)),
+            round(self.coo_wear_calc(track, car, driv_factor) + car.coo['wear'])
+            ] 
+        part_wear['gea'] = [
+            round(self.gea_wear_calc(track, car, driv_factor)),
+            round(self.gea_wear_calc(track, car, driv_factor) + car.gea['wear'])
+            ] 
+        part_wear['bra'] = [
+            round(self.bra_wear_calc(track, car, driv_factor)),
+            round(self.bra_wear_calc(track, car, driv_factor) + car.bra['wear'])
+            ] 
+        part_wear['sus'] = [
+            round(self.sus_wear_calc(track, car, driv_factor)),
+            round(self.sus_wear_calc(track, car, driv_factor) + car.sus['wear'])
+            ] 
+        part_wear['ele'] = [
+            round(self.ele_wear_calc(track, car, driv_factor)),
+            round(self.ele_wear_calc(track, car, driv_factor) + car.ele['wear'])
+            ] 
         return part_wear
-
-
-
-gpro_login(scrapper)
-weather = Weather()
-print(weather.weather_data)
-track = Track(weather)
-driver = Driver()
-car = Car()
-tyre = Tyre()
-calcs = Calcs()
-scrapper.quit()
-wing_split = calcs.ws_calc(track, weather, driver, car)
-wing_setup = calcs.wings_calc(track, weather, driver, car)
-eng = calcs.eng_calc(track, weather, driver, car)
-bra = calcs.bra_calc(track, weather, driver, car)
-gea = calcs.gea_calc(track, weather, driver, car)
-sus = calcs.sus_calc(track, weather, driver, car)
-wing_splitq2 = calcs.ws_calc(track, weather, driver, car, mode='q2')
-wing_setupq2 = calcs.wings_calc(track, weather, driver, car, mode='q2')
-engq2 = calcs.eng_calc(track, weather, driver, car, mode='q2')
-braq2 = calcs.bra_calc(track, weather, driver, car, mode='q2')
-geaq2 = calcs.gea_calc(track, weather, driver, car, mode='q2')
-susq2 = calcs.sus_calc(track, weather, driver, car, mode='q2')
-wing_splitr = calcs.ws_calc(track, weather, driver, car, mode='race')
-wing_setupr = calcs.wings_calc(track, weather, driver, car, mode='race')
-engr = calcs.eng_calc(track, weather, driver, car, mode='race')
-brar = calcs.bra_calc(track, weather, driver, car, mode='race')
-gear = calcs.gea_calc(track, weather, driver, car, mode='race')
-susr = calcs.sus_calc(track, weather, driver, car, mode='race')
-fuel = calcs.fuel_calc(track, weather, driver, car)
-tyre = calcs.tyre_calc(track, weather, driver, car, tyre)
-fw = wing_setup + wing_split
-rw = wing_setup - wing_split
-fwq2 = wing_setupq2 + wing_splitq2
-rwq2 = wing_setupq2 - wing_splitq2
-fwr = wing_setupr + wing_splitr
-rwr = wing_setupr - wing_splitr
-print("q1", "q2", "race")
-print(round(fw), round(fwq2), round(fwr))
-print(round(rw), round(rwq2), round(rwr))
-print(round(eng), round(engq2), round(engr))
-print(round(bra), round(braq2), round(brar))
-print(round(gea), round(geaq2), round(gear))
-print(round(sus), round(susq2), round(susr))
-print(f'tyre max distance: XS: {tyre[0]}'
-      f'S: {tyre[1]}, M: {tyre[2]}, H: {tyre[3]}, R: {tyre[4]}')
-print(fuel)
-print(math.floor(tyre[0]/track.length))
-print(math.floor(tyre[1]/track.length))
-print(math.floor(tyre[2]/track.length))
-print(math.floor(tyre[3]/track.length))
-print(math.floor(tyre[4]/track.length))
-partwear = calcs.part_wear(track, driver, car)
-print("Part\tLvl\tBefore race\tWear\tAfter Race")
-print(f"Chassis\t{car.cha['lvl']}\t{car.cha['wear']}\t"
-      f"{round(partwear['cha'])}\t{car.cha['wear'] + round(partwear['cha'])}")
-print(f"Engine\t{car.eng['lvl']}\t{car.eng['wear']}\t"
-      f"{round(partwear['eng'])}\t{car.eng['wear'] + round(partwear['eng'])}")
-print(f"FW\t{car.fw['lvl']}\t{car.fw['wear']}\t"
-      f"{round(partwear['fw'])}\t{car.fw['wear'] + round(partwear['fw'])}")
-print(f"RW\t{car.rw['lvl']}\t{car.rw['wear']}\t"
-      f"{round(partwear['rw'])}\t{car.rw['wear'] + round(partwear['rw'])}")
-print(f"Und\t{car.und['lvl']}\t{car.und['wear']}\t"
-      f"{round(partwear['und'])}\t{car.und['wear'] + round(partwear['und'])}")
-print(f"Sid\t{car.sid['lvl']}\t{car.sid['wear']}\t"
-      f"{round(partwear['sid'])}\t{car.sid['wear'] + round(partwear['sid'])}")
-print(f"Cooling\t{car.coo['lvl']}\t{car.coo['wear']}\t"
-      f"{round(partwear['coo'])}\t{car.coo['wear'] + round(partwear['coo'])}")
-print(f"Gearbox\t{car.gea['lvl']}\t{car.gea['wear']}\t"
-      f"{round(partwear['gea'])}\t{car.gea['wear'] + round(partwear['gea'])}")
-print(f"Brakes\t{car.bra['lvl']}\t{car.bra['wear']}\t"
-      f"{round(partwear['bra'])}\t{car.bra['wear'] + round(partwear['bra'])}")
-print(f"Susp\t{car.sus['lvl']}\t{car.sus['wear']}\t"
-      f"{round(partwear['sus'])}\t{car.sus['wear'] + round(partwear['sus'])}")
-print(f"Elec\t{car.ele['lvl']}\t{car.ele['wear']}\t"
-      f"{round(partwear['ele'])}\t{car.ele['wear'] + round(partwear['ele'])}")

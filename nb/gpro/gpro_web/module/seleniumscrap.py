@@ -1,18 +1,21 @@
+from django.http import request
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.webdriver import WebDriver
+from gpro.forms import GPROForm
 import time
 
-def gpro_login(scrapper):
-    user = input('User')
-    password = input("Password")
+def gpro_login(scrapper, user, password):
+    print(2)
     scrapper.get("https://gpro.net/pl/Login.asp")
     scrapper.find_element_by_name("textLogin").send_keys(user)
     scrapper.find_element_by_name("textPassword").send_keys(password)
     scrapper.find_element_by_name("LogonFake").click()
+    print(3)
 
 def scrap_driver(scrapper):
     scrapper.find_element_by_link_text('Damien Bailey').click()
+    time.sleep(1)
     with open('page.html', 'w') as file:
         file.write(scrapper.page_source)
     p = open('page.html', 'r')
@@ -32,6 +35,7 @@ def scrap_driver(scrapper):
 
 def scrap_car(scrapper):
     scrapper.find_element_by_link_text('Modernizacja bolidu').click()
+    time.sleep(1)
     with open('page.html', 'w') as file:
         file.write(scrapper.page_source)
     p = open('page.html', 'r')
@@ -42,11 +46,11 @@ def scrap_car(scrapper):
     car_stats = dict()
     for tr in tds:
         count += 1
-        if (count + 4) % 6 == 0 and count > 7 and count < 69:
+        if (count + 4) % 6 == 0 and count > 19 and count < 81:
             dictkey = str(tr.text.strip()).replace(':','')
-        if (count + 3) % 6 == 0 and count > 8 and count < 70:
+        if (count + 3) % 6 == 0 and count > 20 and count < 82:
             temp = int(tr.text.strip())
-        if (count + 1) % 6 == 0 and count > 10 and count < 72:
+        if (count + 1) % 6 == 0 and count > 22 and count < 84:
             temp2 = str(tr.text.strip()).replace("%",'')
             car_stats[dictkey] = {'lvl': temp, 'wear': int(temp2)}
     scrapper.back()
@@ -54,10 +58,8 @@ def scrap_car(scrapper):
 
 def scrap_weather(scrapper):
     weather_dict = dict()
-    print('przed')
-    time.sleep(15)
-    print('po')
     scrapper.find_element_by_link_text('Trening').click()
+    time.sleep(1)
     with open('page.html', 'w') as file:
         file.write(scrapper.page_source)
     p = open('page.html', 'r')
@@ -96,15 +98,31 @@ def scrap_weather(scrapper):
                 q = 'q2'
             weather_dict[q] = {'weather': weather,
                                   'temp': temp,
-                                  'hum': hum}
+                                  'hum': hum
+                                  }
         count += 1
     scrapper.back()
     return weather_dict 
+
+def scrap_tyre(scrapper):
+    scrapper.find_element_by_link_text('Dostawcy opon').click()
+    time.sleep(1)
+    with open('page.html', 'w') as file:
+        file.write(scrapper.page_source)
+    p = open('page.html', 'r')
+    page = p.read()
+    soup = BeautifulSoup(page, "html.parser")
+    tds = soup.find(class_="column left chosen").text.strip()
+    count = 1
+    for td in tds:
+        count += 1
+        if count == 124:
+            tyre_durability = int(td)
+    return tyre_durability
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--window-size=800,800')
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
-scrapper = webdriver.Chrome(chrome_options=chrome_options)
-
+scrapper = webdriver.Chrome(options=chrome_options)

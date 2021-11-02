@@ -1,5 +1,8 @@
+import os
+
 trackdata = dict()
-with open("/home/nikolabroyak/Pulpit/Projekty/GPRO_Web/Track.csv") as track:
+
+with open(f"{os.path.join(os.path.dirname(__file__), 'Track.csv')}") as track:
     count = 0
     for line in track:
         linedict = dict()

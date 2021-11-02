@@ -1,0 +1,515 @@
+{% extends "gpro/base.html" %}
+
+{% block content %}
+
+
+{% if not calcs.data_confirm %}
+<section class="section is-mobile">
+  <div class="tile is-child is-mobile box has-text-centered">
+    <h2><p class="has-text-white">{{ weather.track }}</p></h2>
+    <table class="table is-striped is-bordered">
+      <thead>
+        <tr>
+          <th>Weather</th>
+          <th>Q1</th>
+          <th>Q2</th>
+          <th>Race</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Weather</td>
+        <td>{{ weather.q1.weather }}</td>
+        <td>{{ weather.q2.weather }}</td>
+        <td>{{ weather.race.weather }}</td>
+      </tr>
+
+      <tr>
+        <td>Temperature</td>
+        <td>{{ weather.q1.temp }}</td>
+        <td>{{ weather.q2.temp }}</td>
+        <td>{{ weather.race.temp }}</td>
+      </tr>
+
+      <tr>
+        <td>Humidity</td>
+        <td>{{ weather.q1.hum }}</td>
+        <td>{{ weather.q2.hum }}</td>
+        <td>{{ weather.race.hum }}</td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+  <form action="gpro_main" method="POST">
+      {% csrf_token %}
+      {{ form }}
+  <div class="field has-text-white">
+      <button type="submit" class="button">Submit</button>
+    </div>
+  </form>
+</section>
+{% else %}
+
+    <section class="section is-mobile">
+
+<div class="tile is-ancestor is-mobile">
+
+  <div class="tile is-parent is-3 is-vertical is-mobile">
+
+      <div class="tile is-child box is-mobile">
+      <table class="table is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>Skill</th>
+            <th>Level</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Overall</td>
+          <td>{{ driver.oa }}</td>
+        </tr>
+
+        <tr>
+          <td>Concentration</td>
+          <td>{{ driver.con }}</td>
+        </tr>
+
+        <tr>
+          <td>Talent</td>
+          <td>{{ driver.tal }}</td>
+        </tr>
+
+        <tr>
+          <td>Aggressiveness</td>
+          <td>{{ driver.agg }}</td>
+        </tr>
+
+        <tr>
+          <td>Exprerience</td>
+          <td>{{ driver.exp }}</td>
+        </tr>
+
+        <tr>
+          <td>Technical Insight</td>
+          <td>{{ driver.ti }}</td>
+        </tr>
+
+        <tr>
+          <td>Stamina</td>
+          <td>{{ driver.sta }}</td>
+        </tr>
+
+        <tr>
+          <td>Charisma</td>
+          <td>{{ driver.cha }}</td>
+        </tr>
+
+        <tr>
+          <td>Motivation</td>
+          <td>{{ driver.mot }}</td>
+        </tr>
+
+        <tr>
+          <td>Reputation</td>
+          <td>{{ driver.rep }}</td>
+        </tr>
+
+        <tr>
+          <td>Weight</td>
+          <td>{{ driver.wei }}</td>
+        </tr>
+
+        <tr>
+          <td>Age</td>
+          <td>{{ driver.age }}</td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+  </div>
+
+  <div class="tile is-parent is-6 is-vertical is-mobile">
+    <div class="tile is-child box">
+      <table class="table is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>Part</th>
+            <th>LVL</th>
+            <th>Wear</th>
+            <th>Race</th>
+            <th>After</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Chassis</td>
+          <td>{{ car.cha.lvl }}</td>
+          <td>{{ car.cha.wear }}</td>
+          {% for i in partwear.cha %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Engine</td>
+          <td>{{ car.eng.lvl }}</td>
+          <td>{{ car.eng.wear }}</td>
+          {% for i in partwear.eng %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Front wing</td>
+          <td>{{ car.fw.lvl }}</td>
+          <td>{{ car.fw.wear }}</td>
+          {% for i in partwear.fw %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Rear wing</td>
+          <td>{{ car.rw.lvl }}</td>
+          <td>{{ car.rw.wear }}</td>
+          {% for i in partwear.rw %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Underbody</td>
+          <td>{{ car.und.lvl }}</td>
+          <td>{{ car.und.wear }}</td>
+          {% for i in partwear.und %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Sidepods</td>
+          <td>{{ car.sid.lvl }}</td>
+          <td>{{ car.sid.wear }}</td>
+          {% for i in partwear.sid %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Cooling</td>
+          <td>{{ car.coo.lvl }}</td>
+          <td>{{ car.coo.wear }}</td>
+          {% for i in partwear.coo %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Gearbox</td>
+          <td>{{ car.gea.lvl }}</td>
+          <td>{{ car.gea.wear }}</td>
+          {% for i in partwear.gea %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Brakes</td>
+          <td>{{ car.bra.lvl }}</td>
+          <td>{{ car.bra.wear }}</td>
+          {% for i in partwear.bra %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Suspension</td>
+          <td>{{ car.sus.lvl }}</td>
+          <td>{{ car.sus.wear }}</td>
+          {% for i in partwear.sus %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Electronics</td>
+          <td>{{ car.ele.lvl }}</td>
+          <td>{{ car.ele.wear }}</td>
+          {% for i in partwear.ele %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+        </tbody>
+      </table>
+  </div>
+    <div class="tile is-child is-mobile box has-text-centered">
+      <table class="table is-striped is-bordered ">
+        <thead>
+          <tr>
+            <th> <p class="has-text-centered">Tyre</p></th>
+            <th> <p class="has-text-centered">Extra soft</p></th>
+            <th><p class="has-text-centered">Soft</p></th>
+            <th><p class="has-text-centered">Medium</p></th>
+            <th><p class="has-text-centered">Hard</p></th>
+            <th><p class="has-text-centered">Rain</p></th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Wear</td>
+          {% for i in calcs.tyre_wear_list %}
+          <td><p class="has-text-centered">{{ i }}</p></td>
+          {% endfor %}
+        </tr>
+        <tr>
+          <td>Wear 80%</td>
+          {% for i in calcs.tyre_wear_list_80 %}
+          <td><p class="has-text-centered">{{ i }}</p></td>
+          {% endfor %}
+        </tr>
+
+        </tbody>
+      </table>
+
+      <table class="table is-striped is-bordered ">
+        <thead>
+          <tr>
+            <th> <p class="has-text-centered">Fuel</p></th>
+            <th> <p class="has-text-centered">Dry race</p></th>
+            <th><p class="has-text-centered">Dry per lap</p></th>
+            <th><p class="has-text-centered">Wet race/p></th>
+            <th><p class="has-text-centered">Wet per lap</p></th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Wear</td>
+          {% for i in calcs.fuel_wear_list %}
+          <td><p class="has-text-centered">{{ i }}</p></td>
+          {% endfor %}
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="tile is-child is-mobile box has-text-centered">
+    </div>
+    <div class="tile is-child is-mobile box has-text-centered">
+      SETUP INFO
+    </div>
+  </div>
+
+  <div class="tile is-parent is-3 is-vertical is-mobile">
+    <div class="tile is-child is-mobile box has-text-centered">
+      <table class="table is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>Part</th>
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Race</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Front Wing</td>
+          {% for i in setup.fw %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Rear Wing</td>
+          {% for i in setup.rw %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Engine</td>
+          {% for i in setup.eng %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Brakes</td>
+          {% for i in setup.bra %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Gearbox</td>
+          {% for i in setup.gea %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        <tr>
+          <td>Suspension</td>
+          {% for i in setup.sus %}
+          <td>{{ i }}</td>
+          {% endfor %}
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tile is-child is-mobile box has-text-centered">
+      <table class="table is-striped is-bordered has-text-centered">
+        <thead>
+          <tr>
+            <th>Weather</th>
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Race</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Weather</td>
+          <td>{{ weather.q1.weather }}</td>
+          <td>{{ weather.q2.weather }}</td>
+          <td>{{ weather.race.weather }}</td>
+        </tr>
+
+        <tr>
+          <td>Temperature</td>
+          <td>{{ weather.q1.temp }}</td>
+          <td>{{ weather.q2.temp }}</td>
+          <td>{{ weather.race.temp }}</td>
+        </tr>
+
+        <tr>
+          <td>Humidity</td>
+          <td>{{ weather.q1.hum }}</td>
+          <td>{{ weather.q2.hum }}</td>
+          <td>{{ weather.race.hum }}</td>
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="tile is-child is-mobile box has-text-centered">
+      <table class="table is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>Weather</th>
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Race</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Weather</td>
+          <td>{{ weather.q1.weather }}</td>
+          <td>{{ weather.q2.weather }}</td>
+          <td>{{ weather.race.weather }}</td>
+        </tr>
+
+        <tr>
+          <td>Temperature</td>
+          <td>{{ weather.q1.temp }}</td>
+          <td>{{ weather.q2.temp }}</td>
+          <td>{{ weather.race.temp }}</td>
+        </tr>
+
+        <tr>
+          <td>Humidity</td>
+          <td>{{ weather.q1.hum }}</td>
+          <td>{{ weather.q2.hum }}</td>
+          <td>{{ weather.race.hum }}</td>
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+
+
+
+    <div class="tile is-child is-mobile box has-text-centered">
+      <table class="table is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>Weather</th>
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Race</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Weather</td>
+          <td>{{ weather.q1.weather }}</td>
+          <td>{{ weather.q2.weather }}</td>
+          <td>{{ weather.race.weather }}</td>
+        </tr>
+
+        <tr>
+          <td>Temperature</td>
+          <td>{{ weather.q1.temp }}</td>
+          <td>{{ weather.q2.temp }}</td>
+          <td>{{ weather.race.temp }}</td>
+        </tr>
+
+        <tr>
+          <td>Humidity</td>
+          <td>{{ weather.q1.hum }}</td>
+          <td>{{ weather.q2.hum }}</td>
+          <td>{{ weather.race.hum }}</td>
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+
+
+    <div class="tile is-child is-mobile box has-text-centered">
+      <table class="table is-striped is-bordered">
+        <thead>
+          <tr>
+            <th>Weather</th>
+            <th>Q1</th>
+            <th>Q2</th>
+            <th>Race</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Weather</td>
+          <td>{{ weather.q1.weather }}</td>
+          <td>{{ weather.q2.weather }}</td>
+          <td>{{ weather.race.weather }}</td>
+        </tr>
+
+        <tr>
+          <td>Temperature</td>
+          <td>{{ weather.q1.temp }}</td>
+          <td>{{ weather.q2.temp }}</td>
+          <td>{{ weather.race.temp }}</td>
+        </tr>
+
+        <tr>
+          <td>Humidity</td>
+          <td>{{ weather.q1.hum }}</td>
+          <td>{{ weather.q2.hum }}</td>
+          <td>{{ weather.race.hum }}</td>
+        </tr>
+        
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</section>
+{% endif %}
+{% endblock %}

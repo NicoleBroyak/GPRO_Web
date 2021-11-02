@@ -1,0 +1,19 @@
+{% extends "gpro/base.html" %}
+
+{% block content %}
+{% if user.username %}
+    <section class="section is-mobile">
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form }}
+        <div class="field has-text-white">
+            <button type="submit" class="button">Submit</button>
+          </div>
+        </form>
+</section>
+
+{% else %}
+NOT AVAILABLE FOR GUESTS
+{% endif %}
+{% endblock %}
