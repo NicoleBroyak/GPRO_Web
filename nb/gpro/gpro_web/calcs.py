@@ -6,46 +6,86 @@ from gpro.gpro_web.module.partwear import partwear_lvl_factor
 
 class Driver:
     def __init__(self):
-        driver_stats = scrap_driver(scrapper)
-        self.oa = driver_stats[0]
-        self.con = driver_stats[1]
-        self.tal = driver_stats[2]
-        self.agg = driver_stats[3]
-        self.exp = driver_stats[4]
-        self.ti = driver_stats[5]
-        self.sta = driver_stats[6]
-        self.cha = driver_stats[7]
-        self.mot = driver_stats[8]
-        self.rep = driver_stats[9]
-        self.wei = driver_stats[10]
-        self.age = driver_stats[11]
+        self.driver_stats = scrap_driver(scrapper)
+        self.oa = self.driver_stats[0]
+        self.con = self.driver_stats[1]
+        self.tal = self.driver_stats[2]
+        self.agg = self.driver_stats[3]
+        self.exp = self.driver_stats[4]
+        self.ti = self.driver_stats[5]
+        self.sta = self.driver_stats[6]
+        self.cha = self.driver_stats[7]
+        self.mot = self.driver_stats[8]
+        self.rep = self.driver_stats[9]
+        self.wei = self.driver_stats[10]
+        self.age = self.driver_stats[11]
+        self.driver_dict_create()
+
+    def driver_dict_create(self):
+        self.skill_dict = {
+            'oa': self.driver_stats[0],
+            'con': self.driver_stats[1],
+            'tal': self.driver_stats[2],
+            'agg': self.driver_stats[3],
+            'exp': self.driver_stats[4],
+            'ti': self.driver_stats[5],
+            'sta': self.driver_stats[6],
+            'cha': self.driver_stats[7],
+            'mot': self.driver_stats[8],
+            'rep': self.driver_stats[9],
+            'wei': self.driver_stats[10],
+            'age': self.driver_stats[11],
+
+        }
 
 class Car:
     def __init__(self):
-        car_stats = scrap_car(scrapper)
-        self.cha = car_stats['Nadwozie']
-        self.eng = car_stats['Silnik']
-        self.fw = car_stats['Przednie skrzydło']
-        self.rw = car_stats['Tylne skrzydło']
-        self.und = car_stats['Podwozie']
-        self.sid = car_stats['Wloty powietrza']
-        self.coo = car_stats['Chłodzenie']
-        self.gea = car_stats['Skrzynia biegów']
-        self.bra = car_stats['Hamulce']
-        self.sus = car_stats['Zawieszenie']
-        self.ele = car_stats['Elektronika']
+        self.car_stats = scrap_car(scrapper)
+        self.cha = self.car_stats['Nadwozie']
+        self.eng = self.car_stats['Silnik']
+        self.fw = self.car_stats['Przednie skrzydło']
+        self.rw = self.car_stats['Tylne skrzydło']
+        self.und = self.car_stats['Podwozie']
+        self.sid = self.car_stats['Wloty powietrza']
+        self.coo = self.car_stats['Chłodzenie']
+        self.gea = self.car_stats['Skrzynia biegów']
+        self.bra = self.car_stats['Hamulce']
+        self.sus = self.car_stats['Zawieszenie']
+        self.ele = self.car_stats['Elektronika']
+        self.car_dict_create()
+
+# poprawić docelowo, żeby init nie dublował się
+    def car_dict_create(self):
+        self.car_dict = {
+            'cha': self.car_stats['Nadwozie'],
+            'eng': self.car_stats['Silnik'],
+            'fw': self.car_stats['Przednie skrzydło'],
+            'rw': self.car_stats['Tylne skrzydło'],
+            'und': self.car_stats['Podwozie'],
+            'sid': self.car_stats['Wloty powietrza'],
+            'coo': self.car_stats['Chłodzenie'],
+            'gea': self.car_stats['Skrzynia biegów'],
+            'bra': self.car_stats['Hamulce'],
+            'sus': self.car_stats['Zawieszenie'],
+            'ele': self.car_stats['Elektronika'],
+
+        }
+        
 
 class Weather:
     def __init__(self):
         self.weather_data = scrap_weather(scrapper)
         self.q1 = self.weather_data['q1']
         self.q2 = self.weather_data['q2']
+        self.race = self.weather_race_add_to_data()
+
+    def weather_race_add_to_data(self):
         self.weather_data['race'] = {
             'weather': calcs.gpro_race_weather,
             'temp': int(calcs.gpro_race_temp),
             'hum': int(calcs.gpro_race_hum),
         }
-        self.race = self.weather_data['race']
+        return self.weather_data['race']
 
 class Track:
     def __init__(self, weather):
@@ -98,7 +138,92 @@ class Calcs:
     def __init__(self):
         self.risk = 59
         self.data_confirm = False
+        self.setup_car_factor_multipliers_dict()
+        self.setup_driver_factor_multipliers_dict()
+        self.setup_weather_factor_multipliers_dict()
 
+    def setup_car_factor_wings_multipliers_dict(self):
+        setup_dict = {
+                     'fw': (30.03, -0.59),
+                     'rw': (30.03, -0.59),
+                     'cha': (-19.74, 0.47),
+                     'und': (-15.07, 0.32),
+                     }
+        return setup_dict
+
+
+    def setup_car_factor_engine_multipliers_dict(self):
+        setup_dict = {
+                     'eng': (16.04, -0.51),
+                     'coo': (4.9, -0.09),
+                     'ele': (3.34, -0.04),
+                     }
+        return setup_dict
+
+    def setup_car_factor_brakes_multipliers_dict(self):
+        setup_dict = {
+                     'cha': (6.04, -0.14),
+                     'bra': (-29.14, 0.71),
+                     'ele': (6.11, -0.09),
+                     }
+        return setup_dict
+
+    def setup_car_factor_gearbox_multipliers_dict(self):
+        setup_dict = {
+                     'gea': (-41, 1.09),
+                     'ele': (9, -0.14),
+                     }
+        return setup_dict
+
+    def setup_car_factor_suspension_multipliers_dict(self):
+        setup_dict = {
+                     'cha': (-15.27, 0.34),
+                     'und': (-10.72, 0.23),
+                     'sus': (31, -0.7),
+                     'sid': (6.03, -0.12)
+                     }
+        return setup_dict
+
+    def setup_car_factor_multipliers_dict(self):
+        self.setup_mult_dict = {
+            'wings': self.setup_car_factor_wings_multipliers_dict(),
+            'eng': self.setup_car_factor_engine_multipliers_dict(),
+            'bra': self.setup_car_factor_brakes_multipliers_dict(),
+            'gea': self.setup_car_factor_gearbox_multipliers_dict(),
+            'sus': self.setup_car_factor_suspension_multipliers_dict(),  
+        }
+
+    def setup_driver_factor_multipliers_dict(self):
+        self.setup_driver_factors_dict = {
+                     'wings': {'tal': -0.246534498671854},
+                     'eng': {'agg': 0.29521804804429},
+                     'bra': {'tal': -0.498},
+                     'gea': {'con': 0.5},
+                     'sus': {'wei': 2, 'exp': 0.75},
+                     }
+
+    def setup_weather_factor_multipliers_dict(self):
+        self.setup_weather_fact_dict = {
+            'wings': {'dry': 12, 'wet': 263},
+            'eng': {'dry': -3, 'wet': (0.7, -190)},
+            'bra': {'dry': 6, 'wet': (3.9883754414027, 105.532592432347)},
+            'gea': {'dry': -4, 'wet': (8.01996418151657, - 4.74271170354302)},
+            'sus': {'dry': -6, 'wet': (-1, -257)},
+            'ws': {'dry': 0.376337780506523, 'wet': 0.376337780506523},
+        }
+    
+    def setup_weather_factor(self, weather, mode, weather_mode):
+        self.weather_mode(weather, weather_mode)
+        if weather.mode == 'wet':
+            if mode == 'wings':
+                return (weather.mode['temp'] 
+                        * self.setup_weather_fact_dict[mode]['wet'] * 2)
+            return (weather.mode['temp'] 
+                    * self.setup_weather_fact_dict[mode]['wet'][0]
+                    + self.setup_weather_fact_dict[mode]['wet'][1])
+        return weather.mode['temp'] * self.setup_weather_fact_dict[mode]['dry']
+            
+        
     def weather_mode(self, weather, mode):
         if mode == "q2":
             weather.mode = weather.q2
@@ -106,119 +231,87 @@ class Calcs:
             weather.mode = weather.race
         else:
             weather.mode = weather.q1
+        print(mode, weather.mode)
+
+    def setup_driver_factor(self, driver, mode):
+        driver_factor = 0 
+        for skill, mult in self.setup_driver_factors_dict[mode].items():
+            driver_factor += driver.skill_dict[skill] * mult
+        return driver_factor
+
+    def setup_car_factor(self, car, mode):
+        car_lvl_factor, car_wear_factor = 0, 0
+        for part in self.setup_mult_dict[mode]:
+            car_lvl_factor += (
+            car.car_dict[part]['lvl'] * self.setup_mult_dict[mode][part][0]
+            )
+            car_wear_factor += (
+            car.car_dict[part]['wear'] * self.setup_mult_dict[mode][part][1]
+            )
+        return car_lvl_factor, car_wear_factor
+        
+
+    def wings_calc_driver_factor(self, driver, base, weather_factor):
+        driver_factor = driver.tal * math.floor((base
+        + weather_factor)) * -0.001349079032746
+        return driver_factor
 
     def wings_calc(self, track, weather, driver, car, mode=''):
-        if mode == "q2":
-            weather.mode = weather.q2
-        elif mode == 'race':
-            weather.mode = weather.race
-        else:
-            weather.mode = weather.q1
         base = track.wings * 2
-        dry_factor = weather.mode['temp'] * 12
-        wet_factor = (weather.mode['temp'] + 263) * 2
-        car_lvl_factor = 30.03 * (car.fw['lvl']
-        + car.rw['lvl']) + (-19.74 * car.cha['lvl']
-        + -15.07 * car.und['lvl'])
-        car_wear_factor = -0.59 * (car.fw['wear']
-        + car.rw['wear']) + (0.47 * car.cha['wear']
-        + 0.32 * car.und['wear'])
-        if weather.mode['weather'] == 'dry':
-            driver_factor = driver.tal * math.floor((base
-            + dry_factor)) * -0.001349079032746
-            wings = (base + dry_factor + (driver_factor
-            + car_lvl_factor) + car_wear_factor)/2
-            return wings
-        driver_factor = driver.tal * math.floor((base
-        + wet_factor)) * -0.001349079032746
-        wings = (base + wet_factor + (driver_factor
+        car_lvl_factor, car_wear_factor = self.setup_car_factor(car, 'wings')
+        weather_factor = self.setup_weather_factor(weather, 'wings', mode)
+        driver_factor = self.wings_calc_driver_factor(driver, base, weather_factor)
+        wings = (track.wings * 2 + weather_factor + (driver_factor
         + car_lvl_factor) + car_wear_factor)/2
         return wings
 
-    def ws_calc(self, track, weather, driver, car, mode=''):
-        self.weather_mode(weather, mode)
+    def ws_calc_factors(self, car, driver, weather, mode, track):
         ws_wing_factor = ((car.fw['lvl'] + car.rw['lvl'])/2 
         * 3.69107049712848)
-        ws_tal_factor = driver.tal * -0.246534498671854
-        ws_weather_factor = weather.mode['temp'] * 0.376337780506523
+        driver_factor = self.setup_driver_factor(driver, 'wings')
+        ws_weather_factor = self.setup_weather_factor(weather, 'ws', mode)
         ws_setup_factor = (self.wings_calc(track, weather, driver, car
         ,mode) * -0.189968386659174)
-        ws_dry = (track.ws + ws_tal_factor
-                 + ws_wing_factor + ws_weather_factor + ws_setup_factor)
+        return ws_wing_factor, driver_factor, ws_weather_factor, ws_setup_factor
+
+    def ws_calc(self, track, weather, driver, car, mode=''):
+        ws_calc_factors = self.ws_calc_factors(car, driver, weather, mode, track)
+        ws = (track.ws + ws_calc_factors[1]
+            + ws_calc_factors[0] + ws_calc_factors[2] + ws_calc_factors[3])
         if weather.mode['weather'] == 'dry':
-            return ws_dry
-        return ws_dry + 58.8818967363256
+            return ws
+        return ws + 58.8818967363256
 
     def eng_calc(self, track, weather, driver, car, mode=''):
-        self.weather_mode(weather, mode)
-        base = track.eng
-        aggr_factor = driver.agg * 0.29521804804429
-        car_lvl_factor = car.eng['lvl'] * 16.04 + (car.coo['lvl'] * 4.9
-        + car.ele['lvl'] * 3.34)
-        car_wear_factor = car.eng['wear'] * -0.51 + (car.coo['wear']
-        * -0.09 + car.ele['wear'] * -0.04)
+        driver_factor = self.setup_driver_factor(driver, 'eng')
+        car_lvl_factor, car_wear_factor = self.setup_car_factor(car, 'eng')
         car_factor = car_lvl_factor + car_wear_factor
-        if weather.mode['weather'] == 'dry':
-            weather_factor = weather.mode['temp'] * -3
-            base_dry = base + weather_factor
-            base_factor = base_dry * 0.001655723 + 0.0469416263186552
-        else:
-            weather_factor = weather.mode['temp'] * 0.7 - 190
-            base_wet = base + weather_factor
-            base_factor = base_wet * 0.001655723 + 0.0469416263186552
-        eng = (base + aggr_factor + base_factor 
+        weather_factor = self.setup_weather_factor(weather, 'eng', mode)
+        base_factor = (track.eng + weather_factor) * 0.001655723 + 0.0469416263186552
+        return (track.eng + driver_factor + base_factor 
               * driver.exp + car_factor + weather_factor)
-        return eng
 
     def bra_calc(self, track, weather, driver, car, mode=''):
-        self.weather_mode(weather, mode)
-        base = track.bra
-        tal_factor = driver.tal * -0.498
-        car_lvl_factor = car.cha['lvl'] * 6.04 + (car.bra['lvl']
-        * -29.14 + car.ele['lvl'] * 6.11)
-        car_wear_factor = car.cha['wear'] * -0.14 + (car.bra['wear']
-        * 0.71 + car.ele['wear'] * -0.09)
+        driver_factor = self.setup_driver_factor(driver, 'bra')
+        car_lvl_factor, car_wear_factor = self.setup_car_factor(car, 'bra')
         car_factor = car_lvl_factor + car_wear_factor
-        if weather.mode['weather'] == 'dry':
-            weather_factor = weather.mode['temp'] * 6
-        else:
-            weather_factor = (
-            weather.mode['temp'] * 3.9883754414027 + 105.532592432347)
-        bra = base + tal_factor + car_factor + weather_factor
-        return bra
+        weather_factor = self.setup_weather_factor(weather, 'bra', mode)
+        return track.bra + driver_factor + car_factor + weather_factor
 
     def gea_calc(self, track, weather, driver, car, mode=''):
-        self.weather_mode(weather, mode)
         base = track.gea
-        con_factor = driver.con / 2
-        car_lvl_factor = car.gea['lvl'] * -41 + car.ele['lvl'] * 9
-        car_wear_factor = car.gea['wear'] * 1.09 + car.ele['wear'] * -0.14
+        driver_factor = self.setup_driver_factor(driver, 'gea')
+        car_lvl_factor, car_wear_factor = self.setup_car_factor(car, 'gea')
         car_factor = car_lvl_factor + car_wear_factor
-        if weather.mode['weather'] == 'dry':
-            weather_factor = weather.mode['temp'] * -4
-        else:
-            weather_factor = (
-            weather.mode['temp'] * -8.01996418151657 - 4.74271170354302)
-        gea = base + con_factor + car_factor + weather_factor
-        return gea
+        weather_factor = self.setup_weather_factor(weather, 'gea', mode)
+        return base + driver_factor + car_factor + weather_factor
 
     def sus_calc(self, track, weather, driver, car, mode=''):
-        self.weather_mode(weather, mode)
-        base = track.sus
-        dri_factor = driver.wei * 2 + driver.exp * 0.75
-        car_lvl_factor = ((car.cha['lvl'] * -15.27) + (car.und['lvl'] * -10.72)
-        + (car.sus['lvl'] * 31) + (car.sid['lvl'] * 6.03))
-        car_wear_factor = ((car.cha['wear'] * 0.34) + (car.und['wear'] * 0.23)
-        + (car.sus['wear'] * -0.7) + (car.sid['wear'] * -0.12))
+        dri_factor = self.setup_driver_factor(driver, 'sus')
+        car_lvl_factor, car_wear_factor = self.setup_car_factor(car, 'sus')
         car_factor = car_lvl_factor + car_wear_factor
-        if weather.mode['weather'] == 'dry':
-            weather_factor = weather.mode['temp'] * -6
-        else:
-            dri_factor = dri_factor + driver.ti * 0.11
-            weather_factor = -257 + -1 * (weather.mode['temp'])
-            print(weather_factor)
-        sus = base + dri_factor + car_factor + weather_factor
-        return sus
+        weather_factor = self.setup_weather_factor(weather, 'sus', mode)
+        return track.sus + dri_factor + car_factor + weather_factor
 
     def fuel_calc(self, track, weather, driver, car):
         fuel_calc_list = list()
@@ -288,20 +381,17 @@ class Calcs:
     def cha_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.cha['lvl']]
         risk_factor = lvl_factor ** self.risk
-        cha_wear = driv_factor * risk_factor * track.cha_wear 
-        return cha_wear
+        return driv_factor * risk_factor * track.cha_wear 
 
     def eng_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.eng['lvl']]
         risk_factor = lvl_factor ** self.risk
-        eng_wear = driv_factor * risk_factor * track.eng_wear 
-        return eng_wear
+        return driv_factor * risk_factor * track.eng_wear 
 
     def fw_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.fw['lvl']]
         risk_factor = lvl_factor ** self.risk
-        fw_wear = driv_factor * risk_factor * track.fw_wear 
-        return fw_wear
+        return driv_factor * risk_factor * track.fw_wear 
 
     def rw_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.rw['lvl']]
@@ -318,38 +408,32 @@ class Calcs:
     def sid_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.sid['lvl']]
         risk_factor = lvl_factor ** self.risk
-        sid_wear = driv_factor * risk_factor * track.sid_wear 
-        return sid_wear
+        return driv_factor * risk_factor * track.sid_wear 
 
     def coo_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.coo['lvl']]
         risk_factor = lvl_factor ** self.risk
-        coo_wear = driv_factor * risk_factor * track.coo_wear 
-        return coo_wear
+        return driv_factor * risk_factor * track.coo_wear 
 
     def gea_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.gea['lvl']]
         risk_factor = lvl_factor ** self.risk
-        gea_wear = driv_factor * risk_factor * track.gea_wear 
-        return gea_wear
+        return driv_factor * risk_factor * track.gea_wear 
 
     def bra_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.bra['lvl']]
         risk_factor = lvl_factor ** self.risk
-        bra_wear = driv_factor * risk_factor * track.bra_wear 
-        return bra_wear
+        return driv_factor * risk_factor * track.bra_wear 
 
     def sus_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.sus['lvl']]
         risk_factor = lvl_factor ** self.risk
-        sus_wear = driv_factor * risk_factor * track.sus_wear 
-        return sus_wear
+        return driv_factor * risk_factor * track.sus_wear 
 
     def ele_wear_calc(self, track, car, driv_factor):
         lvl_factor = partwear_lvl_factor[car.ele['lvl']]
-        risk_factor = lvl_factor ** self.risk
-        ele_wear = driv_factor * risk_factor * track.ele_wear 
-        return ele_wear
+        risk_factor = lvl_factor ** self.risk 
+        return driv_factor * risk_factor * track.ele_wear 
 
     def part_wear(self, track, driver, car):
         driv_factor = self.part_wear_driv_factor(driver)
