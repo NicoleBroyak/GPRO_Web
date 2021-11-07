@@ -308,7 +308,7 @@ class Calcs:
         return track.data['sus'] + factors[0]
 
 
-    def fuel_factors(self, driver, car, weather):
+    def fuel_factors_calc(self, driver, car, weather):
         self.fuel_factors_dict = {
             'driver': [
                 {'con': 1.00008, 'agg': 1.00018,'exp': 1.00014,'ti': 1.00036},
@@ -316,21 +316,37 @@ class Calcs:
             'car': [{'eng': 1.014, 'ele': 1.009}, car.car_dict],
             'weather': [{'hum': 1.00025}, weather.race],
         }
-        self.factors = 0
+        self.fuel_factors = 0
 
     def fuel_calc_factors(self,track, driver, car, weather):
-        self.fuel_factors(driver, car, weather)
+        self.fuel_factors_calc(driver, car, weather)
         for el in self.fuel_factors_dict.keys():
             mode = self.fuel_factors_dict[el][1]
             for fctr, mt in self.fuel_factors_dict[el][0].items():
                 mf = mode[fctr]['lvl'] if el == 'car' else mode[fctr]
                 to_add = track.fuel - track.fuel * ( mt ** (mf - track.data[fctr]))
-                self.factors += -(to_add) if fctr == 'agg' else to_add
+                self.fuel_factors += -(to_add) if fctr == 'agg' else to_add
 
     def fuel_calc(self, track, weather, driver, car):
         self.fuel_calc_factors(track, driver, car, weather)
-        track_fuel = (self.factors + track.fuel) * 1.01
+        track_fuel = (self.fuel_factors_calc + track.fuel) * 1.01
         return track_fuel, track_fuel * (track.wc + 0.01)
+    
+
+    """
+    def tyre_factors_calc(self, driver, car, weather, track, tyre):
+        self.fuel_factors_dict = {
+            'driver': [
+                {'agg': 0.999670155,'exp': 1.00022936,'wei': 0.999858329},
+                driver.skill_dict ],
+            'car': [{'sus': 1.009339294}, car.car_dict],
+            'weather': [{'temp': 0.988463622}, weather.race],
+            'track': [{'tyre_wear': 0.896416176238624}, track.data],
+            'tyre': [{'durability': 1.048876356}, track.data],
+        }
+        self.tyre_factors = 0
+    """
+
     
     def tyre_calc(self, track, weather, driver, car, tyre):
         tyre_wear_list = list()
