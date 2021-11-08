@@ -7,69 +7,26 @@ from gpro.gpro_web.module.partwear import partwear_lvl_factor
 class Driver:
     def __init__(self):
         self.driver_stats = scrap_driver(scrapper)
-        self.oa = self.driver_stats[0]
-        self.con = self.driver_stats[1]
-        self.tal = self.driver_stats[2]
-        self.agg = self.driver_stats[3]
-        self.exp = self.driver_stats[4]
-        self.ti = self.driver_stats[5]
-        self.sta = self.driver_stats[6]
-        self.cha = self.driver_stats[7]
-        self.mot = self.driver_stats[8]
-        self.rep = self.driver_stats[9]
-        self.wei = self.driver_stats[10]
-        self.age = self.driver_stats[11]
         self.driver_dict_create()
 
     def driver_dict_create(self):
-        self.skill_dict = {
-            'oa': self.driver_stats[0],
-            'con': self.driver_stats[1],
-            'tal': self.driver_stats[2],
-            'agg': self.driver_stats[3],
-            'exp': self.driver_stats[4],
-            'ti': self.driver_stats[5],
-            'sta': self.driver_stats[6],
-            'cha': self.driver_stats[7],
-            'mot': self.driver_stats[8],
-            'rep': self.driver_stats[9],
-            'wei': self.driver_stats[10],
-            'age': self.driver_stats[11],
-
-        }
+        i = self.driver_stats
+        self.skill_dict = {'oa': i[0], 'con': i[1], 'tal': i[2], 'agg': i[3], 
+        'exp': i[4], 'ti': i[5], 'sta': i[6], 'cha': i[7], 'mot': i[8], 
+        'rep': i[9], 'wei': i[10], 'age': i[11] }
 
 class Car:
     def __init__(self):
         self.car_stats = scrap_car(scrapper)
-        self.cha = self.car_stats['Nadwozie']
-        self.eng = self.car_stats['Silnik']
-        self.fw = self.car_stats['Przednie skrzydło']
-        self.rw = self.car_stats['Tylne skrzydło']
-        self.und = self.car_stats['Podwozie']
-        self.sid = self.car_stats['Wloty powietrza']
-        self.coo = self.car_stats['Chłodzenie']
-        self.gea = self.car_stats['Skrzynia biegów']
-        self.bra = self.car_stats['Hamulce']
-        self.sus = self.car_stats['Zawieszenie']
-        self.ele = self.car_stats['Elektronika']
         self.car_dict_create()
 
-# poprawić docelowo, żeby init nie dublował się
     def car_dict_create(self):
-        self.car_dict = {
-            'cha': self.car_stats['Nadwozie'],
-            'eng': self.car_stats['Silnik'],
-            'fw': self.car_stats['Przednie skrzydło'],
-            'rw': self.car_stats['Tylne skrzydło'],
-            'und': self.car_stats['Podwozie'],
-            'sid': self.car_stats['Wloty powietrza'],
-            'coo': self.car_stats['Chłodzenie'],
-            'gea': self.car_stats['Skrzynia biegów'],
-            'bra': self.car_stats['Hamulce'],
-            'sus': self.car_stats['Zawieszenie'],
-            'ele': self.car_stats['Elektronika'],
-
-        }
+        i = self.car_stats
+        self.car_dict = {'cha': i['Nadwozie'], 'eng': i['Silnik'], 
+        'fw': i['Przednie skrzydło'], 'rw': i['Tylne skrzydło'],
+        'und': i['Podwozie'], 'sid': i['Wloty powietrza'], 'coo': i['Chłodzenie']
+        ,'gea': i['Skrzynia biegów'],'bra': i['Hamulce'],'sus': i['Zawieszenie'],
+        'ele': i['Elektronika']}
         
 
 class Weather:
@@ -90,50 +47,11 @@ class Weather:
 class Track:
     def __init__(self, weather):
         self.name = weather.weather_data['track']
-        data = trackdata[self.name]
         self.data = trackdata[self.name]
-        self.pow = data['power']
-        self.han = data['handling']
-        self.acc = data['acceleration']
-        self.downforce = data['downforce']
-        self.overtaking = data['overtaking']
-        self.sus = data['suspension_track']
-        self.corners = data['corners']
-        self.length= data['length']
-        self.laps = data['laps']
-        self.tyre_wear = data['tyre_wear']
-        self.fuel_wear = data['fuel_wear']
-        self.ctrack = data['ctrack2_']
-        self.ws = data['ws']
-        self.wings = data['wings']
-        self.eng = data['eng']
-        self.bra = data['bra']
-        self.gea = data['gea']
-        self.sus = data['sus']
-        self.fuel = data['fuel']
-        self.con = data['con']
-        self.agg = data['agg']
-        self.exp = data['exp']
-        self.ti = data['ti']
-        self.englvl = data['eng']
-        self.ele = data['ele']
-        self.hum = data['hum']
-        self.wc = data['wc']/100
-        self.cha_wear = data['cha_wear']
-        self.eng_wear = data['eng_wear']
-        self.fw_wear = data['fw_wear']
-        self.rw_wear = data['rw_wear']
-        self.und_wear = data['und_wear']
-        self.sid_wear = data['sid_wear']
-        self.coo_wear = data['coo_wear']
-        self.gea_wear = data['gea_wear']
-        self.bra_wear = data['bra_wear']
-        self.sus_wear = data['sus_wear']
-        self.ele_wear = data['ele_wear']
 
 class Tyre:
     def __init__(self):
-        self.durability = scrap_tyre(scrapper)
+        self.tyre_dict = {'durability': scrap_tyre(scrapper)}
 
 class Calcs:
     def __init__(self):
@@ -144,46 +62,24 @@ class Calcs:
         self.setup_weather_factor_multipliers_dict()
 
     def setup_car_factor_wings_multipliers_dict(self):
-        setup_dict = {
-                     'fw': (30.03, -0.59),
-                     'rw': (30.03, -0.59),
-                     'cha': (-19.74, 0.47),
-                     'und': (-15.07, 0.32),
-                     }
-        return setup_dict
+        return {'fw': (30.03, -0.59), 'rw': (30.03, -0.59),
+                     'cha': (-19.74, 0.47), 'und': (-15.07, 0.32)}
 
 
     def setup_car_factor_engine_multipliers_dict(self):
-        setup_dict = {
-                     'eng': (16.04, -0.51),
-                     'coo': (4.9, -0.09),
-                     'ele': (3.34, -0.04),
-                     }
-        return setup_dict
+        return {'eng': (16.04, -0.51), 'coo': (4.9, -0.09),
+                     'ele': (3.34, -0.04)}
 
     def setup_car_factor_brakes_multipliers_dict(self):
-        setup_dict = {
-                     'cha': (6.04, -0.14),
-                     'bra': (-29.14, 0.71),
-                     'ele': (6.11, -0.09),
-                     }
-        return setup_dict
+        return {'cha': (6.04, -0.14), 'bra': (-29.14, 0.71),
+                     'ele': (6.11, -0.09)}
 
     def setup_car_factor_gearbox_multipliers_dict(self):
-        setup_dict = {
-                     'gea': (-41, 1.09),
-                     'ele': (9, -0.14),
-                     }
-        return setup_dict
+        return {'gea': (-41, 1.09), 'ele': (9, -0.14)}
 
     def setup_car_factor_suspension_multipliers_dict(self):
-        setup_dict = {
-                     'cha': (-15.27, 0.34),
-                     'und': (-10.72, 0.23),
-                     'sus': (31, -0.7),
-                     'sid': (6.03, -0.12)
-                     }
-        return setup_dict
+        return {'cha': (-15.27, 0.34), 'und': (-10.72, 0.23),
+                     'sus': (31, -0.7), 'sid': (6.03, -0.12)}
 
     def setup_car_factor_multipliers_dict(self):
         self.setup_mult_dict = {
@@ -232,7 +128,6 @@ class Calcs:
             weather.mode = weather.race
         else:
             weather.mode = weather.q1
-        print(mode, weather.mode)
 
     def setup_driver_factor(self, driver, mode):
         driver_factor = 0 
@@ -253,7 +148,7 @@ class Calcs:
         
 
     def wings_calc_driver_factor(self, driver, base, weather_factor):
-        driver_factor = driver.tal * math.floor((base
+        driver_factor = driver.skill_dict['tal'] * math.floor((base
         + weather_factor)) * -0.001349079032746
         return driver_factor
 
@@ -266,7 +161,7 @@ class Calcs:
             + car_lvl_factor) + car_wear_factor)/2
 
     def ws_calc_factors(self, car, driver, weather, mode, track):
-        ws_wing_factor = ((car.fw['lvl'] + car.rw['lvl'])/2 
+        ws_wing_factor = ((car.car_dict['fw']['lvl'] + car.car_dict['rw']['lvl'])/2 
         * 3.69107049712848)
         driver_factor = self.setup_driver_factor(driver, 'wings')
         ws_weather_factor = self.setup_weather_factor(weather, 'ws', mode)
@@ -292,7 +187,7 @@ class Calcs:
     def eng_calc(self, track, weather, driver, car, mode=''):
         factors = self.setup_calc_all_factors(weather, driver, car, mode, 'eng')
         base_factor = (track.data['eng_set'] + factors[1]) * 0.001655723 + 0.0469416263186552
-        return (track.data['eng_set'] + base_factor * driver.exp + factors[0])
+        return (track.data['eng_set'] + base_factor * driver.skill_dict['exp'] + factors[0])
 
 
     def bra_calc(self, track, weather, driver, car, mode=''):
@@ -318,76 +213,73 @@ class Calcs:
         }
         self.fuel_factors = 0
 
-    def fuel_calc_factors(self,track, driver, car, weather):
-        self.fuel_factors_calc(driver, car, weather)
+    def fuel_calc_factors(self,track):
         for el in self.fuel_factors_dict.keys():
             mode = self.fuel_factors_dict[el][1]
             for fctr, mt in self.fuel_factors_dict[el][0].items():
                 mf = mode[fctr]['lvl'] if el == 'car' else mode[fctr]
-                to_add = track.fuel - track.fuel * ( mt ** (mf - track.data[fctr]))
+                to_add = (track.data['fuel'] - track.data['fuel']
+                * ( mt ** (mf - track.data[fctr])))
                 self.fuel_factors += -(to_add) if fctr == 'agg' else to_add
 
     def fuel_calc(self, track, weather, driver, car):
-        self.fuel_calc_factors(track, driver, car, weather)
-        track_fuel = (self.fuel_factors_calc + track.fuel) * 1.01
-        return track_fuel, track_fuel * (track.wc + 0.01)
-    
+        self.fuel_factors_calc(driver, car, weather)
+        self.fuel_calc_factors(track)
+        track_fuel = (self.fuel_factors + track.data['fuel']) * 1.01
+        return track_fuel, track_fuel * (track.data['wc'] + 0.01)
 
-    """
+    def tyre_calc(self, track, weather, driver, car, tyre):
+        self.tyre_calc_mults(track)
+        self.tyre_factors_calc(driver, car, weather, track, tyre)
+        self.tyre_calc_factors()
+        self.tyre_calc_comp_wear(track)
+        return self.tyre_wear_list
+
+
+    def tyre_calc_mults(self, track):
+        self.tyre_comp_mults = [[0, 0.998163750229071], [1, 0.997064844817654],
+        [2, 0.996380346554349], [3, 0.995862526048112], [5, 0.996087854384523]]
+        self.tyre_other_mults = [129.776458172062, 0.73]
+        self.track_base = self.tyre_other_mults[0] * track.data['ctrack2']
+        self.wet_track_base = self.track_base * self.tyre_other_mults[1]
+
+
+    def tyre_calc_factors(self):
+        for el in self.tyre_factors_dict.keys():
+            mode = self.tyre_factors_dict[el][1]
+            for fctr, mt in self.tyre_factors_dict[el][0].items():
+                mf = mode[fctr]['lvl'] if el == 'car' else mode[fctr]
+                to_mult = mt ** mf 
+                self.tyre_factors = self.tyre_factors * to_mult
+
+
+   
     def tyre_factors_calc(self, driver, car, weather, track, tyre):
-        self.fuel_factors_dict = {
+        self.tyre_factors_dict = {
             'driver': [
                 {'agg': 0.999670155,'exp': 1.00022936,'wei': 0.999858329},
                 driver.skill_dict ],
             'car': [{'sus': 1.009339294}, car.car_dict],
             'weather': [{'temp': 0.988463622}, weather.race],
             'track': [{'tyre_wear': 0.896416176238624}, track.data],
-            'tyre': [{'durability': 1.048876356}, track.data],
+            'tyre': [{'durability': 1.048876356}, tyre.tyre_dict],
         }
-        self.tyre_factors = 0
-    """
+        self.tyre_factors = 1
 
+    def tyre_calc_comp_wear(self, track):
+        self.tyre_wear_list = list()
+        for comp in self.tyre_comp_mults:
+            tyre_comp_factor = 1.390293715 ** comp[0]
+            risk_factor = comp[1] ** self.risk
+            mult = (self.tyre_factors * tyre_comp_factor * risk_factor)
+            base = self.wet_track_base if comp[0] == 5 else self.track_base
+            self.tyre_wear_list.append(mult * base)
     
-    def tyre_calc(self, track, weather, driver, car, tyre):
-        tyre_wear_list = list()
-        XS_MULT = 0.998163750229071
-        S_MULT = 0.997064844817654
-        M_MULT = 0.996380346554349
-        H_MULT = 0.995862526048112
-        R_MULT = 0.996087854384523
-        MULTS = [XS_MULT, S_MULT, M_MULT, H_MULT, '', R_MULT]
-        BASE = 129.776458172062
-        WET_MULT = 0.73
-        track_base = BASE * track.data['ctrack']
-        wet_track_base = track_base * WET_MULT
-        track_factor = 0.896416176238624 ** track.data['tyre_wear']
-        temp_factor = 0.988463622 ** weather.race['temp']
-        tyre_supp_factor = 1.048876356 ** tyre.durability
-        sus_factor = 1.009339294 ** car.sus['lvl']
-        agg_factor = 0.999670155 ** driver.agg
-        exp_factor = 1.00022936 ** driver.exp
-        wei_factor = 0.999858329 ** driver.wei
-        risk = self.risk
-        tyre_comp = 0
-        for i in range(0,4):
-            tyre_comp_factor = 1.390293715 ** tyre_comp
-            risk_factor = MULTS[tyre_comp] ** risk
-            mult = (track_factor * temp_factor * tyre_supp_factor * sus_factor
-            * tyre_comp_factor * agg_factor * exp_factor * wei_factor * risk_factor)
-            tyre_wear_list.append(track_base * mult)
-            tyre_comp += 1
-        tyre_comp = 5
-        tyre_comp_factor = 1.390293715 ** tyre_comp
-        risk_factor = MULTS[tyre_comp] ** risk
-        mult = (track_factor * temp_factor * tyre_supp_factor * sus_factor
-        * tyre_comp_factor * agg_factor * exp_factor * wei_factor * risk_factor)
-        tyre_wear_list.append(wet_track_base * mult)
-        return tyre_wear_list
 
     def part_wear_driv_factor(self, driver):
-        con_factor = 0.998789138 ** driver.con
-        tal_factor = 0.998751839 ** driver.tal
-        exp_factor = 0.998707677 ** driver.exp
+        con_factor = 0.998789138 ** driver.skill_dict['con']
+        tal_factor = 0.998751839 ** driver.skill_dict['tal']
+        exp_factor = 0.998707677 ** driver.skill_dict['exp']
         return exp_factor * con_factor * tal_factor
 
 

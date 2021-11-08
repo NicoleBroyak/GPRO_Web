@@ -69,62 +69,62 @@
         <tbody>
         <tr>
           <td>Overall</td>
-          <td>{{ driver.oa }}</td>
+          <td>{{ driver_dict.oa }}</td>
         </tr>
 
         <tr>
           <td>Concentration</td>
-          <td>{{ driver.con }}</td>
+          <td>{{ driver_dict.con }}</td>
         </tr>
 
         <tr>
           <td>Talent</td>
-          <td>{{ driver.tal }}</td>
+          <td>{{ driver_dict.tal }}</td>
         </tr>
 
         <tr>
           <td>Aggressiveness</td>
-          <td>{{ driver.agg }}</td>
+          <td>{{ driver_dict.agg }}</td>
         </tr>
 
         <tr>
           <td>Exprerience</td>
-          <td>{{ driver.exp }}</td>
+          <td>{{ driver_dict.exp }}</td>
         </tr>
 
         <tr>
           <td>Technical Insight</td>
-          <td>{{ driver.ti }}</td>
+          <td>{{ driver_dict.ti }}</td>
         </tr>
 
         <tr>
           <td>Stamina</td>
-          <td>{{ driver.sta }}</td>
+          <td>{{ driver_dict.sta }}</td>
         </tr>
 
         <tr>
           <td>Charisma</td>
-          <td>{{ driver.cha }}</td>
+          <td>{{ driver_dict.cha }}</td>
         </tr>
 
         <tr>
           <td>Motivation</td>
-          <td>{{ driver.mot }}</td>
+          <td>{{ driver_dict.mot }}</td>
         </tr>
 
         <tr>
           <td>Reputation</td>
-          <td>{{ driver.rep }}</td>
+          <td>{{ driver_dict.rep }}</td>
         </tr>
 
         <tr>
           <td>Weight</td>
-          <td>{{ driver.wei }}</td>
+          <td>{{ driver_dict.wei }}</td>
         </tr>
 
         <tr>
           <td>Age</td>
-          <td>{{ driver.age }}</td>
+          <td>{{ driver_dict.age }}</td>
         </tr>
         </tbody>
       </table>
@@ -146,8 +146,8 @@
         <tbody>
         <tr>
           <td>Chassis</td>
-          <td>{{ car.cha.lvl }}</td>
-          <td>{{ car.cha.wear }}</td>
+          <td>{{ car_dict.cha.lvl }}</td>
+          <td>{{ car_dict.cha.wear }}</td>
           {% for i in partwear.cha %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -155,8 +155,8 @@
 
         <tr>
           <td>Engine</td>
-          <td>{{ car.eng.lvl }}</td>
-          <td>{{ car.eng.wear }}</td>
+          <td>{{ car_dict.eng.lvl }}</td>
+          <td>{{ car_dict.eng.wear }}</td>
           {% for i in partwear.eng %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -164,8 +164,8 @@
 
         <tr>
           <td>Front wing</td>
-          <td>{{ car.fw.lvl }}</td>
-          <td>{{ car.fw.wear }}</td>
+          <td>{{ car_dict.fw.lvl }}</td>
+          <td>{{ car_dict.fw.wear }}</td>
           {% for i in partwear.fw %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -173,8 +173,8 @@
 
         <tr>
           <td>Rear wing</td>
-          <td>{{ car.rw.lvl }}</td>
-          <td>{{ car.rw.wear }}</td>
+          <td>{{ car_dict.rw.lvl }}</td>
+          <td>{{ car_dict.rw.wear }}</td>
           {% for i in partwear.rw %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -182,8 +182,8 @@
 
         <tr>
           <td>Underbody</td>
-          <td>{{ car.und.lvl }}</td>
-          <td>{{ car.und.wear }}</td>
+          <td>{{ car_dict.und.lvl }}</td>
+          <td>{{ car_dict.und.wear }}</td>
           {% for i in partwear.und %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -191,8 +191,8 @@
 
         <tr>
           <td>Sidepods</td>
-          <td>{{ car.sid.lvl }}</td>
-          <td>{{ car.sid.wear }}</td>
+          <td>{{ car_dict.sid.lvl }}</td>
+          <td>{{ car_dict.sid.wear }}</td>
           {% for i in partwear.sid %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -200,8 +200,8 @@
 
         <tr>
           <td>Cooling</td>
-          <td>{{ car.coo.lvl }}</td>
-          <td>{{ car.coo.wear }}</td>
+          <td>{{ car_dict.coo.lvl }}</td>
+          <td>{{ car_dict.coo.wear }}</td>
           {% for i in partwear.coo %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -209,8 +209,8 @@
 
         <tr>
           <td>Gearbox</td>
-          <td>{{ car.gea.lvl }}</td>
-          <td>{{ car.gea.wear }}</td>
+          <td>{{ car_dict.gea.lvl }}</td>
+          <td>{{ car_dict.gea.wear }}</td>
           {% for i in partwear.gea %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -218,8 +218,8 @@
 
         <tr>
           <td>Brakes</td>
-          <td>{{ car.bra.lvl }}</td>
-          <td>{{ car.bra.wear }}</td>
+          <td>{{ car_dict.bra.lvl }}</td>
+          <td>{{ car_dict.bra.wear }}</td>
           {% for i in partwear.bra %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -227,8 +227,8 @@
 
         <tr>
           <td>Suspension</td>
-          <td>{{ car.sus.lvl }}</td>
-          <td>{{ car.sus.wear }}</td>
+          <td>{{ car_dict.sus.lvl }}</td>
+          <td>{{ car_dict.sus.wear }}</td>
           {% for i in partwear.sus %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -236,8 +236,8 @@
 
         <tr>
           <td>Electronics</td>
-          <td>{{ car.ele.lvl }}</td>
-          <td>{{ car.ele.wear }}</td>
+          <td>{{ car_dict.ele.lvl }}</td>
+          <td>{{ car_dict.ele.wear }}</td>
           {% for i in partwear.ele %}
           <td>{{ i }}</td>
           {% endfor %}
@@ -260,7 +260,7 @@
         <tbody>
         <tr>
           <td>Wear</td>
-          {% for i in calcs.tyre_wear_list %}
+          {% for i in calcs.tyre_wear_list_100 %}
           <td><p class="has-text-centered">{{ i }}</p></td>
           {% endfor %}
         </tr>

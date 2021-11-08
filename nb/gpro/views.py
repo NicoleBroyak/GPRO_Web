@@ -43,7 +43,6 @@ def gpro_main(request):
     if form.is_valid():
         calcs.data_confirm = True
         calcs = c.calcs
-        print(calcs.gpro_login)
         weather = c.Weather()
         track = c.Track(weather)
         driver = c.Driver()
@@ -88,29 +87,23 @@ def gpro_main(request):
         #print(fuel)
         calcs.fuel_wear_list = [
             round(calcs.fuel[0], 2),
-            round(calcs.fuel[0]/track.laps,2),
+            round(calcs.fuel[0]/track.data['laps'],2),
             round(calcs.fuel[1], 2),
-            round(calcs.fuel[1]/track.laps,2),
+            round(calcs.fuel[1]/track.data['laps'],2),
         ]
-        calcs.tyre_wear_list = [
-            math.floor(calcs.tyre[0]/track.length),
-            math.floor(calcs.tyre[1]/track.length),
-            math.floor(calcs.tyre[2]/track.length),
-            math.floor(calcs.tyre[3]/track.length),
-            math.floor(calcs.tyre[4]/track.length),
-        ]
-        calcs.tyre_wear_list_80 = [
-            math.floor(math.prod([calcs.tyre[0], 0.8])/track.length),
-            math.floor(math.prod([calcs.tyre[1], 0.8])/track.length),
-            math.floor(math.prod([calcs.tyre[2], 0.8])/track.length),
-            math.floor(math.prod([calcs.tyre[3], 0.8])/track.length),
-            math.floor(math.prod([calcs.tyre[4], 0.8])/track.length),
-        ]
+        calcs.tyre_wear_list_100  = list()
+        for tyre in calcs.tyre_wear_list:
+            calcs.tyre_wear_list_100.append(math.floor(tyre / track.data['length']))
+        calcs.tyre_wear_list_80 = list()
+        for tyre in calcs.tyre_wear_list:
+            calcs.tyre_wear_list_80.append(math.floor(tyre / track.data['length'] * 0.8))
         calcs.partwear = calcs.part_wear(track, driver, car)
         s.scrapper.quit()
         context =  {
             'car': car,
+            'car_dict': car.car_dict,
             'driver': driver,
+            'driver_dict': driver.skill_dict,
             'weather': weather,
             'track': track,
             'tyre': tyre,

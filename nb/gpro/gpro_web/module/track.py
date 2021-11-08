@@ -56,7 +56,7 @@ def trackdata_dict_create():
                             'bra_wear': float(lines[42]),
                             'sus_wear': float(lines[43]),
                             'ele_wear': float(lines[44]),
-                            'ctrack2_': float(lines[45].replace('%',''))/100,
+                            'ctrack2': float(lines[45].replace('%',''))/100,
                             'ctrack': float(lines[46].replace('%',''))
                 }
                 trackdata[str(lines[0])] = linedict
