@@ -20,7 +20,7 @@ def gprocalc1(request):
     if form.is_valid():
         c.calcs.gpro_login = form.cleaned_data['gpro_login']
         c.calcs.gpro_password = form.cleaned_data['gpro_password']
-        c.calcs.risk = int(form.cleaned_data['gpro_risk'])
+        c.calcs.risk = form.cleaned_data['gpro_risk']
         c.calcs.gpro_race_weather = form.cleaned_data['gpro_race_weather']
         c.calcs.gpro_race_temp = form.cleaned_data['gpro_race_temp']
         c.calcs.gpro_race_hum = form.cleaned_data['gpro_race_hum']
