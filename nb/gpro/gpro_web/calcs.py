@@ -6,7 +6,7 @@ from gpro.gpro_web.module.partwear import partwear_lvl_factor
 
 class Driver:
     def __init__(self):
-        self.driver_stats = scrap_driver(scrapper)
+        self.driver_stats = scrap.scrap_driver(scrapper)
         self.driver_dict_create()
 
     def driver_dict_create(self):
@@ -17,7 +17,7 @@ class Driver:
 
 class Car:
     def __init__(self):
-        self.car_stats = scrap_car(scrapper)
+        self.car_stats = scrap.scrap_car(scrapper)
         self.car_dict_create()
 
     def car_dict_create(self):
@@ -31,7 +31,7 @@ class Car:
 
 class Weather:
     def __init__(self):
-        self.weather_data = scrap_weather(scrapper)
+        self.weather_data = scrap.scrap_weather(scrapper)
         self.q1 = self.weather_data['q1']
         self.q2 = self.weather_data['q2']
         self.race = self.weather_race_add_to_data()
@@ -51,7 +51,7 @@ class Track:
 
 class Tyre:
     def __init__(self):
-        self.tyre_dict = {'durability': scrap_tyre(scrapper)}
+        self.tyre_dict = {'durability': scrap.scrap_tyre(scrapper)}
 
 class Calcs:
     def __init__(self):
@@ -226,7 +226,7 @@ class Calcs:
         self.fuel_factors_calc(driver, car, weather)
         self.fuel_calc_factors(track)
         track_fuel = (self.fuel_factors + track.data['fuel']) * 1.01
-        return track_fuel, track_fuel * (track.data['wc'] + 0.01)
+        return track_fuel, track_fuel * (track.data['wc']/100 + 0.01)
 
     def tyre_calc(self, track, weather, driver, car, tyre):
         self.tyre_calc_mults(track)

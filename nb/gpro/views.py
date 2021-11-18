@@ -33,7 +33,7 @@ def gpro_main(request):
     calcs = c.calcs
     form = ScrapConfirmForm(request.POST)
     if not calcs.data_confirm:
-        s.gpro_login(s.scrapper, calcs.gpro_login, calcs.gpro_password)
+        s.scrap.gpro_login(s.scrapper, calcs.gpro_login, calcs.gpro_password)
         weather = c.Weather()
         context = {
         'weather': weather.weather_data,

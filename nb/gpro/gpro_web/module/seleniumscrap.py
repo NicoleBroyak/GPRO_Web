@@ -1,124 +1,155 @@
+from os import scandir
 from django.http import request
 from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.webdriver import WebDriver
+import datetime
 from gpro.forms import GPROForm
 import time
 
-def gpro_login(scrapper, user, password):
-    print(2)
-    scrapper.get("https://gpro.net/pl/Login.asp")
-    scrapper.find_element_by_name("textLogin").send_keys(user)
-    scrapper.find_element_by_name("textPassword").send_keys(password)
-    scrapper.find_element_by_name("LogonFake").click()
-    print(3)
+class Scrapper():
 
-def scrap_driver(scrapper):
-    scrapper.find_element_by_link_text('Damien Bailey').click()
-    time.sleep(1)
-    with open('page.html', 'w') as file:
-        file.write(scrapper.page_source)
-    p = open('page.html', 'r')
-    page = p.read()
-    soup = BeautifulSoup(page, "html.parser")
-    tds = soup.find_all("td")
-    count = 0
-    driver_stats = []
-    for tr in tds:
-        if count % 3 == 0 and count > 12 and count < 40:
-            driver_stats.append(int(tr.text.strip()))
-        elif count == 43 or count == 47 or count == 50:
-            driver_stats.append(int(tr.text.strip()))
-        count += 1
-    scrapper.back()
-    return driver_stats
+    def __init__(self) -> None:
+        self.scrap_count_consts()
+        self.car_dict = dict()
+        self.driver_stats = []
+        self.calendar = dict()
+        
 
-def scrap_car(scrapper):
-    scrapper.find_element_by_link_text('Modernizacja bolidu').click()
-    time.sleep(1)
-    with open('page.html', 'w') as file:
-        file.write(scrapper.page_source)
-    p = open('page.html', 'r')
-    page = p.read()
-    soup = BeautifulSoup(page, "html.parser")
-    tds = soup.find_all("td")
-    count = 0
-    car_stats = dict()
-    for tr in tds:
-        count += 1
-        if (count + 4) % 6 == 0 and count > 19 and count < 81:
-            dictkey = str(tr.text.strip()).replace(':','')
-        if (count + 3) % 6 == 0 and count > 20 and count < 82:
-            temp = int(tr.text.strip())
-        if (count + 1) % 6 == 0 and count > 22 and count < 84:
-            temp2 = str(tr.text.strip()).replace("%",'')
-            car_stats[dictkey] = {'lvl': temp, 'wear': int(temp2)}
-    scrapper.back()
-    return car_stats
+    def gpro_login(self, scrapper, user, password):
+        scrapper.get("https://gpro.net/pl/Login.asp")
+        scrapper.find_element_by_name("textLogin").send_keys(user)
+        scrapper.find_element_by_name("textPassword").send_keys(password)
+        scrapper.find_element_by_name("LogonFake").click()
+        page = self.soup_from_html('th')
+        self.scrap_driver_name(page)
 
-def scrap_weather(scrapper):
-    weather_dict = dict()
-    scrapper.find_element_by_link_text('Trening').click()
-    time.sleep(1)
-    with open('page.html', 'w') as file:
-        file.write(scrapper.page_source)
-    p = open('page.html', 'r')
-    page = p.read()
-    soup = BeautifulSoup(page, "html.parser")
-    tds = soup.find_all("td")
-    h2 = soup.find_all('h2')
-    count = 0
-    for i in h2:
-        if count == 1:
-            track = str(i.text.strip())
-            gp = track.find(" GP")
-            whitespace = track.rfind('\t')
-            track = track[whitespace + 1:gp]
-            weather_dict['track'] = track
-            break
-        count += 1
-    count = 0
-    for tr in tds:
-        if count == 5 or count == 6:
-            weather = str(tr).find('alt="')
-            temp = str(tr).find('Temp: ')
-            temp1 = str(tr).find('°')
-            hum = str(tr).find('Wilgotność: ')
-            hum1 = str(tr).find('%')
-            weather = str(tr)[weather + 5]
-            if weather == 'D':
-                weather = 'wet'
-            else:
-                weather = 'dry'
-            temp = int(str(tr)[temp + 6:temp1])
-            hum = int(str(tr)[hum + 12:hum1])
-            if count == 5:
-                q = 'q1'
-            else:
-                q = 'q2'
-            weather_dict[q] = {'weather': weather,
-                                  'temp': temp,
-                                  'hum': hum
-                                  }
-        count += 1
-    scrapper.back()
-    return weather_dict 
+    def scrap_count_consts(self):
+        self.CONST_DRIVER = set(range(15, 42, 3)).union({43, 47, 50})
+        self.CONST_CAR_PARTS_NAMES = set(range(20, 86, 6))
+        self.CONST_CAR_PARTS_LVL = set(range(21, 87, 6))
+        self.CONST_CAR_PARTS_WEAR = set(range(23, 89, 6))
 
-def scrap_tyre(scrapper):
-    scrapper.find_element_by_link_text('Dostawcy opon').click()
-    time.sleep(1)
-    with open('page.html', 'w') as file:
-        file.write(scrapper.page_source)
-    p = open('page.html', 'r')
-    page = p.read()
-    soup = BeautifulSoup(page, "html.parser")
-    tds = soup.find(class_="column left chosen").text.strip()
-    count = 1
-    for td in tds:
-        count += 1
-        if count == 124:
-            tyre_durability = int(td)
-    return tyre_durability
+    def calendar_months_converter(self, date):
+        calendar_dict = {
+        'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
+        'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12,
+        }
+        day = int(date[date.find(' ') + 1:date.find(',') - 2]) 
+        month = calendar_dict[date[0:3]]
+        year = int(date[-4:])
+        date = datetime.date(year, month, day)
+        return date
+
+    def scrap_season_no(self, scrapper):
+        scrapper.get("https://gpro.net/pl/gpro.asp")
+        page = self.soup_from_html('h1')
+        page = page[4].text.strip()
+        self.season = page[page.find('Sezon ') + 6:page.find(',')]
+
+    def scrap_calendar_add_to_dict(self, td, count, gp_no):
+        td = td.text.strip()
+        if (count + 3) % 5 == 0:
+            self.calendar[f'S{self.season}R{gp_no}'] = [td[:td.find(" GP")]]
+        if (count + 2) % 5 == 0:
+            date = self.calendar_months_converter(td)
+            self.calendar[f'S{self.season}R{gp_no}'].append(date)
+            gp_no += 1
+        return gp_no
+
+    def scrap_calendar(self,scrapper):
+        self.scrap_season_no(scrapper)
+        scrapper.get("https://gpro.net/en/Calendar.asp")
+        page = self.soup_from_html('td')
+        gp_no, count = 1, 0
+        for td in page:
+            gp_no = self.scrap_calendar_add_to_dict(td, count, gp_no)
+            if gp_no == 18: break
+            count += 1
+        scrapper.quit()
+
+    def soup_from_html(self, elem=None):
+        with open('page.html', 'w') as file:
+            file.write(scrapper.page_source)
+        p = open('page.html', 'r')
+        page = p.read()
+        soup = BeautifulSoup(page, "html.parser")
+        if elem:
+            tds = soup.find_all(elem)
+            return tds
+        return soup
+    
+    def load_page_to_scrap(self, text):
+        scrapper.find_element_by_link_text(text).click()
+        time.sleep(0.5)
+
+    def scrap_driver_name(self, page):
+        self.driver_name = page[0].text.strip()[10:]
+
+    def scrap_driver(self, scrapper):
+        self.load_page_to_scrap(self.driver_name)
+        tds = self.soup_from_html('td')
+        count = 0
+        for tr in tds:
+            if count in self.CONST_DRIVER:
+                self.driver_stats.append(int(tr.text.strip()))
+            count += 1
+        scrapper.back()
+        return self.driver_stats
+
+    def scrap_car(self, scrapper):
+        self.load_page_to_scrap('Modernizacja bolidu')
+        tds = self.soup_from_html('td')
+        count = 0
+        for tr in tds:
+            count += 1
+            self.scrap_car_dict_create(count,tr,self.car_dict)
+        scrapper.back()
+        return self.car_dict
+
+    def scrap_car_dict_create(self, count, tr, car_stats):
+            if count in self.CONST_CAR_PARTS_NAMES:
+                self.dictkey = str(tr.text.strip()).replace(':','')
+            if count in self.CONST_CAR_PARTS_LVL:
+                self.car_lvl = int(tr.text.strip())
+            if count in self.CONST_CAR_PARTS_WEAR:
+                self.car_wear = int(str(tr.text.strip()).replace("%",''))
+                car_stats[self.dictkey] = {'lvl': self.car_lvl, 'wear': self.car_wear}
+
+    def scrap_track_name_for_weather(self, i):
+        track = str(i.text.strip())
+        gp = track.find(" GP")
+        whitespace = track.rfind('\t')
+        track = track[whitespace + 1:gp]
+        self.weather_dict['track'] = track
+
+    def scrap_weather_for_q(self, tr, q):
+        tr = str(tr)
+        dependencies = (tr.find('alt="'), tr.find('Temp: '), tr.find('°'),
+        tr.find('Wilgotność: '), tr.find('%'))
+        weather = tr[dependencies[0] + 5]
+        weather = 'wet' if weather == 'D' else 'dry'
+        temp = int(str(tr)[dependencies[1] + 6:dependencies[2]])
+        hum = int(str(tr)[dependencies[3] + 12:dependencies[4]])
+        self.weather_dict[q] = {'weather': weather,'temp': temp,'hum': hum}
+
+    def scrap_weather(self, scrapper):
+        self.weather_dict = dict()
+        scrapper.find_element_by_link_text('Trening').click()
+        tds = self.soup_from_html('td')
+        h2 = self.soup_from_html('h2')
+        self.scrap_track_name_for_weather(h2[1])
+        self.scrap_weather_for_q(tds[5], 'q1')
+        self.scrap_weather_for_q(tds[6], 'q2')
+        scrapper.back()
+        return self.weather_dict 
+
+    def scrap_tyre(self, scrapper):
+        scrapper.find_element_by_link_text('Dostawcy opon').click()
+        soup = self.soup_from_html()
+        tds = soup.find(class_="column left chosen").text.strip()
+        tyre_durability = int(tds[122])
+        return tyre_durability
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--no-sandbox')
@@ -126,3 +157,4 @@ chrome_options.add_argument('--window-size=800,800')
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 scrapper = webdriver.Chrome(options=chrome_options)
+scrap = Scrapper()
