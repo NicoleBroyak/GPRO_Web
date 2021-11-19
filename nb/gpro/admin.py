@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Track, Race, Season
 
-# Register your models here.
+admin.site.register(Race)
+admin.site.register(Track)
+admin.site.register(Season)
