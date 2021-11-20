@@ -13,17 +13,10 @@ def home(request):
     return render(request, 'gpro/index.html')
 
 def gprocalc1(request):
-    # create a form instance and populate it with data from the request:
     c.calcs = c.Calcs()
     form = GPROForm(request.POST)
-    # check whether it's valid:
     if form.is_valid():
-        c.calcs.gpro_login = form.cleaned_data['gpro_login']
-        c.calcs.gpro_password = form.cleaned_data['gpro_password']
-        c.calcs.risk = form.cleaned_data['gpro_risk']
-        c.calcs.gpro_race_weather = form.cleaned_data['gpro_race_weather']
-        c.calcs.gpro_race_temp = form.cleaned_data['gpro_race_temp']
-        c.calcs.gpro_race_hum = form.cleaned_data['gpro_race_hum']
+        c.calcs.get_form_data(form)
         return HttpResponseRedirect('/gpro_main')
 
     return render(request, 'gpro/gprocalc1.html', {'form': form})
@@ -34,7 +27,8 @@ def gpro_main(request):
     form = ScrapConfirmForm(request.POST)
     if not calcs.data_confirm:
         s.scrap.gpro_login(s.scrapper, calcs.gpro_login, calcs.gpro_password)
-        weather = c.Weather()
+        calcs.create_sub_objects()
+        weather = calcs.weather
         context = {
         'weather': weather.weather_data,
         'form': form,
@@ -42,63 +36,9 @@ def gpro_main(request):
     }
     if form.is_valid():
         calcs.data_confirm = True
-        calcs = c.calcs
-        weather = c.Weather()
-        track = c.Track(weather)
-        driver = c.Driver()
-        car = c.Car()
-        tyre = c.Tyre()
-        calcs.wing_split = calcs.ws_calc(track, weather, driver, car)
-        calcs.wing_setup = calcs.wings_calc(track, weather, driver, car)
-        calcs.eng = calcs.eng_calc(track, weather, driver, car)
-        calcs.bra = calcs.bra_calc(track, weather, driver, car)
-        calcs.gea = calcs.gea_calc(track, weather, driver, car)
-        calcs.sus = calcs.sus_calc(track, weather, driver, car)
-        calcs.wing_splitq2 = calcs.ws_calc(track, weather, driver, car, mode='q2')
-        calcs.wing_setupq2 = calcs.wings_calc(track, weather, driver, car, mode='q2')
-        calcs.engq2 = calcs.eng_calc(track, weather, driver, car, mode='q2')
-        calcs.braq2 = calcs.bra_calc(track, weather, driver, car, mode='q2')
-        calcs.geaq2 = calcs.gea_calc(track, weather, driver, car, mode='q2')
-        calcs.susq2 = calcs.sus_calc(track, weather, driver, car, mode='q2')
-        calcs.wing_splitr = calcs.ws_calc(track, weather, driver, car, mode='race')
-        calcs.wing_setupr = calcs.wings_calc(track, weather, driver, car, mode='race')
-        calcs.engr = calcs.eng_calc(track, weather, driver, car, mode='race')
-        calcs.brar = calcs.bra_calc(track, weather, driver, car, mode='race')
-        calcs.gear = calcs.gea_calc(track, weather, driver, car, mode='race')
-        calcs.susr = calcs.sus_calc(track, weather, driver, car, mode='race')
-        calcs.fuel = calcs.fuel_calc(track, weather, driver, car)
-        calcs.tyre = calcs.tyre_calc(track, weather, driver, car, tyre)
-        calcs.fw = calcs.wing_setup + calcs.wing_split
-        calcs.rw = calcs.wing_setup - calcs.wing_split
-        calcs.fwq2 = calcs.wing_setupq2 + calcs.wing_splitq2
-        calcs.rwq2 = calcs.wing_setupq2 - calcs.wing_splitq2
-        calcs.fwr = calcs.wing_setupr + calcs.wing_splitr
-        calcs.rwr = calcs.wing_setupr - calcs.wing_splitr
-        calcs.setup_list = {
-            'fw': [round(calcs.fw), round(calcs.fwq2), round(calcs.fwr)],
-            'rw': [round(calcs.rw), round(calcs.rwq2), round(calcs.rwr)],
-            'eng': [round(calcs.eng), round(calcs.engq2), round(calcs.engr)],
-            'bra': [round(calcs.bra), round(calcs.braq2), round(calcs.brar)],
-            'gea': [round(calcs.gea), round(calcs.geaq2), round(calcs.gear)],
-            'sus': [round(calcs.sus), round(calcs.susq2), round(calcs.susr)]
-        }
-        #print(f'tyre max distance: XS: {tyre[0]}'
-        #      f'S: {tyre[1]}, M: {tyre[2]}, H: {tyre[3]}, R: {tyre[4]}')
-        #print(fuel)
-        calcs.fuel_wear_list = [
-            round(calcs.fuel[0], 2),
-            round(calcs.fuel[0]/track.data['laps'],2),
-            round(calcs.fuel[1], 2),
-            round(calcs.fuel[1]/track.data['laps'],2),
-        ]
-        calcs.tyre_wear_list_100  = list()
-        for tyre in calcs.tyre_wear_list:
-            calcs.tyre_wear_list_100.append(math.floor(tyre / track.data['length']))
-        calcs.tyre_wear_list_80 = list()
-        for tyre in calcs.tyre_wear_list:
-            calcs.tyre_wear_list_80.append(math.floor(tyre / track.data['length'] * 0.8))
-        calcs.partwear = calcs.part_wear(track, driver, car)
-        s.scrapper.quit()
+        track, driver, car, tyre = calcs.track, calcs.driver, calcs.car, calcs.tyre
+        calcs.create_settings_for_view(track, weather, driver, car)
+        s.scrapper.close()
         context =  {
             'car': car,
             'car_dict': car.car_dict,
@@ -108,8 +48,8 @@ def gpro_main(request):
             'track': track,
             'tyre': tyre,
             'calcs': calcs,
-            'partwear': calcs.partwear,
-            'setup': calcs.setup_list,
+            'partwear': calcs.part_wear,
+            'setup': calcs.settings.values(),
         }
     return render(request, 'gpro/gpro_main.html', context=context)
 

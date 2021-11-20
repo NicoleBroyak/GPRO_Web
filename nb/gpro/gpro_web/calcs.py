@@ -55,7 +55,7 @@ class Tyre:
 
 class Calcs:
     def __init__(self):
-        self.risk = 59
+        self.risk = 0
         self.data_confirm = False
         self.setup_car_factor_multipliers_dict()
         self.setup_driver_factor_multipliers_dict()
@@ -228,6 +228,15 @@ class Calcs:
         track_fuel = (self.fuel_factors + track.data['fuel']) * 1.01
         return track_fuel, track_fuel * (track.data['wc']/100 + 0.01)
 
+    def create_fuel_wear_list(self, track):
+        self.fuel = self.fuel_calc(self.track, self.weather, self.driver, self.car)
+        self.fuel_wear_list = [
+            round(self.fuel[0], 2),
+            round(self.fuel[0]/track.data['laps'],2),
+            round(self.fuel[1], 2),
+            round(self.fuel[1]/track.data['laps'],2),
+        ]
+
     def tyre_calc(self, track, weather, driver, car, tyre):
         self.tyre_calc_mults(track)
         self.tyre_factors_calc(driver, car, weather, track, tyre)
@@ -275,6 +284,14 @@ class Calcs:
             base = self.wet_track_base if comp[0] == 5 else self.track_base
             self.tyre_wear_list.append(mult * base)
     
+    def create_tyre_wear_list(self, track):
+        self.tyre_calc(self.track, self.weather, self.driver, self.car, self.tyre)
+        self.tyre_wear_list_100  = list()
+        for tyre in self.tyre_wear_list:
+            self.tyre_wear_list_100.append(math.floor(tyre / track.data['length']))
+        self.tyre_wear_list_80 = list()
+        for tyre in self.tyre_wear_list:
+            self.tyre_wear_list_80.append(math.floor(tyre / track.data['length'] * 0.8))
 
     def part_wear_driv_factor(self, driver):
         con_factor = 0.998789138 ** driver.skill_dict['con']
@@ -289,9 +306,52 @@ class Calcs:
         after_race = round(part_wear + car.car_dict[part]['wear'])
         return (round(part_wear), after_race)
 
-    def part_wear(self, track, driver, car):
+    def part_wear_dict_create(self, track, driver, car):
         driv_factor = self.part_wear_driv_factor(driver)
-        part_wear = dict()
+        self.part_wear = dict()
         for part in car.car_dict.keys():
-            part_wear[part] = self.part_wear_calc(track, car, driv_factor, part)
-        return part_wear
+            self.part_wear[part] = self.part_wear_calc(track, car, driv_factor, part)
+        self.part_wear
+
+    def settings_calcs_to_list(self, track, weather, driver, car, mode):
+        wing_split = self.ws_calc(track, weather, driver, car, mode)
+        wing_setup = self.wings_calc(track, weather, driver, car, mode)
+        settings = {
+            'fw': round(wing_setup + wing_split),
+            'rw': round(wing_setup - wing_split),
+            'eng': round(self.eng_calc(track, weather, driver, car, mode)),
+            'bra': round(self.bra_calc(track, weather, driver, car, mode)),
+            'gea': round(self.gea_calc(track, weather, driver, car, mode)),
+            'sus': round(self.sus_calc(track, weather, driver, car, mode)),
+        }
+        return settings
+
+    def settings_dict_create(self, track, weather, driver, car):
+        self.settings = dict()
+        self.settings['q1'] = self.settings_calcs_to_list(track, weather, driver, car, 'q1')
+        self.settings['q2'] = self.settings_calcs_to_list(track, weather, driver, car, 'q2')
+        self.settings['race'] = self.settings_calcs_to_list(track, weather, driver, car, 'race')
+        print(self.settings)
+        for v in self.settings.values():
+            print(v)
+
+    def get_form_data(self, form):
+        self.gpro_login = form.cleaned_data['gpro_login']
+        self.gpro_password = form.cleaned_data['gpro_password']
+        self.risk = form.cleaned_data['gpro_risk']
+        self.gpro_race_weather = form.cleaned_data['gpro_race_weather']
+        self.gpro_race_temp = form.cleaned_data['gpro_race_temp']
+        self.gpro_race_hum = form.cleaned_data['gpro_race_hum']
+
+    def create_settings_for_view(self, track, weather, driver, car):
+        self.settings_dict_create(track, weather, driver, car)
+        self.create_fuel_wear_list(track)
+        self.create_tyre_wear_list(track)
+        self.part_wear_dict_create(track, driver, car)
+
+    def create_sub_objects(self):
+        self.driver = Driver()
+        self.weather = Weather()
+        self.car = Car()
+        self.track = Track(self.weather)
+        self.tyre = Tyre()
