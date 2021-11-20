@@ -7,7 +7,7 @@ from gpro.models import Calc_Data, Track, Season, Race
 
 class Driver:
     def __init__(self):
-        self.driver_stats = scrap.scrap_driver(scrapper)
+        self.driver_stats = scrap.scrap_driver()
         self.driver_dict_create()
 
     def driver_dict_create(self):
@@ -18,7 +18,7 @@ class Driver:
 
 class Car:
     def __init__(self):
-        self.car_stats = scrap.scrap_car(scrapper)
+        self.car_stats = scrap.scrap_car()
         self.car_dict_create()
 
     def car_dict_create(self):
@@ -32,7 +32,7 @@ class Car:
 
 class Weather:
     def __init__(self):
-        self.weather_data = scrap.scrap_weather(scrapper)
+        self.weather_data = scrap.scrap_weather()
         self.q1 = self.weather_data['q1']
         self.q2 = self.weather_data['q2']
         self.race = self.weather_race_add_to_data()
@@ -52,7 +52,7 @@ class Track:
 
 class Tyre:
     def __init__(self):
-        self.tyre_dict = {'durability': scrap.scrap_tyre(scrapper)}
+        self.tyre_dict = {'durability': scrap.scrap_tyre()}
 
 class Calcs:
     def __init__(self):
@@ -361,7 +361,7 @@ class Calcs:
         season = apps.apps.get_model('gpro', 'Season')
         track = apps.apps.get_model('gpro', 'Track')
         race = apps.apps.get_model('gpro', 'Race')
-        season = season.objects.get(name=scrap.scrap_season_no(scrapper))
+        season = season.objects.get(name=scrap.scrap_season_no())
         track_name = track.objects.get(name=self.track.name)
         d = Calc_Data(
         track = track_name,

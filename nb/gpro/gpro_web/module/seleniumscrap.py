@@ -1,4 +1,5 @@
 from os import scandir
+from django.db.models.fields import NullBooleanField
 from django.http import request
 from selenium import webdriver
 from bs4 import BeautifulSoup
@@ -16,13 +17,29 @@ class Scrapper():
         self.car_dict = dict()
         self.driver_stats = []
         self.calendar = dict()
+        self.scrapper = self.scrapper_init()
+
+    def scrapper_init(self):
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--window-size=800,800')
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--disable-gpu')
+        scrapper = webdriver.Chrome(options=chrome_options)
+        return scrapper
+
+    def reset_scrapper(self):
+        self.scrapper.delete_all_cookies()
+        self.scrapper.quit()
+        self.scrapper = None
+        self.scrapper = self.scrapper_init()
         
 
-    def gpro_login(self, scrapper, user, password):
-        scrapper.get("https://gpro.net/pl/Login.asp")
-        scrapper.find_element_by_name("textLogin").send_keys(user)
-        scrapper.find_element_by_name("textPassword").send_keys(password)
-        scrapper.find_element_by_name("LogonFake").click()
+    def gpro_login(self, user, password):
+        self.scrapper.get("https://gpro.net/pl/Login.asp")
+        self.scrapper.find_element_by_name("textLogin").send_keys(user)
+        self.scrapper.find_element_by_name("textPassword").send_keys(password)
+        self.scrapper.find_element_by_name("LogonFake").click()
         page = self.soup_from_html('th')
         self.scrap_driver_name(page)
 
@@ -46,8 +63,8 @@ class Scrapper():
             date = datetime.date.today() - datetime.timedelta(days=1)
         return date
 
-    def scrap_season_no(self, scrapper, page_iter=3):
-        scrapper.get("https://gpro.net/pl/gpro.asp")
+    def scrap_season_no(self, page_iter=3):
+        self.scrapper.get("https://gpro.net/pl/gpro.asp")
         page = self.soup_from_html('h1')
         page = page[page_iter].text.strip()
         self.season = page[page.find('Sezon ') + 6:page.find(',')]
@@ -69,20 +86,19 @@ class Scrapper():
             gp_no += 1
         return gp_no
 
-    def scrap_calendar(self,scrapper):
-        self.scrap_season_no(scrapper)
-        scrapper.get("https://gpro.net/en/Calendar.asp")
+    def scrap_calendar(self):
+        self.scrap_season_no()
+        self.scrapper.get("https://gpro.net/en/Calendar.asp")
         page = self.soup_from_html('td')
         gp_no, count = 1, 0
         for td in page:
             gp_no = self.scrap_calendar_add_to_dict(td, count, gp_no)
             if gp_no == 18: break
             count += 1
-        scrapper.quit()
 
     def soup_from_html(self, elem=None):
         with open('page.html', 'w') as file:
-            file.write(scrapper.page_source)
+            file.write(self.scrapper.page_source)
         p = open('page.html', 'r')
         page = p.read()
         soup = BeautifulSoup(page, "html.parser")
@@ -92,13 +108,13 @@ class Scrapper():
         return soup
     
     def load_page_to_scrap(self, text):
-        scrapper.find_element_by_link_text(text).click()
+        self.scrapper.find_element_by_link_text(text).click()
         time.sleep(0.5)
 
     def scrap_driver_name(self, page):
         self.driver_name = page[0].text.strip()[10:]
 
-    def scrap_driver(self, scrapper):
+    def scrap_driver(self):
         self.load_page_to_scrap(self.driver_name)
         tds = self.soup_from_html('td')
         count = 0
@@ -106,17 +122,17 @@ class Scrapper():
             if count in self.CONST_DRIVER:
                 self.driver_stats.append(int(tr.text.strip()))
             count += 1
-        scrapper.back()
+        self.scrapper.back()
         return self.driver_stats
 
-    def scrap_car(self, scrapper):
+    def scrap_car(self):
         self.load_page_to_scrap('Modernizacja bolidu')
         tds = self.soup_from_html('td')
         count = 0
         for tr in tds:
             count += 1
             self.scrap_car_dict_create(count,tr,self.car_dict)
-        scrapper.back()
+        self.scrapper.back()
         return self.car_dict
 
     def scrap_car_dict_create(self, count, tr, car_stats):
@@ -145,30 +161,24 @@ class Scrapper():
         hum = int(str(tr)[dependencies[3] + 12:dependencies[4]])
         self.weather_dict[q] = {'weather': weather,'temp': temp,'hum': hum}
 
-    def scrap_weather(self, scrapper):
+    def scrap_weather(self):
         self.weather_dict = dict()
-        scrapper.find_element_by_link_text('Trening').click()
+        self.scrapper.find_element_by_link_text('Trening').click()
         tds = self.soup_from_html('td')
         h2 = self.soup_from_html('h2')
         self.scrap_track_name_for_weather(h2[1])
         self.scrap_weather_for_q(tds[5], 'q1')
         self.scrap_weather_for_q(tds[6], 'q2')
-        scrapper.back()
+        self.scrapper.back()
         return self.weather_dict 
 
-    def scrap_tyre(self, scrapper):
-        scrapper.find_element_by_link_text('Dostawcy opon').click()
+    def scrap_tyre(self):
+        self.scrapper.find_element_by_link_text('Dostawcy opon').click()
         soup = self.soup_from_html()
         tds = soup.find(class_="column left chosen").text.strip()
         tyre_durability = int(tds[122])
         return tyre_durability
 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--window-size=800,800')
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--disable-gpu')
-scrapper = webdriver.Chrome(options=chrome_options)
 scrap = Scrapper()
 #season = apps.apps.get_model('gpro', 'Season')
 #scrap.scrap_calendar(scrapper)
