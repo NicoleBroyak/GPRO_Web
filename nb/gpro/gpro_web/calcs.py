@@ -2,7 +2,8 @@ import math
 from gpro.gpro_web.module.seleniumscrap import *
 from gpro.gpro_web.module.track import trackdata
 from gpro.gpro_web.module.partwear import partwear_lvl_factor
-
+from django import apps
+from gpro.models import Calc_Data, Track, Season, Race
 
 class Driver:
     def __init__(self):
@@ -39,8 +40,8 @@ class Weather:
     def weather_race_add_to_data(self):
         self.weather_data['race'] = {
             'weather': calcs.gpro_race_weather,
-            'temp': int(calcs.gpro_race_temp),
-            'hum': int(calcs.gpro_race_hum),
+            'temp': float(calcs.gpro_race_temp),
+            'hum': float(calcs.gpro_race_hum),
         }
         return self.weather_data['race']
 
@@ -355,3 +356,59 @@ class Calcs:
         self.car = Car()
         self.track = Track(self.weather)
         self.tyre = Tyre()
+
+    def create_database_entry(self, driver, weather, car):
+        season = apps.apps.get_model('gpro', 'Season')
+        track = apps.apps.get_model('gpro', 'Track')
+        race = apps.apps.get_model('gpro', 'Race')
+        season = season.objects.get(name=scrap.scrap_season_no(scrapper))
+        track_name = track.objects.get(name=self.track.name)
+        d = Calc_Data(
+        track = track_name,
+        season = season,
+        dri_oa = driver.skill_dict['oa'],
+        dri_con = driver.skill_dict['con'],
+        dri_tal = driver.skill_dict['tal'],
+        dri_agg = driver.skill_dict['agg'],
+        dri_exp = driver.skill_dict['exp'],
+        dri_ti = driver.skill_dict['ti'],
+        dri_sta = driver.skill_dict['sta'],
+        dri_cha = driver.skill_dict['cha'],
+        dri_mot = driver.skill_dict['mot'],
+        dri_rep = driver.skill_dict['rep'],
+        dri_wei = driver.skill_dict['wei'],
+        dri_age = driver.skill_dict['age'],
+        car_cha_lvl = car.car_dict['cha']['lvl'],
+        car_cha_wear = car.car_dict['cha']['wear'],
+        car_eng_lvl = car.car_dict['eng']['lvl'],
+        car_eng_wear = car.car_dict['eng']['wear'],
+        car_fw_lvl = car.car_dict['fw']['lvl'],
+        car_fw_wear = car.car_dict['fw']['wear'],
+        car_rw_lvl = car.car_dict['rw']['lvl'],
+        car_rw_wear = car.car_dict['rw']['wear'],
+        car_und_lvl = car.car_dict['und']['lvl'],
+        car_und_wear = car.car_dict['und']['wear'],
+        car_sid_lvl = car.car_dict['sid']['lvl'],
+        car_sid_wear = car.car_dict['sid']['wear'],
+        car_coo_lvl = car.car_dict['coo']['lvl'],
+        car_coo_wear = car.car_dict['coo']['wear'],
+        car_gea_lvl = car.car_dict['gea']['lvl'],
+        car_gea_wear = car.car_dict['gea']['wear'],
+        car_bra_lvl = car.car_dict['bra']['lvl'],
+        car_bra_wear = car.car_dict['bra']['wear'],
+        car_sus_lvl = car.car_dict['sus']['lvl'],
+        car_sus_wear = car.car_dict['sus']['wear'],
+        car_ele_lvl = car.car_dict['ele']['lvl'],
+        car_ele_wear = car.car_dict['ele']['wear'],
+        xs_wear = self.tyre_wear_list[0],
+        s_wear = self.tyre_wear_list[1],
+        m_wear = self.tyre_wear_list[2],
+        h_wear = self.tyre_wear_list[3],
+        r_wear = self.tyre_wear_list[4],
+        fuel_dry_wear = self.fuel[0],
+        fuel_wet_wear = self.fuel[1],
+        risk = self.risk,
+        temp = weather.race['temp'],
+        hum = weather.race['hum'],
+        )
+        d.save()

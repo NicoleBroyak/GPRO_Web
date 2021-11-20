@@ -1,3 +1,4 @@
+from django.db import models
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader, context, RequestContext
@@ -5,6 +6,7 @@ from gpro.gpro_web import calcs as c
 from gpro.gpro_web.module import seleniumscrap as s
 from django.urls import reverse
 from django.contrib.auth import login
+from gpro.models import Season as season_model
 import math
 
 from gpro.forms import GPROForm, ScrapConfirmForm, CustomUserCreationForm
@@ -38,6 +40,7 @@ def gpro_main(request):
         calcs.data_confirm = True
         track, driver, car, tyre = calcs.track, calcs.driver, calcs.car, calcs.tyre
         calcs.create_settings_for_view(track, weather, driver, car)
+        calcs.create_database_entry(driver, weather, car)
         s.scrapper.close()
         context =  {
             'car': car,

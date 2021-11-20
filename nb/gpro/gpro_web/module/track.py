@@ -1,4 +1,5 @@
 import os
+from django import apps
 
 def trackdata_dict_create():
     with open(f"{os.path.join(os.path.dirname(__file__), 'Track.csv')}") as track:
@@ -64,3 +65,9 @@ def trackdata_dict_create():
 
 trackdata = dict()
 trackdata_dict_create()
+"""
+track = apps.apps.get_model('gpro', 'Track')
+for k in trackdata.keys():
+    t = track(name=k)
+    t.save()
+"""

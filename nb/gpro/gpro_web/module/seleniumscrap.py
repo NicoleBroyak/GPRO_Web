@@ -6,6 +6,8 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 import datetime
 from gpro.forms import GPROForm
 import time
+from gpro.models import Race, Track, Season
+from django import apps
 
 class Scrapper():
 
@@ -35,17 +37,21 @@ class Scrapper():
         'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6,
         'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12,
         }
-        day = int(date[date.find(' ') + 1:date.find(',') - 2]) 
-        month = calendar_dict[date[0:3]]
-        year = int(date[-4:])
-        date = datetime.date(year, month, day)
+        try:
+            day = int(date[date.find(' ') + 1:date.find(',') - 2])
+            month = calendar_dict[date[0:3]]
+            year = int(date[-4:])
+            date = datetime.date(year, month, day)
+        except ValueError:
+            date = datetime.date.today() - datetime.timedelta(days=1)
         return date
 
-    def scrap_season_no(self, scrapper):
+    def scrap_season_no(self, scrapper, page_iter=3):
         scrapper.get("https://gpro.net/pl/gpro.asp")
         page = self.soup_from_html('h1')
-        page = page[4].text.strip()
+        page = page[page_iter].text.strip()
         self.season = page[page.find('Sezon ') + 6:page.find(',')]
+        return self.season
 
     def scrap_calendar_add_to_dict(self, td, count, gp_no):
         td = td.text.strip()
@@ -54,6 +60,12 @@ class Scrapper():
         if (count + 2) % 5 == 0:
             date = self.calendar_months_converter(td)
             self.calendar[f'S{self.season}R{gp_no}'].append(date)
+            race = Race(
+                track=(Track.objects.get(name=self.calendar[f'S{self.season}R{gp_no}'][0])),
+                season = (Season.objects.get(name=self.season)),
+                identifier = gp_no,
+                date = date)
+            race.save()
             gp_no += 1
         return gp_no
 
@@ -158,3 +170,5 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
 scrapper = webdriver.Chrome(options=chrome_options)
 scrap = Scrapper()
+#season = apps.apps.get_model('gpro', 'Season')
+#scrap.scrap_calendar(scrapper)
