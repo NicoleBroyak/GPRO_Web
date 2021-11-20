@@ -28,7 +28,7 @@ def gpro_main(request):
     calcs = c.calcs
     form = ScrapConfirmForm(request.POST)
     if not calcs.data_confirm:
-        s.scrap.gpro_login(s.scrapper, calcs.gpro_login, calcs.gpro_password)
+        s.scrap.gpro_login(calcs.gpro_login, calcs.gpro_password)
         calcs.create_sub_objects()
         weather = calcs.weather
         context = {
@@ -41,7 +41,7 @@ def gpro_main(request):
         track, driver, car, tyre = calcs.track, calcs.driver, calcs.car, calcs.tyre
         calcs.create_settings_for_view(track, weather, driver, car)
         calcs.create_database_entry(driver, weather, car)
-        s.scrapper.close()
+        s.scrap.reset_scrapper()
         context =  {
             'car': car,
             'car_dict': car.car_dict,

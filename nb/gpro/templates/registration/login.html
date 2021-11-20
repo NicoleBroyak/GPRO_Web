@@ -1,15 +1,10 @@
 {% extends "gpro/base.html" %}
-{% load bulma_tags i18n %}
 
 {% block content %}
 
 <section class="section is-mobile">
         
   <h2>Login</h2>
-
-  {% if form.errors %}
-    <p>{% trans "Your username and password didn't match. Please try again." %}</p>
-  {% endif %}
 
 <form action="" method="POST">
 {% csrf_token %}
