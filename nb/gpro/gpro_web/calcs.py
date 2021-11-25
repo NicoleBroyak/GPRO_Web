@@ -8,8 +8,8 @@ from nb.gpro import models
 
 class Driver:
     def __init__(self):
-        self.driver_stats = scrap.scrap_driver()
-        self.driver_dict_create()
+        """To be implemented, options of scraping driver attributes or own attrs"""
+        pass
 
     def driver_dict_create(self):
         """Creates dictionary of driver attributes"""
@@ -22,9 +22,9 @@ class Driver:
 class Car:
 
     def __init__(self):
-        self.car_stats = scrap.scrap_car()
-        self.car_dict_create()
-        
+        """To be implemented, options of scraping car attributes or own attrs"""
+
+        pass
 
     def car_dict_create(self):
         """Creates dictionary of car parts and their level and wear"""
@@ -40,13 +40,13 @@ class Weather:
     """Class containing everything what is related to GPRO Weather"""
 
     def __init__(self):
-        self.weather_data = scrap.scrap_weather()
-        self.q1 = self.weather_data['q1']
-        self.q2 = self.weather_data['q2']
-        self.race = self.weather_race_add_to_data()
+        """To be implemented, options of scraping weather attributes or own attrs"""
+
+        pass
 
     def weather_race_add_to_data(self):
         """Creates dictionary of race weather and adds it to weather_data dict"""
+        #def to correct due to tight coupling with class Calcs
 
         self.weather_data['race'] = {
             'weather': calcs.gpro_race_weather,
@@ -59,23 +59,31 @@ class Track:
     """Class containing everything what is related to GPRO Tracks"""
 
     def __init__(self, weather):
-        self.name = weather.weather_data['track']
-        self.data = trackdata[self.name]
+        """To be implemented, options of scraping track attributes or own attrs"""
+
+        pass
 
 class Tyre:
     """Class containing everything what is related to GPRO Tyres"""
 
 
     def __init__(self):
-        self.tyre_dict = {'durability': scrap.scrap_tyre()}
+        """To be implemented, options of scraping tyre attributes or own attrs"""
+
+        pass
+
+        #self.tyre_dict = {'durability': scrap.scrap_tyre()}
 
 
 class Calcs:
 
 
     def __init__(self):
-        self.risk = 0
-        self.data_confirm = False
+        """To be implemented"""
+        #self.risk = 0 #oldcode
+        #self.data_confirm = False #oldcode
+        
+        pass
 
     def setup_car_factor_wings_multipliers_dict(self):
         """Returns dictionary of multipliers used in wings setup calculations"""
@@ -281,6 +289,13 @@ class Calcs:
         return fuel_tuple
 
     def tyre_calc(self, track, weather, driver, car, tyre):
+        """Procedes all needed operations. Calculates and returns tyre wear tuple:
+        [0] - Extra soft
+        [1] - Soft
+        [2] - Medium
+        [3] - Hard
+        [4] - Rain
+        """
         self.create_tyre_factors_mults(track)
         self.create_tyre_factors_dict(driver, car, weather, track, tyre)
         self.tyre_calc_factors()
@@ -288,6 +303,8 @@ class Calcs:
 
 
     def create_tyre_factors_mults(self, track):
+        """Creates multipliers used in further calculation formulae"""
+
         self.tyre_comp_mults = [[0, 0.998163750229071], [1, 0.997064844817654],
         [2, 0.996380346554349], [3, 0.995862526048112], [5, 0.996087854384523]]
         self.tyre_other_mults = [129.776458172062, 0.73]
@@ -297,6 +314,8 @@ class Calcs:
 
    
     def create_tyre_factors_dict(self, driver, car, weather, track, tyre):
+        """Returns factors values used in further calculation formulae"""
+
         return {
             'driver': [
                 {'agg': 0.999670155,'exp': 1.00022936,'wei': 0.999858329},
@@ -308,6 +327,8 @@ class Calcs:
         }
 
     def tyre_calc_factors(self):
+        """Calculates all of the provided tyre factors"""
+
         for el in self.tyre_factors_dict.keys():
             mode = self.tyre_factors_dict[el][1]
             for fctr, mt in self.tyre_factors_dict[el][0].items():
@@ -316,16 +337,32 @@ class Calcs:
                 self.tyre_factors = self.tyre_factors * to_mult
 
     def tyre_calc_comp_wear(self, track):
-        tyre_wear_list = list()
+        """Calculates and returns tyre wear tuple:
+        [0] - Extra soft
+        [1] - Soft
+        [2] - Medium
+        [3] - Hard
+        [4] - Rain
+        """
+        tyre_wear_tuple = tuple()
         for comp in self.tyre_comp_mults:
             tyre_comp_factor = 1.390293715 ** comp[0]
             risk_factor = comp[1] ** self.risk
             mult = (self.tyre_factors * tyre_comp_factor * risk_factor)
             base = self.wet_track_base if comp[0] == 5 else self.track_base
-            tyre_wear_list.append(mult * base)
-        return tyre_wear_list
+            tyre_wear_tuple.append(mult * base)
+        return tyre_wear_tuple
     
     def create_tyre_wear_list(self, track):
+        """Calculates and returns tyre wear tuple converted to max amount of laps
+        before reaching 100% or 80% of wear:
+        [0] - Extra soft
+        [1] - Soft
+        [2] - Medium
+        [3] - Hard
+        [4] - Rain
+        """
+
         self.tyre_calc(self.track, self.weather, self.driver, self.car, self.tyre)
         tyre_wear_list_100  = list()
         for tyre in self.tyre_wear_list:
