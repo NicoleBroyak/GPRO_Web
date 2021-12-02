@@ -373,6 +373,8 @@ class Calcs:
         return tyre_wear_list_100, tyre_wear_list_80
 
     def part_wear_driv_factor(self, driver):
+        """Returns result of calculation of driver factors"""
+
         con_factor = 0.998789138 ** driver.skill_dict['con']
         tal_factor = 0.998751839 ** driver.skill_dict['tal']
         exp_factor = 0.998707677 ** driver.skill_dict['exp']
@@ -380,19 +382,25 @@ class Calcs:
 
 
     def part_wear_calc(self, track, car, driv_factor, part):
+        """Returns rounded value of car part wear after race"""
+
         risk_factor = partwear_lvl_factor[car.car_dict[part]['lvl']] ** self.risk
         part_wear = driv_factor * risk_factor * track.data[part + '_wear']
         after_race = round(part_wear + car.car_dict[part]['wear'])
         return (round(part_wear), after_race)
 
     def part_wear_dict_create(self, track, driver, car):
+        """Returns dictionary of calculated car parts wear"""
+
         driv_factor = self.part_wear_driv_factor(driver)
-        self.part_wear = dict()
+        part_wear_dict = dict()
         for part in car.car_dict.keys():
             self.part_wear[part] = self.part_wear_calc(track, car, driv_factor, part)
-        self.part_wear
+        return part_wear_dict
 
     def settings_calcs_to_list(self, track, weather, driver, car, weather_mode):
+        """Returns dictionary of calculated settings for specified part of race week"""
+        
         wing_setup = self.setup_calc(track, weather, driver, car, weather_mode, 'wings')
         wing_split = self.ws_calc(track, weather, driver, car, weather_mode, wing_setup)
         settings = {
@@ -406,13 +414,13 @@ class Calcs:
         return settings
 
     def settings_dict_create(self, track, weather, driver, car):
-        self.settings = dict()
-        self.settings['q1'] = self.settings_calcs_to_list(track, weather, driver, car, 'q1')
-        self.settings['q2'] = self.settings_calcs_to_list(track, weather, driver, car, 'q2')
-        self.settings['race'] = self.settings_calcs_to_list(track, weather, driver, car, 'race')
-        print(self.settings)
-        for v in self.settings.values():
-            print(v)
+        """Returns dictionary of all settings for race weekend"""
+
+        settings = dict()
+        settings['q1'] = self.settings_calcs_to_list(track, weather, driver, car, 'q1')
+        settings['q2'] = self.settings_calcs_to_list(track, weather, driver, car, 'q2')
+        settings['race'] = self.settings_calcs_to_list(track, weather, driver, car, 'race')
+        return settings
 
     def get_form_data(self, form):
         self.gpro_login = form.cleaned_data['gpro_login']
