@@ -4,7 +4,7 @@ from gpro.gpro_web.module.track import trackdata
 from gpro.gpro_web.module.partwear import partwear_lvl_factor
 from django import apps, setup
 from gpro.models import Calc_Data, Track, Season, Race
-from nb.gpro import models
+from gpro import models
 
 class Driver:
     def __init__(self):
