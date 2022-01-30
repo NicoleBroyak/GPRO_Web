@@ -29,10 +29,12 @@ def gpro_main(request):
     form = ScrapConfirmForm(request.POST)
     if not calcs.data_confirm:
         s.scrap.gpro_login(calcs.gpro_login, calcs.gpro_password)
+        s.scrap.scrap_weather()
         calcs.create_sub_objects()
         weather = calcs.weather
+        weather.weather_race_add_to_data(calcs)
         context = {
-        'weather': weather.weather_data,
+        'weather': calcs.weather.weather_data,
         'form': form,
         'calcs': calcs,
     }

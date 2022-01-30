@@ -9,7 +9,8 @@ from gpro import models
 class Driver:
     def __init__(self):
         """To be implemented, options of scraping driver attributes or own attrs"""
-        pass
+        self.driver_stats = scrap.scrap_driver()
+        self.driver_dict_create()
 
     def driver_dict_create(self):
         """Creates dictionary of driver attributes"""
@@ -23,12 +24,11 @@ class Car:
 
     def __init__(self):
         """To be implemented, options of scraping car attributes or own attrs"""
-
-        pass
+        self.car_stats = scrap.scrap_car()
+        self.car_dict_create()
 
     def car_dict_create(self):
         """Creates dictionary of car parts and their level and wear"""
-
         i = self.car_stats
         self.car_dict = {'cha': i['Nadwozie'], 'eng': i['Silnik'], 
         'fw': i['Przednie skrzydło'], 'rw': i['Tylne skrzydło'],
@@ -41,18 +41,20 @@ class Weather:
 
     def __init__(self):
         """To be implemented, options of scraping weather attributes or own attrs"""
+        self.weather_data = scrap.scrap_weather()
+        self.q1 = self.weather_data['q1']
+        self.q2 = self.weather_data['q2']
+        
 
-        pass
-
-    def weather_race_add_to_data(self):
+    def weather_race_add_to_data(self, calcs):
         """Creates dictionary of race weather and adds it to weather_data dict"""
         #def to correct due to tight coupling with class Calcs
 
-        self.weather_data['race'] = {
-            'weather': calcs.gpro_race_weather,
+        self.weather_data['race'] = {'weather': calcs.gpro_race_weather,
             'temp': float(calcs.gpro_race_temp),
             'hum': float(calcs.gpro_race_hum),
         }
+        self.race = self.weather_data['race']
         return self.weather_data['race']
 
 class Track:
@@ -60,6 +62,8 @@ class Track:
 
     def __init__(self, weather):
         """To be implemented, options of scraping track attributes or own attrs"""
+        self.name = weather.weather_data['track']
+        self.data = trackdata[self.name]
 
         pass
 
@@ -70,9 +74,7 @@ class Tyre:
     def __init__(self):
         """To be implemented, options of scraping tyre attributes or own attrs"""
 
-        pass
-
-        #self.tyre_dict = {'durability': scrap.scrap_tyre()}
+        self.tyre_dict = {'durability': scrap.scrap_tyre()}
 
 
 class Calcs:
@@ -80,8 +82,8 @@ class Calcs:
 
     def __init__(self):
         """To be implemented"""
-        #self.risk = 0 #oldcode
-        #self.data_confirm = False #oldcode
+        self.risk = 0 #oldcode
+        self.data_confirm = False #oldcode
         
         pass
 
@@ -140,12 +142,12 @@ class Calcs:
         """Returns dictionary of weather multipliers used in setup calculations"""
 
         return {
-            'wings': {'dry': 12, 'wet': 263},
+            'wings': {'dry': 12, 'wet': (1, 263)},
             'eng': {'dry': -3, 'wet': (0.7, -190)},
             'bra': {'dry': 6, 'wet': (3.9883754414027, 105.532592432347)},
-            'gea': {'dry': -4, 'wet': (8.01996418151657, - 4.74271170354302)},
+            'gea': {'dry': -4, 'wet': (-8.01996418151657, -4.74271170354302)},
             'sus': {'dry': -6, 'wet': (-1, -257)},
-            'ws': {'dry': 0.376337780506523, 'wet': 0.376337780506523},
+            'ws': {'dry': 0.376337780506523, 'wet': (0.376337780506523, 0)},
         }
     
     def setup_weather_factor(self, weather, setup_part, weather_mode):
@@ -153,16 +155,16 @@ class Calcs:
         setup_part = name of setup part (wings, eng, bra, gea, sus)
         weather_mode = q1, q2 or race
         """
-        
         self.weather_mode(weather, weather_mode)
         s, w, d = setup_part, weather.mode, self.setup_weather_factor_dict()[setup_part]
+        if s == 'ws':
+            return w['temp'] * d['dry']
         r = (
-            w['temp'] * d['wet'] * 2,
+            (w['temp'] * d['wet'][0] + d['wet'][1]) * 2,
             w['temp'] * d['wet'][0] + d['wet'][1],
             w['temp'] * d['dry']
         )
-        
-        return r[2] if w == 'dry' else r[0] if s == 'wings' else r[1]
+        return r[2] if w['weather'] == 'dry' else r[0] if s == 'wings' else r[1]
             
         
     def weather_mode(self, weather, mode):
@@ -178,10 +180,15 @@ class Calcs:
         (d, t, w, m, s) = (driver, track, weather, mode, setup_part)
         if s != 'wings':
             dict = self.setup_driver_factors_dict()[s]
-            return sum([d.skill_dict[sk] * mt for sk, mt in dict.items()])
+            driver_factor = sum([d.skill_dict[sk] * mt for sk, mt in dict.items()])
+            if s == 'sus' and w.mode['weather'] == 'wet':
+                return driver_factor + d.skill_dict['ti'] * 0.11
+            else: 
+                return driver_factor
         base = t.data['wings'] * 2
         wf = self.setup_weather_factor(w, 'wings', m)
-        return d.skill_dict['tal'] * math.floor((base+ wf)) * -0.001349079032746
+        print(wf, base, d.skill_dict['tal'])
+        return d.skill_dict['tal'] * math.floor((base + wf)) * -0.001349079032746
 
     def setup_car_factor(self, car, car_part):
         """Returns results of calculating car factors"""
@@ -207,6 +214,8 @@ class Calcs:
         car_lvl_factor, car_wear_factor = self.setup_car_factor(car, setup_part)
         car_factor = car_lvl_factor + car_wear_factor
         weather_factor = self.setup_weather_factor(weather, setup_part, weather_mode)
+        if setup_part == 'wings':
+            print(driver_factor, car_factor, weather_factor)
         return (driver_factor + car_factor + weather_factor, weather_factor)
 
     def setup_calc(self, track, weather, driver, car, weather_mode, setup_part):
@@ -223,12 +232,12 @@ class Calcs:
             return (track.data['eng_set'] + f_2 * driver.skill_dict['exp'] + f[0])
         return track.data[setup_part] + f[0]/2
 
-    def ws_calc_factors(self, car, driver, weather, mode, wing_setup):
+    def ws_calc_factors(self, car, driver, weather, mode, wing_setup, track):
         """Returns results of calculating wing split factors"""
 
         ws_wing_factor = ((car.car_dict['fw']['lvl'] + car.car_dict['rw']['lvl'])/2 
         * 3.69107049712848)
-        driver_factor = self.setup_driver_factor(driver, 'wings')
+        driver_factor = driver.skill_dict['tal'] * -0.246534498671854
         ws_weather_factor = self.setup_weather_factor(weather, 'ws', mode)
         ws_setup_factor = wing_setup * -0.189968386659174
         return ws_wing_factor, driver_factor, ws_weather_factor, ws_setup_factor
@@ -236,7 +245,7 @@ class Calcs:
     def ws_calc(self, track, weather, driver, car, mode, wing_setup):
         """Returns results of calculating wing split factors"""
 
-        ws_calc_factors = self.ws_calc_factors(car, driver, weather, mode, wing_setup)
+        ws_calc_factors = self.ws_calc_factors(car, driver, weather, mode, wing_setup, track)
         ws = (track.data['ws']+ ws_calc_factors[1]
             + ws_calc_factors[0] + ws_calc_factors[2] + ws_calc_factors[3])
         if weather.mode['weather'] == 'dry':
@@ -257,7 +266,7 @@ class Calcs:
     def fuel_calc_factors(self, track, driver, car, weather):
         """Calculates fuel factors"""
 
-        d, factors = self.fuel_factors_dict(self, driver, car, weather), 0
+        d, factors = self.fuel_factors_dict(driver, car, weather), 0
         for el in d.keys():
             mode = d[el][1]
             for fctr, mult in d[el][0].items():
@@ -286,6 +295,7 @@ class Calcs:
             round(fuel[1], 2), 
             round(fuel[1]/track.data['laps'],2),
         )
+        self.fuel = fuel_tuple
         return fuel_tuple
 
     def tyre_calc(self, track, weather, driver, car, tyre):
@@ -297,7 +307,7 @@ class Calcs:
         [4] - Rain
         """
         self.create_tyre_factors_mults(track)
-        self.create_tyre_factors_dict(driver, car, weather, track, tyre)
+        self.tyre_factors_dict = self.create_tyre_factors_dict(driver, car, weather, track, tyre)
         self.tyre_calc_factors()
         return self.tyre_calc_comp_wear(track)
 
@@ -329,6 +339,7 @@ class Calcs:
     def tyre_calc_factors(self):
         """Calculates all of the provided tyre factors"""
 
+        self.tyre_factors = 1
         for el in self.tyre_factors_dict.keys():
             mode = self.tyre_factors_dict[el][1]
             for fctr, mt in self.tyre_factors_dict[el][0].items():
@@ -344,14 +355,15 @@ class Calcs:
         [3] - Hard
         [4] - Rain
         """
-        tyre_wear_tuple = tuple()
+        tyre_wear_list = list()
         for comp in self.tyre_comp_mults:
             tyre_comp_factor = 1.390293715 ** comp[0]
             risk_factor = comp[1] ** self.risk
             mult = (self.tyre_factors * tyre_comp_factor * risk_factor)
             base = self.wet_track_base if comp[0] == 5 else self.track_base
-            tyre_wear_tuple.append(mult * base)
-        return tyre_wear_tuple
+            tyre_wear_list.append(mult * base)
+        self.tyre_wear_list = tyre_wear_list
+        return tyre_wear_list
     
     def create_tyre_wear_list(self, track):
         """Calculates and returns tyre wear tuple converted to max amount of laps
@@ -364,13 +376,12 @@ class Calcs:
         """
 
         self.tyre_calc(self.track, self.weather, self.driver, self.car, self.tyre)
-        tyre_wear_list_100  = list()
+        self.tyre_wear_list_100  = list()
         for tyre in self.tyre_wear_list:
-            tyre_wear_list_100.append(math.floor(tyre / track.data['length']))
-        tyre_wear_list_80 = list()
+            self.tyre_wear_list_100.append(math.floor(tyre / track.data['length']))
+        self.tyre_wear_list_80 = list()
         for tyre in self.tyre_wear_list:
-            tyre_wear_list_80.append(math.floor(tyre / track.data['length'] * 0.8))
-        return tyre_wear_list_100, tyre_wear_list_80
+            self.tyre_wear_list_80.append(math.floor(tyre / track.data['length'] * 0.8))
 
     def part_wear_driv_factor(self, driver):
         """Returns result of calculation of driver factors"""
@@ -393,10 +404,10 @@ class Calcs:
         """Returns dictionary of calculated car parts wear"""
 
         driv_factor = self.part_wear_driv_factor(driver)
-        part_wear_dict = dict()
+        self.part_wear = dict()
         for part in car.car_dict.keys():
             self.part_wear[part] = self.part_wear_calc(track, car, driv_factor, part)
-        return part_wear_dict
+        return self.part_wear 
 
     def settings_calcs_to_list(self, track, weather, driver, car, weather_mode):
         """Returns dictionary of calculated settings for specified part of race week"""
@@ -420,6 +431,7 @@ class Calcs:
         settings['q1'] = self.settings_calcs_to_list(track, weather, driver, car, 'q1')
         settings['q2'] = self.settings_calcs_to_list(track, weather, driver, car, 'q2')
         settings['race'] = self.settings_calcs_to_list(track, weather, driver, car, 'race')
+        self.settings = settings
         return settings
 
     def get_form_data(self, form):
@@ -432,7 +444,7 @@ class Calcs:
 
     def create_settings_for_view(self, track, weather, driver, car):
         self.settings_dict_create(track, weather, driver, car)
-        self.create_fuel_wear_tuple(track)
+        self.create_fuel_wear_tuple(track, weather, driver, car)
         self.create_tyre_wear_list(track)
         self.part_wear_dict_create(track, driver, car)
 
@@ -497,4 +509,6 @@ class Calcs:
         temp = weather.race['temp'],
         hum = weather.race['hum'],
         )
+        print(self.tyre_wear_list)
+        print(self.fuel)
         d.save()

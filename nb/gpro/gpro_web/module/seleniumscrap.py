@@ -146,10 +146,14 @@ class Scrapper():
 
     def scrap_track_name_for_weather(self, i):
         track = str(i.text.strip())
+        print(track)
+        print("DONE")
         gp = track.find(" GP")
         whitespace = track.rfind('\t')
         track = track[whitespace + 1:gp]
         self.weather_dict['track'] = track
+        print(track)
+        print("DONE")
 
     def scrap_weather_for_q(self, tr, q):
         tr = str(tr)
